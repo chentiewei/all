@@ -7,19 +7,24 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
-const index = { template: '<div>index</div>' }
+import home from './components/home/home'
 const index1 = { template: '<div>index1</div>' }
 const index2 = { template: '<div>index2</div>' }
 const index3 = { template: '<div>index3</div>' }
 
 const router = new VueRouter({
   routes:[
-    { path: '/', redirect: '/index' },
-    { path: '/index', component: index },
+    { path: '/', redirect: '/home' },
+    {
+      name: 'home',
+      path: '/home',
+      component: home
+    },
     { path: '/index1', component: index1 },
     { path: '/index2', component: index2 },
     { path: '/index3', component: index3 }
-  ]
+  ],
+  linkActiveClass: 'footer_active',
 })
 /* eslint-disable no-new */
 new Vue({
@@ -27,4 +32,4 @@ new Vue({
   router,
   template: '<App/>',
   components: { App }
-}).$mount('#app')
+})
