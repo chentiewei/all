@@ -3,11 +3,11 @@
     <v_header></v_header>
     <router-view></router-view>
     <div class="v_footer">
-      <router-link :to="{name:'home'}" >
+      <router-link :to="{path:'/home'}" >
         <i class="iconfont" :class="icon_arr[0]" @click="fill"></i>
         <p>首页</p>
       </router-link>
-      <router-link to="/index1">
+      <router-link :to="{path:'/index1'}">
         <i class="iconfont" :class="icon_arr[1]"></i>
         <p>最新揭晓</p>
       </router-link>
@@ -52,7 +52,8 @@ export default {
       bottom:0;
       width:100%;
       text-align: center;.
-    color:#999999;
+      color:#999999;
+      background:#f8f8f8;
     }
     .v_footer>a{
       flex:1;

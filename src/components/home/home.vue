@@ -11,17 +11,21 @@
         </li>
       </ul>
     </div>
-    <div></div>
+    <list></list>
   </div>
 </template>
 
 <script>
+  import list from './listBody/listBody';
   export default {
     name: 'home',
     data () {
       return {
 
       }
+    },
+    components:{
+        list,
     }
   }
 </script>

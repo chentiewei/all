@@ -7,18 +7,32 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
 
-import home from './components/home/home'
-const index1 = { template: '<div>index1</div>' }
-const index2 = { template: '<div>index2</div>' }
-const index3 = { template: '<div>index3</div>' }
+import home from './components/home/home';
+const index1 = { template: '<div>index1</div>' };
+const index2 = { template: '<div>index2</div>' };
+const index3 = { template: '<div>index3</div>' };
+import moods from './components/home/listBody/list/moods';
+import plan from './components/home/listBody/plan/plan';
 
 const router = new VueRouter({
   routes:[
     { path: '/', redirect: '/home' },
     {
-      name: 'home',
       path: '/home',
-      component: home
+      component: home,
+      children:[
+        { path: '/', redirect: 'moods' },
+        {
+          name:'moods',
+          path:'moods',
+          component:moods
+        },
+        {
+          name:'plan',
+          path:'plan',
+          component:plan
+        },
+      ]
     },
     { path: '/index1', component: index1 },
     { path: '/index2', component: index2 },
@@ -32,4 +46,4 @@ new Vue({
   router,
   template: '<App/>',
   components: { App }
-})
+}).$mount('#app')

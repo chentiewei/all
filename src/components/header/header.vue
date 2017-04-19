@@ -1,7 +1,7 @@
 <template>
   <div class="v_header">
     <i class="iconfont icon-xiangzuo1"></i>
-    <div>首页</div>
+    <div>{{title}}</div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
     name: 'v_header',
     data () {
       return {
-
+        title:'首页',
       }
     }
   }
