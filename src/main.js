@@ -4,15 +4,20 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
-Vue.config.productionTip = false
+Vue.use(VueRouter);
+Vue.config.productionTip = false;
 
 import home from './components/home/home';
-const index1 = { template: '<div>index1</div>' };
-const index2 = { template: '<div>index2</div>' };
-const index3 = { template: '<div>index3</div>' };
-import moods from './components/home/listBody/list/moods';
-import plan from './components/home/listBody/plan/plan';
+import indexPage from './components/home/indexPage/indexPage';
+import winner from './components/home/winner/winner';
+const index2 = { template: '<div>index1</div>' };
+import userCenter from './components/home/userCenter/userCenter';
+import moods from './components/home/indexPage/listBody/list/moods';
+import plan from './components/home/indexPage/listBody/plan/plan';
+import details from './components/details/details';
+
+const all = { template: '<div>all</div>' };
+const going ={template: '<div>going</div>'}
 
 const router = new VueRouter({
   routes:[
@@ -21,22 +26,46 @@ const router = new VueRouter({
       path: '/home',
       component: home,
       children:[
-        { path: '/', redirect: 'moods' },
+        { path: '/', redirect: 'indexPage' },
         {
-          name:'moods',
-          path:'moods',
-          component:moods
+          path:'indexPage',
+          component:indexPage,
+          children:[
+            { path: '/', redirect: 'moods' },
+            {
+              name:'moods',
+              path:'moods',
+              component:moods
+            },
+            {
+              name:'plan',
+              path:'plan',
+              component:plan
+            },
+          ]
         },
+        { path: '/userCenter', component: userCenter },
         {
-          name:'plan',
-          path:'plan',
-          component:plan
+          path: '/winner',
+          component: winner,
+          children:[
+            { path: '/', redirect: 'all' },
+            {
+              name:'all',
+              path:'all',
+              component:all
+            },
+            {
+              name:'going',
+              path:'going',
+              component:going
+            },
+          ]
         },
+        { path: '/index2', component: index2 }
       ]
     },
-    { path: '/index1', component: index1 },
-    { path: '/index2', component: index2 },
-    { path: '/index3', component: index3 }
+    { path: '/details', component: details }
   ],
   linkActiveClass: 'footer_active',
 })

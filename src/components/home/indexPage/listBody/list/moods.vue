@@ -2,7 +2,7 @@
   <div class="moods">
     <div v-for="(item,index) in arr" :class="{border_right:(index+1)%2==0}">
       {{item}}
-      <router-link :to="{path:'/index1'}" class="on_go"></router-link>
+      <router-link :to="{path:'/details'}" class="on_go"></router-link>
     </div>
   </div>
 </template>

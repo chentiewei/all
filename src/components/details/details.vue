@@ -1,23 +1,22 @@
 <template>
-  <div class="plan">
-    pppppppppppppp
-  </div>
+  <div id="details">
+      details
   </div>
 </template>
 
 <script>
   export default {
-    name: 'plan',
+    name: 'details',
     data(){
       return{
 
       }
     },
-    methods:{},
-    computed: {
-
+    methods:{
     },
-    components: {}
+    components: {
+
+    }
   }
 </script>
 <style>
