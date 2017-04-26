@@ -3,8 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import axios from 'axios'
 
 Vue.use(VueRouter);
+Vue.prototype.$http = axios
 Vue.config.productionTip = false;
 
 import home from './components/home/home';
@@ -16,7 +18,7 @@ import moods from './components/home/indexPage/listBody/list/moods';
 import plan from './components/home/indexPage/listBody/plan/plan';
 import details from './components/details/details';
 
-const all = { template: '<div>all</div>' };
+import all from './components/home/winner/all/all';
 const going ={template: '<div>going</div>'}
 
 const router = new VueRouter({
