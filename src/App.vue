@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <v_header></v_header>
-    <router-view></router-view>
+    <transition :name="silde">
+      <router-view class="child-view"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -11,19 +13,22 @@ export default {
   name: 'app',
   data(){
       return{
-
+        silde:'slide-left',
       }
   },
   methods:{
   },
+  created() {
+  },
   components: {
       v_header
-  }
+  },
 }
+
 </script>
 <style>
     @import "../static/icon/iconfont.css";
-    html{
-      font-family: PingFangSC-Regular,'微软雅黑',sans-serif;
+    html {
+      font-family: PingFangSC-Regular, '微软雅黑', sans-serif;
     }
 </style>

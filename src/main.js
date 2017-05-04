@@ -4,11 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import axios from 'axios'
-
 Vue.use(VueRouter);
 Vue.prototype.$http = axios
 Vue.config.productionTip = false;
-
 import home from './components/home/home';
 import indexPage from './components/home/indexPage/indexPage';
 import winner from './components/home/winner/winner';
@@ -30,46 +28,68 @@ const router = new VueRouter({
       children:[
         { path: '/', redirect: 'indexPage' },
         {
+          meta: { title:'首页' },
           path:'indexPage',
           component:indexPage,
           children:[
             { path: '/', redirect: 'moods' },
             {
+              meta: { title:'首页' },
               name:'moods',
               path:'moods',
               component:moods
             },
             {
+              meta: { title:'首页' },
               name:'plan',
               path:'plan',
               component:plan
             },
           ]
         },
-        { path: '/userCenter', component: userCenter },
         {
+          meta: { title:'用户中心' },
+          path: '/userCenter',
+          component: userCenter
+        },
+        {
+          meta: { title:'最新揭晓' },
           path: '/winner',
           component: winner,
           children:[
             { path: '/', redirect: 'all' },
             {
+              meta: { title:'最新揭晓' },
               name:'all',
               path:'all',
               component:all
             },
             {
+              meta: { title:'最新揭晓' },
               name:'going',
               path:'going',
               component:going
             },
           ]
         },
-        { path: '/index2', component: index2 }
+        {
+          meta: { title:'分享晒单' },
+          path: '/index2',
+          component: index2
+        }
       ]
     },
-    { path: '/details', component: details }
+    {
+      meta: { title:'详情' },
+      path: '/details',
+      component: details
+    }
   ],
   linkActiveClass: 'footer_active',
+})
+router.beforeEach((to, from, next) => {
+  document.title=to.meta.title;
+  next();
 })
 /* eslint-disable no-new */
 new Vue({

@@ -24,7 +24,6 @@
       const me=this;
       this.$http.get('http://localhost:8080/static/data.json')
         .then(function (response) {
-            console.log(response.data);
             me.seller=response.data;
         })
         .catch(function (error) {

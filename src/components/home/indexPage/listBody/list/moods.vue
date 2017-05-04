@@ -4,6 +4,10 @@
       {{item}}
       <router-link :to="{path:'/details'}" class="on_go"></router-link>
     </div>
+    <div>
+      跳转用户中心
+    <router-link :to="{path:'/userCenter'}" class="on_go"></router-link>
+    </div>
   </div>
 </template>
 

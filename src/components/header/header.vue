@@ -1,7 +1,7 @@
 <template>
   <div class="v_header">
-    <i class="iconfont icon-xiangzuo1"></i>
-    <div>{{title}}</div>
+    <i class="iconfont icon-xiangzuo1" @click="goback"></i>
+    <div>{{$route.meta.title}}</div>
   </div>
 </template>
 
@@ -10,9 +10,17 @@
     name: 'v_header',
     data () {
       return {
-        title:'首页',
+
       }
-    }
+    },
+    methods: {
+      goback () {
+        window.history.go(-1);
+      }
+    },
+    created:function () {
+
+    },
   }
 </script>
 
