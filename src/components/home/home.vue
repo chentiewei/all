@@ -8,7 +8,6 @@
 </template>
 
 <script>
-  import indexPage from './indexPage/indexPage';
   import v_footer from './footer/footer';
   export default {
     name: 'home',
@@ -18,7 +17,6 @@
       }
     },
     components:{
-        indexPage,
         v_footer
     }
   }
@@ -39,5 +37,11 @@
     opacity: 0;
     -webkit-transform: translate(-50px, 0);
     transform: translate(-50px, 0);
+  }
+  .home:after{
+    content:'';
+    display: block;
+    width:0;
+    clear: both;
   }
 </style>
