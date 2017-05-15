@@ -4,3 +4,4 @@
 2017/05/01  学习vue的<transition>进行模仿webapp切换行为。（有瑕疵，动画切换时v_footer组件没有跟着切换。感觉是因为没有被动画标签包裹！感觉用webapp与vue的想法冲突，没有解决！）
 2017/05/08  学习node发现问题，研究common与express。
 2017/05/12  学习common发现require与其区别。（程度熟悉）
+2017/05/15  学习sea.js程度熟悉（jq接受amd不接受cmd所以引入失败！）
