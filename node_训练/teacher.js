@@ -1,0 +1,10 @@
+module.exports={
+  User:require('./user'),
+  teacher:function(id,name){
+    console.log(this.User);
+    this.User.user.apply(this,[id,name]);
+    this.Tea=function(){
+      console.log(this.id+'号'+this.name+'上课');
+    }
+  }
+}
