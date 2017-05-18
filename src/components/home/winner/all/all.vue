@@ -21,15 +21,14 @@
     computed: {
     },
     created:function(){
-      const me=this;
-      this.$http.get('http://localhost:8080/static/data.json')
-        .then(function (response) {
-            me.seller=response.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-
+    const me=this;
+    this.$http.get('http://localhost:8080/static/data.json')
+      .then(function (response) {
+          me.seller=response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     },
     components: {}
   }

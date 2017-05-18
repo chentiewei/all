@@ -8,11 +8,11 @@
       <i class="iconfont" :class="icon_arr[1]"></i>
       <p>最新揭晓</p>
     </router-link>
-    <router-link to="/index2">
+    <router-link :to="{path:'/share'}">
       <i class="iconfont" :class="icon_arr[2]"></i>
       <p>分享晒单</p>
     </router-link>
-    <router-link to="/userCenter">
+    <router-link :to="{path:'/userCenter'}">
       <i class="iconfont" :class="icon_arr[3]"></i>
       <p>个人中心</p>
     </router-link>

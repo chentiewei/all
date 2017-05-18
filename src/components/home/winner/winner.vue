@@ -30,9 +30,7 @@
   }
   .winner .winner_header a{
     flex: 1;
-    border:1px solid #ddd;
+    border-bottom:1px solid #ddd;
     padding:10px 0;
-    border-left:0;
-    border-right:0;
   }
 </style>

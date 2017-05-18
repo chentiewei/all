@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <transition :name="silde">
-      <router-view class="child-view"></router-view>
+    <transition :name="sil">
+      <router-view class="child"></router-view>
     </transition>
     <v_footer></v_footer>
   </div>
@@ -13,7 +13,7 @@
     name: 'home',
     data () {
       return {
-        silde:'slide-left',
+        sil:'slide-left',
       }
     },
     components:{
@@ -23,25 +23,25 @@
 </script>
 
 <style>
-  .child-view {
-    position: absolute;
-    width:100%;
-    transition: all .8s cubic-bezier(.55,0,.1,1);
-  }
-  .slide-left-enter, .slide-right-leave-active {
-    opacity: 0;
-    -webkit-transform: translate(50px, 0);
-    transform: translate(50px, 0);
-  }
-  .slide-left-leave-active, .slide-right-enter {
-    opacity: 0;
-    -webkit-transform: translate(-50px, 0);
-    transform: translate(-50px, 0);
-  }
   .home:after{
     content:'';
     display: block;
     width:0;
     clear: both;
+  }
+  .child{
+    position: absolute;
+    width:100%;
+    transition: all .8s cubic-bezier(.55,0,.1,1);
+  }
+  .sli-left-enter, .sli-right-leave-active {
+    opacity: 0;
+    -webkit-transform: translate(50px, 0);
+    transform: translate(50px, 0);
+  }
+  .sli-left-leave-active, .sli-right-enter {
+    opacity: 0;
+    -webkit-transform: translate(-50px, 0);
+    transform: translate(-50px, 0);
   }
 </style>

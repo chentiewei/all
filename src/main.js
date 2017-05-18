@@ -4,18 +4,20 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import axios from 'axios'
+/*vue-router*/
 Vue.use(VueRouter);
+/*axios*/
 Vue.prototype.$http = axios
 Vue.config.productionTip = false;
+
 import home from './components/home/home';
 import indexPage from './components/home/indexPage/indexPage';
 import winner from './components/home/winner/winner';
-const index2 = { template: '<div>index1</div>' };
+import share from './components/home/share/share'
 import userCenter from './components/home/userCenter/userCenter';
 import moods from './components/home/indexPage/listBody/list/moods';
 import plan from './components/home/indexPage/listBody/plan/plan';
 import details from './components/details/details';
-
 import all from './components/home/winner/all/all';
 const going ={template: '<div>going</div>'}
 
@@ -74,8 +76,8 @@ const router = new VueRouter({
         },
         {
           meta: { title:'分享晒单' },
-          path: '/index2',
-          component: index2
+          path: '/share',
+          component: share
         }
       ]
     },
@@ -87,6 +89,7 @@ const router = new VueRouter({
   ],
   linkActiveClass: 'footer_active',
 })
+/*router更新前*/
 router.beforeEach((to, from, next) => {
   document.title=to.meta.title;
   next();

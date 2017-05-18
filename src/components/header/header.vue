@@ -28,6 +28,7 @@
   .v_header{
     height:44px;
     color:#333;
+    border-bottom:1px solid #ddd;
   }
   .v_header i{
     position:absolute;
