@@ -1,8 +1,13 @@
+const s=require('./modle/ajax_fx');
 module.exports={
-  login:function(){
-    console.log('我是login');
+  callback:function (data,res){
+    res.write(data);
+    res.end('结束了');
   },
-  z:function(){
-    console.log('我是z');
+    login:function(req,res){
+    s.readfile('./view/login.html',this.callback,res);
+  },
+  z:function(req,res){
+    s.readfile('./view/down.html',this.callback,res);
   }
 }
