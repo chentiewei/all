@@ -4,12 +4,6 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import axios from 'axios'
-/*vue-router*/
-Vue.use(VueRouter);
-/*axios*/
-Vue.prototype.$http = axios
-Vue.config.productionTip = false;
-
 import home from './components/home/home';
 import indexPage from './components/home/indexPage/indexPage';
 import winner from './components/home/winner/winner';
@@ -19,8 +13,10 @@ import moods from './components/home/indexPage/listBody/list/moods';
 import plan from './components/home/indexPage/listBody/plan/plan';
 import details from './components/details/details';
 import all from './components/home/winner/all/all';
-const going ={template: '<div>going</div>'}
-
+Vue.use(VueRouter);/*vue-router*/
+Vue.prototype.$http = axios;/*axios*/
+Vue.config.productionTip = false;
+const going ={template: '<div>going</div>'};
 const router = new VueRouter({
   routes:[
     { path: '/', redirect: '/home' },

@@ -8,19 +8,22 @@
 <script>
   export default {
     name: 'v_header',
+    props:['siler'],
     data () {
       return {
-
+          a:this.siler,
       }
     },
     methods: {
       goback () {
+        this.$parent.silde='slide-right';
         window.history.go(-1);
+        //this.$parent.silde='silde-left';
       }
     },
     created:function () {
-
     },
+
   }
 </script>
 

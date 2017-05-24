@@ -1,4 +1,6 @@
 const s=require('./modle/ajax_fx');
+const url=require('url');
+const querystring=require('querystring');
 module.exports={
   callback:function (data,res){
     res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
@@ -6,6 +8,17 @@ module.exports={
     res.end('结束了');
   },
   login:function(req,res){
+    /*get请求
+    var rdata=url.parse(req.url,true).query;*/
+
+    var post = '';
+    req.on('data',function(chunk){
+      post+=chunk;
+    })
+    req.on('end',function(){
+      post=querystring.parse(post);
+      console.log(post);
+    })
     s.readfile('./view/login.html',this.callback,res);
   },
   z:function(req,res){

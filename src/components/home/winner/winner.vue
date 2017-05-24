@@ -18,6 +18,10 @@
     },
     components:{
 
+    },
+    beforeRouteUpdate (to, from, next){
+      console.log('我是winner.vue')
+      next();
     }
   }
 </script>

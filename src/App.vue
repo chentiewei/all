@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v_header></v_header>
+    <v_header :siler="silde" :class="silde"></v_header>
     <transition :name="silde">
       <router-view class="child-view"></router-view>
     </transition>
@@ -14,6 +14,7 @@ export default {
   data(){
       return{
         silde:'slide-left',
+        r:0,
       }
   },
   methods:{
@@ -21,8 +22,19 @@ export default {
   created() {
   },
   components: {
-      v_header
+      v_header,
   },
+  beforeRouteUpdate(to,from,next){
+      console.log(this.$router.isBack)
+    /*let isBack = this.$router.isBack;
+    if( isBack ){
+      this.silde = 'slide-right'
+    }else{
+      this.silde = 'slide-left'
+    }
+    this.$router.isBack = false;*/
+    next();
+  }
 }
 
 </script>
