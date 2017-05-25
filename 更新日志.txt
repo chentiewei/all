@@ -7,3 +7,7 @@
 2017/05/15  学习sea.js程度熟悉（jq接受amd不接受cmd所以引入失败！）
 2017/05/16  学习sea.js的jquery引入成功，（不能赋予变量或常亮！require直接引入）
 2017/05/19  学习node-router+readfile（异步）
+2017/05/20  学习vue的$set方法和一些小页面的书写
+2017/05/21  学习node的图片加载
+2017/05/23  学习node的post和get数据接收
+2017/05/24  学习vue的route.beforeEach和beforeupdate
