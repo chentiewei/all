@@ -28,7 +28,7 @@
     },
     components: {
       list
-    }
+    },
   }
 </script>
 <style>

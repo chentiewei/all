@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <transition :name="sil">
-      <router-view class="child"></router-view>
+      <keep-alive>
+        <router-view class="child"></router-view>
+      </keep-alive>
     </transition>
     <v_footer></v_footer>
   </div>
@@ -18,11 +20,14 @@
     },
     components:{
         v_footer
-    }
+    },
   }
 </script>
 
 <style>
+  .home{
+    min-height:calc( 100% - 45px );
+  }
   .home:after{
     content:'';
     display: block;

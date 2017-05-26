@@ -1,5 +1,5 @@
 <template>
-  <div id="details">
+  <div class="details">
     <div>
       <div class='details_img'>
         <img :src="img" alt="">
@@ -52,6 +52,9 @@
   }
 </script>
 <style>
+  .details{
+    min-height:calc( 100% - 45px);
+  }
   .details_img{
     text-align: center;
   }

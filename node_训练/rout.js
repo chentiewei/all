@@ -14,12 +14,25 @@ module.exports={
     var post = '';
     req.on('data',function(chunk){
       post+=chunk;
-    })
+    });
     req.on('end',function(){
       post=querystring.parse(post);
       console.log(post);
-    })
-    s.readfile('./view/login.html',this.callback,res);
+    });
+    function call(data,res){
+      res.writeHead(200,{'Content-Type':'text/pain;charset=UTF-8'});
+      datastr=String(data);
+      arr=['name','pwd'];
+      var re=null;
+      for(var i=0;i<arr.length;i++){
+        re=new RegExp('{'+arr[i]+'}','g');
+        datastr=datastr.replace(re,post[arr[i]]);//datgstr是指当前所有网页代码；
+        console.log(datastr)
+      }
+      res.write(datastr);
+      res.end('结束了');
+    }
+    s.readfile('./view/login.html',call,res);
   },
   z:function(req,res){
     s.readfile('./view/down.html',this.callback,res);

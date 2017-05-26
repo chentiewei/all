@@ -20,7 +20,7 @@
 
     },
     beforeRouteUpdate (to, from, next){
-      console.log('我是winner.vue')
+      console.log('我是beforeRouteUpdate,在winner.vue')
       next();
     }
   }

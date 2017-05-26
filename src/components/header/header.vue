@@ -12,6 +12,7 @@
     data () {
       return {
           a:this.siler,
+          b:0,
       }
     },
     methods: {
@@ -23,7 +24,6 @@
     },
     created:function () {
     },
-
   }
 </script>
 
