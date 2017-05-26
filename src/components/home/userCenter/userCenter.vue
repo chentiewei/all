@@ -28,7 +28,6 @@
         <div>客服</div>
       </div>
     </div>
-    <div class="backg"></div>
   </div>
 </template>
 
@@ -48,6 +47,10 @@
   }
 </script>
 <style>
+  .usercenter{
+    min-height:calc( 100% - 45px );
+    background: #efeff4;
+  }
   .usercenter_header{
       height:3.75rem;
     background:#ed702d;
@@ -83,13 +86,5 @@
     text-align:center;
     background:#fff;
     border-bottom:1px solid #d5d5d5;
-  }
-  .backg{
-    position: fixed;
-    top:0;
-    bottom:0;
-    width:100%;
-    z-index: -1;
-    background:#efeff4;
   }
 </style>

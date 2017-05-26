@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <transition :name="sil">
+    <transition :name="silde">
       <keep-alive>
-        <router-view class="child"></router-view>
+        <router-view class="child-view"></router-view>
       </keep-alive>
     </transition>
     <v_footer></v_footer>
@@ -15,8 +15,18 @@
     name: 'home',
     data () {
       return {
-        sil:'slide-left',
+        silde:'slide-left',
       }
+    },
+    beforeRouteUpdate(to, from, next){
+      let isBack = this.$router.isBack
+      if (isBack) {
+        this.silde = 'slide-right'
+      } else {
+        this.silde = 'slide-left'
+      }
+      this.$router.isBack = false;
+      next();
     },
     components:{
         v_footer
@@ -34,17 +44,17 @@
     width:0;
     clear: both;
   }
-  .child{
+  .child-view {
     position: absolute;
     width:100%;
     transition: all .8s cubic-bezier(.55,0,.1,1);
   }
-  .sli-left-enter, .sli-right-leave-active {
+  .slide-left-enter, .slide-right-leave-active {
     opacity: 0;
     -webkit-transform: translate(50px, 0);
     transform: translate(50px, 0);
   }
-  .sli-left-leave-active, .sli-right-enter {
+  .slide-left-leave-active, .slide-right-enter {
     opacity: 0;
     -webkit-transform: translate(-50px, 0);
     transform: translate(-50px, 0);

@@ -1,7 +1,7 @@
 <template>
   <div class="v_header">
     <i class="iconfont icon-xiangzuo1" @click="goback"></i>
-    <div>{{$route.meta.title}}</div>
+    <div>{{$route.meta.title}}{{$router.isBack}}</div>
   </div>
 </template>
 
@@ -12,14 +12,14 @@
     data () {
       return {
           a:this.siler,
-          b:0,
       }
     },
     methods: {
       goback () {
-        this.$parent.silde='slide-right';
-        window.history.go(-1);
+        //this.$parent.silde='slide-right';
+        //window.history.go(-1);
         //this.$parent.silde='silde-left';
+        this.$router.go()
       }
     },
     created:function () {

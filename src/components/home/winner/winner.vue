@@ -4,7 +4,9 @@
       <router-link :to="{ name:'all' }">全部</router-link>
       <router-link :to="{ name:'going' }">我参与的</router-link>
     </div>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
