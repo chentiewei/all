@@ -49,6 +49,11 @@
     width:100%;
     transition: all .8s cubic-bezier(.55,0,.1,1);
   }
+  .child-view:after{
+    content:'';
+    display:block;
+    clear:both;
+  }
   .slide-left-enter, .slide-right-leave-active {
     opacity: 0;
     -webkit-transform: translate(50px, 0);

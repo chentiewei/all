@@ -6,11 +6,13 @@
        <router-view class="c_view"></router-view>
       </keep-alive>
     </transition>
+    <hint></hint>
   </div>
 </template>
 
 <script>
 import v_header from './components/header/header';
+import hint from './components/hint/hint'
 export default {
   name: 'app',
   data(){
@@ -30,6 +32,7 @@ export default {
   },
   components: {
       v_header,
+      hint,
   },
 }
 
@@ -43,6 +46,11 @@ export default {
       position: absolute;
       width:100%;
       transition: all .8s cubic-bezier(.55,0,.1,1);
+    }
+    .c_view:after{
+      display: block;
+      content:'';
+      clear:both;
     }
     .s_left-enter, .s_right-leave-active {
       opacity: 0;
