@@ -13,17 +13,20 @@
   import v_footer from './footer/footer';
   export default {
     name: 'home',
+    props:['show'],
     data () {
       return {
         silde:'slide-left',
       }
     },
+    created() {
+    },
     beforeRouteUpdate(to, from, next){
       let isBack = this.$router.isBack
       if (isBack) {
-        this.silde = 'slide-right'
+        this.silde = 'slide-right';
       } else {
-        this.silde = 'slide-left'
+        this.silde = 'slide-left';
       }
       this.$router.isBack = false;
       next();
@@ -56,12 +59,10 @@
   }
   .slide-left-enter, .slide-right-leave-active {
     opacity: 0;
-    -webkit-transform: translate(50px, 0);
     transform: translate(50px, 0);
   }
   .slide-left-leave-active, .slide-right-enter {
     opacity: 0;
-    -webkit-transform: translate(-50px, 0);
     transform: translate(-50px, 0);
   }
 </style>

@@ -3,10 +3,10 @@
     <v_header :siler="silde" :class="silde" ref="se"></v_header>
     <transition :name="silde">
       <keep-alive>
-       <router-view class="c_view"></router-view>
+       <router-view class="c_view"  @message="mess"></router-view>
       </keep-alive>
     </transition>
-    <hint></hint>
+    <hint :show="show"></hint>
   </div>
 </template>
 
@@ -18,21 +18,27 @@ export default {
   data(){
       return{
         silde:'s_left',
+        show:false,
+        se:0,
       }
   },
   methods:{
+      mess(){
+        this.show=!this.show;
+        console.log(this.show)
+      }
   },
   created() {
   },
   mounted() {
+      console.log(this.$refs.se)
   },
   beforeRouteUpdate(to, from, next){
-    console.log()
     next();
   },
   components: {
       v_header,
-      hint,
+      hint:hint,
   },
 }
 

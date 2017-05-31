@@ -13,6 +13,7 @@ import moods from './components/home/indexPage/listBody/list/moods';
 import plan from './components/home/indexPage/listBody/plan/plan';
 import details from './components/details/details';
 import all from './components/home/winner/all/all';
+import small from './components/home/small/small'
 Vue.use(VueRouter);/*vue-router*/
 Vue.prototype.$http = axios;/*axios*/
 Vue.config.productionTip = false;
@@ -74,6 +75,11 @@ const router = new VueRouter({
           meta: { title:'分享晒单' },
           path: '/share',
           component: share
+        },
+        {
+          meta:{title:'vue小零件'},
+          path:'/small',
+          component:small
         }
       ]
     },

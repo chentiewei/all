@@ -22,6 +22,8 @@
         this.$router.go()
       }
     },
+    mounted() {
+    },
     created:function () {
     },
   }

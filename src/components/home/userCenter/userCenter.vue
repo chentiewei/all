@@ -26,6 +26,7 @@
         <div>设置</div>
         <div>公众号</div>
         <div>客服</div>
+        <router-link :to="{path:'/small'}" class="usercenter_small">vue小零件</router-link>
       </div>
     </div>
   </div>
@@ -39,7 +40,8 @@
 
       }
     },
-    methods:{},
+    methods:{
+    },
     computed: {
 
     },
@@ -76,11 +78,15 @@
     font-size:0.7rem;
     color:#333;
   }
-  .user_nav{
+  .user_nav,.small{
     margin-top:10px;
     font-size:0.75rem;
   }
-  .user_nav div{
+  .small{
+    margin-top: 0;
+  }
+  .user_nav div,.usercenter_small,.small div{
+    display: block;
     height:2.5rem;
     line-height:2.5rem;
     text-align:center;
