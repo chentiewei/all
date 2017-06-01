@@ -17,6 +17,7 @@
     props:['show'],
     data(){
       return{
+          a:0,
       }
     },
     methods:{

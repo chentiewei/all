@@ -3,7 +3,7 @@
     <v_header :siler="silde" :class="silde" ref="se"></v_header>
     <transition :name="silde">
       <keep-alive>
-       <router-view class="c_view"  @message="mess"></router-view>
+       <router-view class="c_view" @message="mess"></router-view>
       </keep-alive>
     </transition>
     <hint :show="show"></hint>
@@ -31,6 +31,7 @@ export default {
   created() {
   },
   mounted() {
+      console.log('refs')
       console.log(this.$refs.se)
   },
   beforeRouteUpdate(to, from, next){

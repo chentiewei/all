@@ -6,7 +6,7 @@ module.exports={
       console.log('ok');
   },
   readfile:function(path,callback,res){/*异步读文件*/
-    fs.readFile(path,function (err,data) {
+      fs.readFile(path,function (err,data) {
         if(err){
           console.log(String(err));
           callback('文件不存在',res);
@@ -14,7 +14,7 @@ module.exports={
           console.log(String(data));
           callback(data,res);
         }
-    });
+      });
     console.log('异步请求执行中');
   },
   readImg:function (path,res) {/*异步读图片*/

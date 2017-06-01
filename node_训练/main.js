@@ -57,7 +57,7 @@ http.createServer(function(request,response){
     rout.readImg(request,response);
   }
 }).listen(8898);
-console.log('8898端口打开')*/
+console.'refs'+log('8898端口打开')*/
 
 /*同步异步处理*/
 const http=require('http');
@@ -65,15 +65,23 @@ const url=require('url');
 const rout=require('./rout');
 http.createServer(function(request,response){
   if(request.url!=="/favicon.ico"){
-    let pathName=url.parse(request.url).pathname;
+    let pathName=url.parse(request.url).pathname;/*request.url等于pathName*/
     pathName=pathName.replace(/\//,'');
-    try{
-      rout[pathName](request,response);
-    }catch(err){
-      console.log(String(err));
-      response.writeHead(200,{'Content-Type':'text/html;charset=utf-8'});
-      response.write(String(err))
+    console.log(pathName)
+    if(rout[pathName]) {
+      try {
+        rout[pathName](request, response);
+      } catch (err) {
+        console.log(String(err));
+        response.writeHead(200, {'Content-Type': 'text/html;charset=utf-8'});
+        response.write(String(err))
+        response.end();
+      }
+    }else{
+      response.writeHead(200,{"Content-Type":'text/html;charset=utf-8'})
+      response.write('文件不存在');
       response.end();
+
     }
   }
 }).listen(8898);

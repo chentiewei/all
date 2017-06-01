@@ -20,14 +20,19 @@ module.exports={
       console.log(post);
     });
     function call(data,res){
-      res.writeHead(200,{'Content-Type':'text/pain;charset=UTF-8'});
+      res.writeHead(200,{'Content-Type':'text/html;charset=UTF-8'});
       datastr=String(data);
-      arr=['name','pwd'];
+      const arr=['name','pwd'];
       var re=null;
       for(var i=0;i<arr.length;i++){
         re=new RegExp('{'+arr[i]+'}','g');
-        datastr=datastr.replace(re,post[arr[i]]);//datgstr是指当前所有网页代码；
-        console.log(datastr)
+        if(post[arr[i]]){
+          datastr=datastr.replace(re,post[arr[i]]);//datgstr是指当前所有网页代码；
+          console.log(datastr)
+        }else{
+          datastr=datastr.replace(re,'未同步');//datgstr是指当前所有网页代码；
+          console.log(datastr)
+        }
       }
       res.write(datastr);
       res.end('结束了');
@@ -49,5 +54,8 @@ module.exports={
   readImg:function (req,res) {
     res.writeHead(200,{'Content-Type':'image/jpeg'});
     s.readImg('./view/img/resd.jpg',res);
+  },
+  cssreset:function(req,res){
+    s.readfile('./view/css/cssreset.css',this.callback,res);
   }
 }

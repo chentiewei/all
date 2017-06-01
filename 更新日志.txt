@@ -13,3 +13,6 @@
 2017/05/24  学习vue的route.beforeEach和beforeupdate
 2017/05/25  学习vue的文档
 2017/05/26  解决vue的trasition的v_footer问题设min-height
+2017/05/27  学习vue文档
+2017/06/31  学习vue文档
+2017/06/01  复习vue文档
