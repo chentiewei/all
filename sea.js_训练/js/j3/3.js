@@ -1,10 +1,10 @@
 define(function(require,exports,module) {
 	return {
 		c:function(){
-			console.log('我是j3');
+			console.log('鎴戞槸j3');
 		},
 		c1:function(){
-			console.log('我是c1');
+			console.log('鎴戞槸c1');
 		}
 	}
 });
