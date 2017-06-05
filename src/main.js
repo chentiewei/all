@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import axios from 'axios'
+/*用vue.js写单页面应用时，会出现打包后的JavaScript包非常大，影响页面加载，我们可以利用路由的懒加载去优化这个问题
 import home from './components/home/home';
 import indexPage from './components/home/indexPage/indexPage';
 import winner from './components/home/winner/winner';
@@ -13,7 +14,22 @@ import moods from './components/home/indexPage/listBody/list/moods';
 import plan from './components/home/indexPage/listBody/plan/plan';
 import details from './components/details/details';
 import all from './components/home/winner/all/all';
-import small from './components/home/small/small'
+import small from './components/home/small/small'*/
+
+/*懒加载*/
+const home = resolve=> {require(['@/components/home/home'], resolve)};
+const indexPage = resolve=> {require(['@/components//home/indexPage/indexPage'], resolve)};
+const winner = resolve=> {require(['@/components/home/winner/winner'], resolve)};
+const share = resolve=> {require(['@/components/home/share/share'], resolve)};
+const userCenter = resolve=> {require(['@/components/home/userCenter/userCenter'], resolve)};
+const moods = resolve=> {require(['@/components/home/indexPage/listBody/list/moods'], resolve)};
+const plan = resolve=> {require(['@/components/home/indexPage/listBody/plan/plan'], resolve)};
+const details = resolve=> {require(['@/components/details/details'], resolve)};
+const all = resolve=> {require(['@/components/home/winner/all/all'], resolve)};
+const small = resolve=> {require(['@/components/home/small/small'], resolve)};
+
+
+
 Vue.use(VueRouter);/*vue-router*/
 Vue.prototype.$http = axios;/*axios*/
 Vue.config.productionTip = false;

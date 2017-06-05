@@ -32,7 +32,7 @@ export default {
   },
   mounted() {
       console.log('refs')
-      console.log(this.$refs.se)
+      console.log(this.$refs.se.a)
   },
   beforeRouteUpdate(to, from, next){
     next();
