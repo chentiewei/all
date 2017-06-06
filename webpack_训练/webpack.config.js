@@ -9,22 +9,46 @@ module.exports={
       //打包后我们的文件名字
       filename:"webpack.js"
   },
-  module:{
+  module: {
+    /*webpack 1.0
     loaders:[
+     {
+     //正则遇到 .json的文件用json-loader来解析
+     test:/\.json$/,
+     //跳过exclude中的文件。
+     exclude: /(node_modules)/,
+     //包含include中的文件
+     //include: '',
+     //用什么loader来解析
+     loader:"json-loader",
+     /*---------
+     ExtractTextPlugin的extract方法有两个参数，第一个参数是经过编译后通过style-loader单独提取出文件来，而第二个参数就是用来编译代码的loader，
+     css-loader!xxx-loader 表示先执行xxx-loader再css-loader
+     loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap&-convertValues!sass-loader?sourceMap')
+     -------
+     },
+     {
+     test:/\.css$/,
+     loader:"style-loader!css-loader!postcss-loader",
+     }
+     ]
+     },
+     postcss: function () {
+     return  [
+     require('autoprefixer')
+     ]
+     }*/
+    rules: [
       {
-        //正则遇到 .json的文件用json-loader来解析
-        test:/\.json$/,
-        //跳过exclude中的文件。
-        exclude: /(node_modules)/,
-        //包含include中的文件
-        include: '',
-        //用什么loader来解析
-        loader:"json-loader",
-        /*---------
-         ExtractTextPlugin的extract方法有两个参数，第一个参数是经过编译后通过style-loader单独提取出文件来，而第二个参数就是用来编译代码的loader，
-         css-loader!xxx-loader 表示先执行xxx-loader再css-loader
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap&-convertValues!sass-loader?sourceMap')
-        -------*/
+        test: /\.css$/,
+        use: [
+          {loader:"style-loader"},
+          {loader:"css-loader"},
+        ]
+      },
+      {
+        test: /\.json$/,
+        use:"json-loader"
       }
     ]
   }
