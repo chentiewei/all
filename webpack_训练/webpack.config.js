@@ -1,4 +1,6 @@
 /*Webpack 本身只能处理原生的 JavaScript 模块，但是 loader 转换器可以将各种类型的资源转换成 JavaScript 模块。这样，任何资源都可以成为 Webpack 可以处理的模块。*/
+var webpack=require('webpack');
+var Html=require('html-webpack-plugin');
 module.exports={
   //__dirname是nodejs里的一个全局变量，他指向的是我们的根目录
   //entry表示入口文件位置
@@ -42,8 +44,8 @@ module.exports={
       {
         test: /\.css$/,
         use: [
-          {loader:"style-loader"},
-          {loader:"css-loader"},
+          "style-loader",
+          "css-loader",
           {
             loader:"postcss-loader",
             options: {
@@ -59,7 +61,25 @@ module.exports={
       {
         test: /\.json$/,
         use:"json-loader"
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        /* 排除模块安装目录的文件 */
+        exclude: /node_modules/
       }
     ]
+  },
+  plugins:[
+    new webpack.BannerPlugin('陈铁炜出品'),
+    new Html({
+      template:__dirname+'/app/index.html'
+    })
+  ],
+  devServer: {
+    contentBase: "./public", // 本地服务器所加载的页面所在的目录
+    historyApiFallback: true, // 不跳转
+    inline: true, // 实时刷新
+    hot:true //刷新更改部分
   }
 }
