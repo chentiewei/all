@@ -1,9 +1,10 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import VueRouter from 'vue-router'
-import axios from 'axios'
+import Vue from 'vue';
+import App from './App';
+import VueRouter from 'vue-router';
+import axios from 'axios';
+import store from './assets/js/store';
 /*用vue.js写单页面应用时，会出现打包后的JavaScript包非常大，影响页面加载，我们可以利用路由的懒加载去优化这个问题
 import home from './components/home/home';
 import indexPage from './components/home/indexPage/indexPage';
@@ -106,11 +107,11 @@ const router = new VueRouter({
     }
   ],
   linkActiveClass: 'footer_active',
-})
+});
 //绑定切换路由方法
 VueRouter.prototype.go = function () {
-  this.isBack = true
-  window.history.go(-1)
+  this.isBack = true;
+  window.history.go(-1);
 }
 /*router更新前*/
 router.beforeEach((to, from, next) => {
@@ -121,6 +122,8 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
-}).$mount('#app')
+}).$mount('#app');
+

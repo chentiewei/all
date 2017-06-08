@@ -20,6 +20,7 @@
       }
     },
     created() {
+      console.log(this.$store.state.a);
     },
     beforeRouteUpdate(to, from, next){
       let isBack = this.$router.isBack
