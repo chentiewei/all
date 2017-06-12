@@ -108,11 +108,6 @@ const router = new VueRouter({
   ],
   linkActiveClass: 'footer_active',
 });
-//绑定切换路由方法
-VueRouter.prototype.go = function () {
-  this.isBack = true;
-  window.history.go(-1);
-}
 /*router更新前*/
 router.beforeEach((to, from, next) => {
   document.title=to.meta.title;

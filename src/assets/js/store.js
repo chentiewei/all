@@ -5,8 +5,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    a: false
-
+    isBack: false,
+    slide:'slide-left',
+    a:0
   },
   getters: {
     changeState: state => {

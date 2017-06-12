@@ -2,6 +2,7 @@
   <div class="v_header">
     <i class="iconfont icon-xiangzuo1" @click="goback"></i>
     <div>{{$route.meta.title}}{{$router.isBack}}</div>
+
   </div>
 </template>
 
@@ -16,10 +17,8 @@
     },
     methods: {
       goback () {
-        //this.$parent.silde='slide-right';
-        //window.history.go(-1);
-        //this.$parent.silde='silde-left';
-        this.$router.go()
+        this.$store.state.isBack=true;
+        window.history.go(-1);
       }
     },
     mounted() {

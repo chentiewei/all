@@ -17,19 +17,21 @@
     data () {
       return {
         silde:'slide-left',
+        a:this.$store.state.a,
       }
     },
     created() {
-      console.log(this.$store.state.a);
     },
     beforeRouteUpdate(to, from, next){
-      let isBack = this.$router.isBack
+      this.$store.state.a=1;
+      console.log(this.$store.state.a,this.a);
+      let isBack = this.$store.state.isBack;
       if (isBack) {
         this.silde = 'slide-right';
       } else {
         this.silde = 'slide-left';
       }
-      this.$router.isBack = false;
+      this.$store.state.isBack = false;
       next();
     },
     components:{

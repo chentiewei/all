@@ -29,13 +29,11 @@ export default {
       }
   },
   created() {
+
   },
   mounted() {
       console.log('refs')
       console.log(this.$refs.se.a)
-  },
-  beforeRouteUpdate(to, from, next){
-    next();
   },
   components: {
       v_header,
