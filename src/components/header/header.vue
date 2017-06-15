@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import data from '../../assets/js/mock';
   export default {
     name: 'v_header',
     props:['siler'],
@@ -24,6 +25,16 @@
     mounted() {
     },
     created:function () {
+      //mock.js的模拟
+      const me=this;
+      this.$http.get("http://g.cn")
+        .then(function (response) {
+          var data=response.data;
+          console.log(data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
   }
 </script>

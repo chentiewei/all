@@ -29,8 +29,6 @@ const details = resolve=> {require(['@/components/details/details'], resolve)};
 const all = resolve=> {require(['@/components/home/winner/all/all'], resolve)};
 const small = resolve=> {require(['@/components/home/small/small'], resolve)};
 
-
-
 Vue.use(VueRouter);/*vue-router*/
 Vue.prototype.$http = axios;/*axios*/
 Vue.config.productionTip = false;

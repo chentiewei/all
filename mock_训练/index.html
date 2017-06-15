@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="./mock.js"></script>
+<script src="./index.js"></script>
+<script>
+  $.ajax({
+      url:'http://g.cn',
+      dataType:'json',
+      success:function (data) {
+        console.log(data)
+      }
+  })
+</script>
+</body>
+</html>

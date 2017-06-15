@@ -1,0 +1,17 @@
+.radius_r(@a:5px){
+  border-radius:@a/4;
+}
+@color:red;
+#body{
+	background:green;
+	#div{
+		width:100px;
+		height:100px;
+		background:@color;
+    .radius_r;
+		#h1{
+			background:yellow;
+      .radius_r(10px*2);
+		}
+	}
+}
