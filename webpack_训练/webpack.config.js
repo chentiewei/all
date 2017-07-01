@@ -72,7 +72,7 @@ module.exports={
   },
   plugins:[
     new webpack.BannerPlugin('陈铁炜出品'),
-    new Html({
+    new Html({//生成文件
       template:__dirname+'/app/index.html'
     })
   ],
@@ -80,6 +80,7 @@ module.exports={
     contentBase: "./public", // 本地服务器所加载的页面所在的目录
     historyApiFallback: true, // 不跳转
     inline: true, // 实时刷新
-    hot:true //刷新更改部分
+    hot:true, //刷新更改部分
+      port:8090
   }
 }
