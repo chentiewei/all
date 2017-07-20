@@ -19,7 +19,10 @@
 2017/06/02  学习node和vue的过程中发现webpack，开始学习发现webpack是把一切都给变成js模块（loader插件）;
 2017/06/15  学习mock数据的2种写法和css预处理器的less;
 2017/06/18  学习mock阿里rap后台模拟数据；
-2017/06/20  学习react并且复习vue；
+2017/06/20  学习react并且
+2017/06/21  复习vue;
 2017/06/22  学习深入vue-router的写法作用；
 2017/06/24  学习搭建app_vue项目完成对vue的复习；
 2017/06/27  学习vue的UI框架element,vux,mint-ui;
+2017/06/28  学习mint-ui；
+2017/06/29  学习mint-ui用里面ui组件做到webapp的页面切换效果；
