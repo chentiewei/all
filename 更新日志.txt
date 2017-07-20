@@ -26,3 +26,4 @@
 2017/06/27  学习vue的UI框架element,vux,mint-ui;
 2017/06/28  学习mint-ui；
 2017/06/29  学习mint-ui用里面ui组件做到webapp的页面切换效果；
+2017/07/20  学习iviewUI插件，发现与之区别的elementUI插件；
