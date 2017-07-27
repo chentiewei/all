@@ -1,2 +1,2 @@
 # all
-这是一个所有
+一个包括mock，node，require，sea，layui，vue，webpack的简单练习
