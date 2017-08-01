@@ -30,6 +30,7 @@ app.get('/',function(req,res){
 })
 
 app.get('/loging',function(req,res){
+    console.log(res.body)
     res.sendFile(__dirname+'/public/view/login.html');
 })
 
