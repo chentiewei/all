@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.3"
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.3",
+    "superagent": "^3.5.2"
   }
 }
