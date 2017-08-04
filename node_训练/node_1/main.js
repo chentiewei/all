@@ -81,7 +81,12 @@ http.createServer(function(request,response){
       response.writeHead(200,{"Content-Type":'text/html;charset=utf-8'})
       response.write('文件不存在');
       response.end();
-
+      let buf = new Buffer(15);
+      console.log(buf);
+      const len = buf.write("www.runoob.com");
+      console.log(buf)
+      let buf1 = new Buffer(26);
+      console.log(buf1.toJSON('ascii'))
     }
   }
 }).listen(8898);
