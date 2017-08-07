@@ -10,35 +10,25 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-<div class="wrapper">
-    <div class="banner">
-        <h1>HiChat :)</h1>
-        <span id="status"></span>
-    </div>
-    <div id="historyMsg">
-    </div>
-    <div class="controls" >
-        <div class="items">
-            <input id="colorStyle" type="color" placeHolder='#000' title="font color" />
-            <input id="emoji" type="button" value="emoji" title="emoji" />
-            <label for="sendImage" class="imageLable">
-                <input type="button" value="image"  />
-                <input id="sendImage" type="file" value="image"/>
-            </label>
-            <input id="clearBtn" type="button" value="clear" title="clear screen" />
-        </div>
-        <textarea id="messageInput" placeHolder="enter to send"></textarea>
-        <input id="sendBtn" type="button" value="SEND">
-        <div id="emojiWrapper">
-        </div>
-    </div>
+<div>
+Welcome<br/><input id="text" type="text"/>
+    <button onclick="send()">发送消息</button>
+     <hr/>
+     <button onclick="closeWebSocket()">关闭WebSocket连接</button>
+     <hr/>
+     <div id="message"></div>
 </div>
-<div id="loginWrapper" style="display: none">
-    <p id="info">connecting to server...</p>
-    <div id="nickWrapper">
-        <input type="text" placeHolder="nickname" id="nicknameInput" />
-        <input type="button" value="OK" id="loginBtn" />
-    </div>
-</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script>
+    socket = io.connect('ws://127.0.0.1:8899');
+    //socket.emit("message", {"name" : navigator.userAgent, "msg" : "hello world"});
+    socket.on("message", function(obj) {
+        document.getElementById('message').innerHTML+=obj;
+    });
+    function send(){
+        var msg=document.getElementById('text').value;
+        socket.send(msg);
+    }
+</script>
 </body>
 </html>

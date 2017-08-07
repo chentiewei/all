@@ -1,17 +1,32 @@
-var express=require('express');
-var app=express();
+"use strict";
+var express=require('express')
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+var path = require('path');
 
 app.use(express.static('public'));
 
 app.get('/',function(req,res){
-    res.readFile(__dirname+'/public/index.html');
-    res.end();
+    res.sendFile(__dirname+'/public/index.html');
 })
-app.get('/send/:id',function(){
-    res.readFlie(__dirname+'/public/index.htmnl');
-})
-var server=app.listen(8899,function(){
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log(host, port)
+
+//在线用户
+var onlineUsers = {};
+//当前在线人数
+var onlineCount = 0;
+io.on('connection', function(socket){
+    console.log('a user connected');
+    socket.on("disconnect", function() {
+        console.log("a user go out");
+    });
+
+    socket.on("message", function(obj) {
+        io.emit("message", obj);
+    });
+
+});
+
+var server = http.listen(8899, function() {
+    console.log('start at port:' + server.address().port);
 });
