@@ -16,9 +16,11 @@ var onlineUsers = {};
 //当前在线人数
 var onlineCount = 0;
 io.on('connection', function(socket){
-    console.log('a user connected');
+    console.log('用户进入');
+    onlineCount++;
     socket.on("disconnect", function() {
-        console.log("a user go out");
+        console.log("用户离开");
+        onlineCount--;
     });
 
     socket.on("message", function(obj) {
