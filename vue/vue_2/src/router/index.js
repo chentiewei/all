@@ -16,6 +16,8 @@ import myOreder from '@/components/userCenter/myOrder'
 import userDraw from '@/components/userCenter/userDraw'
 /*我的订单详情*/
 import orderDetail from '@/components/userCenter/orderDetail'
+/*产品详情*/
+import produictList from '../components/productList'
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +38,6 @@ export default new Router({
         {path:'/myOreder',name:'myOreder',component:myOreder},
         {path:'/userDraw',name:'userDraw',component:userDraw},
         {path:'/orderDetail/:orderid',name:'orderDetail',component:orderDetail},
-        {path:'/productList',name:'productList',component:productList},
+        {path:'/productList',name:'productList',component:produictList},
     ]
 })
