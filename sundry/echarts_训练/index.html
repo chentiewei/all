@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script src="echarts.js"></script>
+    </head>
+
+    <body>
+        <div id="main" style="width: 600px;height:400px;"></div>
+
+        <div id="cycle" style="width: 600px;height:400px;"></div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            var cycle = echarts.init(document.getElementById('cycle'));
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: 'ECharts',
+                    //show:false,
+                    link: 'www.baidu.com',
+                    textStyle: {
+                        fontStyle: 'italic',
+                        color: 'red',
+                        textBorderColor: 'black',
+                        textBorderWidth: 1,
+                        align: 'center',
+                        shadowColor: 'rgba(0, 0, 0, 0.5)',
+                        shadowBlur: 10
+                    },
+                    subtext: '这是一个数据可视化的测试',
+                    padding: 5,
+                    itemGap: 0
+                },
+                legend: {
+                    data: ['销量', '利润', '购买数量', '人流量'],
+                    itemGap: 20,
+                    itemHeight: 20,
+                    formatter: '丽丽' + '{name}',
+                    selectedMode: 'multiple',
+                    selected: {
+                        '销量': true,
+                        '利润': true
+                    },
+                    tooltip: {
+                        show: true
+                    },
+                    /*data:[{
+                        name: '销量',
+                        icon: 'circle',
+                        textStyle: {
+                            color: 'red'
+                        }
+                    },{
+                        name: '利润',
+                        icon: 'circle',
+                        textStyle: {
+                            color: 'red'
+                        }
+                    }],*/
+                    borderRadius: 5,
+                    pageButtonGap: 'scroll',
+                    pageFormatter: {
+                        current: 1,
+                        total: 2
+                    }
+                },
+                xAxis: {
+                    data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                },
+                yAxis: {
+                    type: 'value',
+                    min: 0,
+                    max: 200,
+                    interval: 10,
+                    show: true
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross'
+                    }
+                },
+                series: [{
+                    name: '销量',
+                    type: 'line',
+                    data: [random(), random(), random(), random(), random(), random()]
+                }, {
+                    name: '利润',
+                    type: 'bar',
+                    stack: '总量',
+                    data: [random(), random(), random(), random(), random(), random()]
+                }, {
+                    name: '购买数量',
+                    type: 'bar',
+                    stack: '总量',
+                    data: [random(), random(), random(), random(), random(), random()]
+                }, {
+                    name: '人流量',
+                    type: 'bar',
+                    data: [random(), random(), random(), random(), random(), random()]
+                }]
+            };
+            var cycleoption = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                legend: {//图表上方组件
+                    orient: 'vertical',
+                    x: 'right',
+                    data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+                },
+                series: [{//数据
+                    name: '访问来源',
+                    type: 'pie',
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            //show: false,
+                            //position: 'center',
+                            textStyle: {
+                                color: 'red'
+                            }   
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            lineStyle: {
+                                color: 'red'
+                            },
+                            smooth: 0.2,
+                            length: 20,
+                            length2: 10
+                        }
+                    },
+                    data: [{
+                            value: 335,
+                            name: '直接访问'
+                        },
+                        {
+                            value: 310,
+                            name: '邮件营销'
+                        },
+                        {
+                            value: 234,
+                            name: '联盟广告'
+                        },
+                        {
+                            value: 135,
+                            name: '视频广告'
+                        },
+                        {
+                            value: 1548,
+                            name: '搜索引擎'
+                        }
+                    ]
+                }]
+            }
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+            cycle.setOption(cycleoption);
+
+            function random() {
+                return Math.floor(Math.random() * 100)
+            }
+        </script>
+    </body>
+
+</html>
