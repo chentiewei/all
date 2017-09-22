@@ -1,0 +1,37 @@
+html,body,#app,.index,.navAll{
+  height:100%;
+}
+/**********盒子模型*************/
+html {box-sizing: border-box;font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}
+*, *:before, *:after {box-sizing: inherit;}
+.after:after {content: '';width: 0;display: block;clear: both;}
+/*************改变浏览器滚动条样式*************/
+/* webkit内核浏览器 */
+::-webkit-scrollbar {width: 8px;}
+::-webkit-scrollbar-button {display: none;}
+::-webkit-scrollbar-track {border-radius: 0px;}
+::-webkit-scrollbar-thumb {background: #999;border-radius: 0px;}
+::-webkit-scrollbar-thumb:hover {background: #7d7d7d;}
+/* IE浏览器 */
+html {
+  /*滑块和箭头背景颜色*/
+  scrollbar-base-color: #7d7d7d;
+  /*背景边框颜色*/
+  scrollbar-3dlight-color: #7d7d7d;
+  /*滑块边框颜色*/
+  scrollbar-highlight-color: #7d7d7d;
+  /*背景颜色*/
+  scrollbar-track-color: #EBEBEB;
+  /*箭头颜色*/
+  scrollbar-arrow-color: #EBEBEB;
+  /*滑块阴影*/
+  scrollbar-shadow-color: #7d7d7d;
+  /*背景阴影*/
+  scrollbar-dark-shadow-color: #EBEBEB;
+}
+.after{
+  content: '';
+  width:0;
+  display: block;
+  clear: both;
+}

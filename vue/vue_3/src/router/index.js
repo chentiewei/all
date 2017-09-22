@@ -4,6 +4,9 @@ import index from '@/components/index'
 import apply from '@/components/review/apply_for'
 import approve from '@/components/review/approve'
 import dark from '@/components/review/small_dark'
+import mail from '@/components/mail/mail'
+import mailAll from '@/components/mail/mail_all'
+import Inbox from '@/components/mail/Inbox'
 
 Vue.use(Router)
 
@@ -17,7 +20,17 @@ export default new Router({
       children: [
         { path: '/apply', name: 'apply', component: apply },
         { path: '/approve', name: 'approve', component: approve },
-        { path: '/dark', name: 'dark', component: dark }
+        { path: '/dark', name: 'dark', component: dark },
+        {
+          path: '/mail',
+          name: 'mail',
+          component: mail,
+          redirect: 'mail_all',
+          children: [
+            { path: '/mail_all', name: 'mail_all', component: mailAll },
+            { path: '/Inbox', name: 'Inbox', component: Inbox }
+          ]
+        }
       ]
     }
   ]

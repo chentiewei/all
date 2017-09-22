@@ -15,26 +15,26 @@
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
-            <el-menu default-active="1-1" theme="dark" class="nav" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-                <el-submenu index="1">
+            <el-menu default-active="apply" theme="dark" class="nav" @open="handleOpen" @close="handleClose" @select="handleSelect" :collapse="isCollapse" router>
+                <el-submenu index="apply">
                     <template slot="title">
                         <i class="iconfont icon-tasklist_fill"></i>
                         <span slot="title">业务审核</span>
                     </template>
                     <el-menu-item-group>
                         <span slot="title">业务状态</span>
-                        <router-link :to="{ name : 'apply' }"><el-menu-item index="1-1"> 业务申请</el-menu-item></router-link>
-                        <router-link :to="{ name : 'approve' }"><el-menu-item index="1-2">业务通过</el-menu-item></router-link>
-                        <router-link :to="{ name : 'dark' }"><el-menu-item index="1-3">小黑屋</el-menu-item></router-link>
+                        <el-menu-item index="apply"> 业务申请</el-menu-item>
+                        <el-menu-item index="approve">业务通过</el-menu-item>
+                        <el-menu-item index="dark">小黑屋</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
-                <el-menu-item index="2">
+                <el-menu-item index="I2">
                     <i class="iconfont icon-dynamic_fill"></i>
                     <span slot="title">统计图表</span>
                 </el-menu-item>
-                <el-menu-item index="3">
-                    <i class="iconfont icon-mail_fill"></i>
-                    <span slot="title" class="mailto"> 信箱 <b>1</b> </span>
+                <el-menu-item index="mail">
+                        <i class="iconfont icon-mail_fill"></i>
+                        <span slot="title" class="mailto">信箱<b>1</b> </span>
                 </el-menu-item>
             </el-menu>
         </div>
@@ -61,10 +61,6 @@
         },
         handleSelect (key, keyPath) {
           console.log(key, keyPath)
-        },
-        labelgo () {
-          this.active = !this.active
-          console.log(this.active)
         }
       }
     }
@@ -117,9 +113,6 @@
     .el-menu--collapse{
         border-radius: 0;
     }
-    .el-menu--horizontal.el-menu--dark .el-submenu .el-menu-item.is-active, .el-menu-item.is-active{
-        color:#Fff;
-    }
     .nav:not(.el-menu--collapse) {
         border-radius: 0;
         width: 200px;
@@ -134,14 +127,9 @@
         -webkit-font-smoothing: antialiased;
         font-size: 18px;
     }
-    .lf_nav a{
-        display: block;
-        width:100%;
-        color: rgb(191, 199, 217);
-    }
     .mailto b{
         float:right;
-        margin-top:20px;
+        margin-top:22px;
         padding:3px 8px;
         height:16px;
         line-height: 12px;

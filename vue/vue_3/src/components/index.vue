@@ -4,11 +4,6 @@
         <div class="details">
             <div class="top_nav">
                 <div>
-                    <div class="top_button">
-                        <el-button type="primary">
-                            <i class="iconfont icon-other "></i>
-                        </el-button>
-                    </div>
                     <div class="breadcrumb">
                         <el-breadcrumb separator="/">
                             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -20,12 +15,14 @@
                 </div>
                 <div>
                 <span>
-                    <i class="iconfont icon-mail_fill color_999c9e"></i>
-                    <b>1</b>
+                    <el-badge :value="5" :max="9" class="item">
+                        <i class="iconfont icon-mail_fill color_999c9e"></i>
+                    </el-badge>
                 </span>
                 <span>
-                     <i class="iconfont icon-remind_fill color_999c9e"></i>
-                    <b>1</b>
+                    <el-badge :value="5" :max="9" class="item">
+                        <i class="iconfont icon-remind_fill color_999c9e"></i>
+                    </el-badge>
                 </span>
                 <span>
                      <i class="iconfont icon-barrage_fill color_999c9e"></i> 主题
@@ -45,7 +42,6 @@
       name: 'index',
       data () {
         return {
-          b: '1'
         }
       },
       components: {
@@ -76,25 +72,13 @@
     .top_nav>div:nth-child(1){
         float:left;
     }
-    .top_button,.breadcrumb{
+    .breadcrumb{
         line-height: 60px;
         float: left;
     }
     .breadcrumb{
         margin-top:21px;
         margin-left:20px;
-    }
-    .top_button{
-        width:50px;
-        height:50px;
-        margin-left:10px;
-        margin-top: 5px;
-    }
-    .top_button button{
-        padding:4px
-    }
-    .top_button i{
-        font-size: 30px;
     }
     .top_nav>div:nth-child(2){
         float:right;
@@ -103,9 +87,9 @@
     }
     .top_nav>div:nth-child(2) span{
         display: inline-block;
-        padding:0 10px;
+        padding:20px 20px 0;
         height:100%;
-        line-height: 60px;
+        /*line-height: 60px;*/
         font-size: 14px;
         text-align: center;
         color:#999c9e;
@@ -134,7 +118,6 @@
         height:calc( 100% - 60px );
         width:100%;
         overflow: auto;
-        padding:20px;
     }
 
 </style>
