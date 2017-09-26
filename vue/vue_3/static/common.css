@@ -1,5 +1,9 @@
+/*通用样式*/
 html,body,#app,.index,.navAll{
   height:100%;
+}
+body{
+  min-width: 1200px;
 }
 /**********盒子模型*************/
 html {box-sizing: border-box;font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}

@@ -7,6 +7,7 @@ import dark from '@/components/review/small_dark'
 import mail from '@/components/mail/mail'
 import mailAll from '@/components/mail/mail_all'
 import Inbox from '@/components/mail/Inbox'
+import mailShow from '@/components/mail/mail_show'
 
 Vue.use(Router)
 
@@ -28,7 +29,8 @@ export default new Router({
           redirect: 'mail_all',
           children: [
             { path: '/mail_all', name: 'mail_all', component: mailAll },
-            { path: '/Inbox', name: 'Inbox', component: Inbox }
+            { path: '/Inbox', name: 'Inbox', component: Inbox },
+            { path: '/mail_show/:id', name: 'mail_show', component: mailShow }
           ]
         }
       ]
