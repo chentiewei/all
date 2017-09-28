@@ -26,7 +26,7 @@ export default new Router({
           path: '/mail',
           name: 'mail',
           component: mail,
-          redirect: 'mail_all',
+          redirect: '/mail_all',
           children: [
             { path: '/mail_all', name: 'mail_all', component: mailAll },
             { path: '/Inbox', name: 'Inbox', component: Inbox },
