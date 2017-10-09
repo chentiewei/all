@@ -15,7 +15,7 @@
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
-            <el-menu default-active="apply" theme="dark" class="nav" @open="handleOpen" @close="handleClose" @select="handleSelect" :collapse="isCollapse" router>
+            <el-menu default-active="/apply" theme="dark" class="nav" @open="handleOpen" @close="handleClose" @select="handleSelect" :collapse="isCollapse" router>
                 <el-submenu index="apply">
                     <template slot="title">
                         <i class="iconfont icon-tasklist_fill"></i>
@@ -23,16 +23,16 @@
                     </template>
                     <el-menu-item-group>
                         <span slot="title">业务状态</span>
-                        <el-menu-item index="apply"> 业务申请</el-menu-item>
-                        <el-menu-item index="approve">业务通过</el-menu-item>
-                        <el-menu-item index="dark">小黑屋</el-menu-item>
+                        <el-menu-item index="/apply"> 业务申请</el-menu-item>
+                        <el-menu-item index="/approve">业务通过</el-menu-item>
+                        <el-menu-item index="/dark">小黑屋</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
-                <el-menu-item index="I2">
+                <el-menu-item index="/I2">
                     <i class="iconfont icon-dynamic_fill"></i>
                     <span slot="title">统计图表</span>
                 </el-menu-item>
-                <el-menu-item index="mail">
+                <el-menu-item index="/mail">
                         <i class="iconfont icon-mail_fill"></i>
                         <span slot="title" class="mailto">信箱<b>1</b> </span>
                 </el-menu-item>

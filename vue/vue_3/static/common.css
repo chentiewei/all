@@ -5,6 +5,12 @@ html,body,#app,.index,.navAll{
 body{
   min-width: 1200px;
 }
+.disblock{
+  display: block !important;
+}
+.dis{
+  display: none;
+}
 /**********盒子模型*************/
 html {box-sizing: border-box;font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}
 *, *:before, *:after {box-sizing: inherit;}

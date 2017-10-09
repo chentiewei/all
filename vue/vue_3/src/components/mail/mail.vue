@@ -1,9 +1,9 @@
 <template>
     <div class="mail">
         <el-menu  :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" router>
-            <el-menu-item index="mail_all">总览</el-menu-item>
-            <el-menu-item index="Inbox">收件箱</el-menu-item>
-            <el-menu-item index="2">发信</el-menu-item>
+            <el-menu-item index="/mail_all">总览</el-menu-item>
+            <el-menu-item index="/Inbox">收件箱</el-menu-item>
+            <el-menu-item index="/Write">写信</el-menu-item>
             <el-menu-item index="3">重要</el-menu-item>
             <el-menu-item index="4">草稿</el-menu-item>
             <el-menu-item index="5">垃圾箱</el-menu-item>

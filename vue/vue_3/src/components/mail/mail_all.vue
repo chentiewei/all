@@ -37,13 +37,14 @@
           <div>
             <table class="table-mail">
               <tbody>
-              <tr :class="{ unread : !v.read }" v-for="(v, k) in mail">
+              <tr :class="{ read : v.read }" v-for="(v, k) in mail">
                 <td class="check-mail">
                   <div><el-checkbox @change="handleChange(v.id)"></el-checkbox></div>
                 </td>
                 <td><router-link :to="{ name : 'mail_show', params: { id: v.id}}">{{v.name}}</router-link></td>
                 <td><router-link :to="{ name : 'mail_show', params: { id: v.id}}">{{v.title}}</router-link></td>
                 <td class="mail_tag"><el-tag type="danger">{{v.tag}}</el-tag></td>
+                <td class="mail_tag"><i v-if="v.ass" class="iconfont icon-accessory"></i></td>
                 <td class="mail_date">{{v.date}}</td>
               </tr>
               </tbody>
@@ -69,14 +70,16 @@
             tag: '吾问无为谓我问问',
             date: '昨天 10:20',
             id: '0',
-            read: false
+            read: false,
+            ass: true
           }, {
             name: '支付宝',
             title: 's付宝提醒暗缝s机埃里克打飞机啦会计师独立开发就爱上了大解放垃',
             tag: '吾问无为谓我问问',
             date: '2017/12/15 10:20',
             id: '3',
-            read: true
+            read: true,
+            ass: false
           }]
         }
       },
@@ -213,9 +216,6 @@
       border: 1px solid #e7eaec;
       margin-left:20px;
     }
-    .search_input{
-      margin-left:200px;
-    }
     .survey p{
       height:100%;
       line-height: 36px;
@@ -224,6 +224,7 @@
       float: left;
     }
     .search_input{
+      margin-left:200px;
       width:200px;
       display: inline-block;
     }
@@ -258,7 +259,7 @@
     .table-mail tr td{
       padding:12px;
     }
-    .table-mail tr.unread{
+    .table-mail tr.read{
       font-weight: 600;
       background-color: #fff;
     }
