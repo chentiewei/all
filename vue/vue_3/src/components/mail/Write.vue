@@ -22,18 +22,22 @@
           </el-input>
         </div>
       </div>
+      <div id="editorElem"></div>
+      <el-button type="primary" class="btnEdtior" @click="getContent">查看内容</el-button>
     </div>
   </div>
 </template>
 
 <script>
+  import E from 'wangeditor'
   export default {
     name: 'Write',
     data () {
       return {
         restaurants: [],
         state: '',
-        input: ''
+        input: '',
+        editorContent: ''
       }
     },
     methods: {
@@ -101,10 +105,20 @@
           { 'value': '阳阳麻辣烫', 'address': '天山西路389号' },
           { 'value': '南拳妈妈龙虾盖浇饭', 'address': '普陀区金沙江路1699号鑫乐惠美食广场A13' }
         ]
+      },
+      getContent: function () {
+        alert(this.editorContent)
       }
     },
     mounted () {
       this.restaurants = this.loadAll()
+      var editor = new E('#editorElem')
+      editor.customConfig.onchange = (html) => {
+        this.editorContent = html
+      }
+      editor.customConfig.uploadImgShowBase64 = true
+      editor.customConfig.zIndex = 0
+      editor.create()
     }
   }
 </script>
@@ -120,6 +134,7 @@
     height:100%;
     background: #fff;
     border: 1px solid #e7eaec;
+    text-align: center;
   }
   .survey>div:nth-child(1){
     width:100%;
@@ -149,5 +164,12 @@
   .name,.main_text{
     padding:0 50px;
     margin-bottom:20px;
+  }
+  #editorElem{
+    padding:0 70px;
+    text-align: left;
+  }
+  .btnEdtior{
+    margin-top:20px;
   }
 </style>
