@@ -5,7 +5,7 @@
         <div>
           <p>查看邮件</p>
           <div class="mail_btn">
-            <el-button type="success" size="small" title="返回"><i class="iconfont icon-undo"></i></el-button>
+            <el-button type="success" size="small" title="返回" @click="back"><i class="iconfont icon-undo"></i></el-button>
             <el-button type="success" size="small" title="删除邮件" icon="delete"></el-button>
             <el-button type="success" size="small" title="标为重要"><i class="iconfont icon-collection_fill"></i></el-button>
             <el-button-group>
@@ -68,6 +68,9 @@
   export default {
     name: 'mail_show',
     methods: {
+      back () {
+        this.$router.go(-1)
+      }
     }
   }
 </script>
