@@ -15,7 +15,7 @@
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
-            <el-menu default-active="/apply" theme="dark" class="nav" @open="handleOpen" @close="handleClose" @select="handleSelect" :collapse="isCollapse" router>
+            <el-menu default-active="/defau" theme="dark" class="nav" @open="handleOpen" @close="handleClose" @select="handleSelect" :collapse="isCollapse" router>
                 <el-submenu index="/apply">
                     <template slot="title">
                         <i class="iconfont icon-tasklist_fill"></i>

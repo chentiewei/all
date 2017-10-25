@@ -1,5 +1,5 @@
 export const mutations = {
-    gi(state){
-         state.a++;
-    }
+  bread (state, newbread) {
+    state.matched = newbread
+  }
 }

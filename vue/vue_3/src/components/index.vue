@@ -7,9 +7,7 @@
                     <div class="breadcrumb">
                         <el-breadcrumb separator="/">
                             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                            <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-                            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                            <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+                            <el-breadcrumb-item :to="{ path: v.path }" v-for="(v,k) in this.$store.state.matched" :key="k">{{v.meta.title}}</el-breadcrumb-item>
                         </el-breadcrumb>
                     </div>
                 </div>
@@ -42,7 +40,10 @@
       name: 'index',
       data () {
         return {
+          bread: this.$store.state.matched
         }
+      },
+      created () {
       },
       components: {
         navAll
@@ -58,6 +59,7 @@
     .details{
         width:calc( 100% - 200px );
         height:100%;
+        background: #f3f3f4;
     }
     .color_999c9e{
         color:#999c9e;

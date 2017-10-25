@@ -1,5 +1,5 @@
 export const actions = {
-    async(){
-
-    }
+  bread ({commit}, newbread) {
+    commit('bread', newbread)
+  }
 }
