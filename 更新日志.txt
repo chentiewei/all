@@ -1,38 +1,39 @@
-2017/04/12  测试使用github。
-2017/04/13  学习vue-router进行 发现一些奇特的用法 并且成功。
-2017/04/21  学习使用axios进行模拟数据请求。
-2017/05/01  学习vue的<transition>进行模仿webapp切换行为。（有瑕疵，动画切换时v_footer组件没有跟着切换。感觉是因为没有被动画标签包裹！感觉用webapp与vue的想法冲突，没有解决！）
-2017/05/08  学习node发现问题，研究common与express。
-2017/05/12  学习common发现require与其区别。（程度熟悉）
-2017/05/15  学习sea.js程度熟悉（jq接受amd不接受cmd所以引入失败！）
-2017/05/16  学习sea.js的jquery引入成功，（不能赋予变量或常亮！require直接引入）
-2017/05/19  学习node-router+readfile（异步）
-2017/05/20  学习vue的$set方法和一些小页面的书写
-2017/05/21  学习node的图片加载
-2017/05/23  学习node的post和get数据接收
-2017/05/24  学习vue的route.beforeEach和beforeupdate
-2017/05/25  学习vue的文档
-2017/05/26  解决vue的trasition的v_footer问题设min-height
-2017/05/27  学习vue文档
-2017/06/31  学习vue文档
-2017/06/01  复习vue文档,<transition>做到与webapp页面切换效果，但是还是有一点瑕疵;
-2017/06/02  学习node和vue的过程中发现webpack，开始学习发现webpack是把一切都给变成js模块（loader插件）;
-2017/06/15  学习mock数据的2种写法和css预处理器的less;
-2017/06/18  学习mock阿里rap后台模拟数据；
-2017/06/20  学习react并且
-2017/06/21  复习vue;
-2017/06/22  学习深入vue-router的写法作用；
-2017/06/24  学习搭建app_vue项目完成对vue的复习；
-2017/06/27  学习vue的UI框架element,vux,mint-ui;
-2017/06/28  学习mint-ui；
-2017/06/29  学习mint-ui用里面ui组件做到webapp的页面切换效果；
-2017/07/20  学习iviewUI插件，发现与之区别的elementUI插件；
-2017/07/27  查看vue的兼容情况,学习node的express；
-2017/07/31  查看vue文档，发现vue文档更新（添加了许多新的api），学习node的express感觉有点找不到方向。
-2017/08/01  学习node，完成小爬虫代码（*思考 爬虫 代码：猜想运行情况 在把整个网页以string的形式拷贝下来，然后渲染到浏览器中（此前可以确定筛选条件），筛选完成在送入数据库）。
-2017/08/30  学习echarts，完成饼图，柱状图。
-2017/09/12  学习node视频，熟悉buffer的使用情况。
-2017/09/18  学习node同步加载，（*思考 文件同步加载 代码：for循环读取文件使用同步加载会不会出现问题）
-2017/09/20  学习vuex，发现其实非常像数据库形式；
-2017/09/25  使用vue开始对构建vue_3的后台系统，UI框架为elemnt，对vue的熟悉度上升，熟悉度为（55%）；
+2017/10/25  制作vue_3面包屑效果时使用vuex对其有了一些见解；
 2017/10/10  使用wangeditor制作vue的富文本编辑器；
+2017/09/25  使用vue开始对构建vue_3的后台系统，UI框架为elemnt，对vue的熟悉度上升，熟悉度为（55%）；
+2017/09/20  学习vuex，发现其实非常像数据库形式；
+2017/09/18  学习node同步加载，（*思考 文件同步加载 代码：for循环读取文件使用同步加载会不会出现问题）；
+2017/09/12  学习node视频，熟悉buffer的使用情况；
+2017/08/30  学习echarts，完成饼图，柱状图。
+2017/08/01  学习node，完成小爬虫代码（*思考 爬虫 代码：猜想运行情况 在把整个网页以string的形式拷贝下来，然后渲染到浏览器中（此前可以确定筛选条件），筛选完成在送入数据库）；
+2017/07/31  查看vue文档，发现vue文档更新（添加了许多新的api），学习node的express感觉有点找不到方向；
+2017/07/27  查看vue的兼容情况,学习node的express；
+2017/07/20  学习iviewUI插件，发现与之区别的elementUI插件；
+2017/06/29  学习mint-ui用里面ui组件做到webapp的页面切换效果；
+2017/06/28  学习mint-ui；
+2017/06/27  学习vue的UI框架element,vux,mint-ui;
+2017/06/24  学习搭建app_vue项目完成对vue的复习；
+2017/06/22  学习深入vue-router的写法作用；
+2017/06/21  复习vue;
+2017/06/20  学习react并且了解到了一下与vue的不同；
+2017/06/18  学习mock阿里rap后台模拟数据；
+2017/06/15  学习mock数据的2种写法和css预处理器的less;
+2017/06/02  学习node和vue的过程中发现webpack，开始学习发现webpack是把一切都给变成js模块（loader插件）;
+2017/06/01  复习vue文档,<transition>做到与webapp页面切换效果，但是还是有一点瑕疵;
+2017/06/31  学习vue文档；
+2017/05/27  学习vue文档；
+2017/05/26  解决vue的trasition的v_footer问题设min-height；
+2017/05/25  学习vue的文档；
+2017/05/24  学习vue的route.beforeEach和beforeupdate；
+2017/05/23  学习node的post和get数据接收；
+2017/05/21  学习node的图片加载；
+2017/05/20  学习vue的$set方法和一些小页面的书写；
+2017/05/19  学习node-router+readfile（异步）；
+2017/05/16  学习sea.js的jquery引入成功，（不能赋予变量或常亮！require直接引入）；
+2017/05/15  学习sea.js程度熟悉（jq接受amd不接受cmd所以引入失败！）；
+2017/05/12  学习common发现require与其区别。（程度熟悉）；
+2017/05/08  学习node发现问题，研究common与express；
+2017/05/01  学习vue的<transition>进行模仿webapp切换行为（有瑕疵，动画切换时v_footer组件没有跟着切换。感觉是因为没有被动画标签包裹！感觉用webapp与vue的想法冲突，没有解决！）；
+2017/04/21  学习使用axios进行模拟数据请求；
+2017/04/13  学习vue-router进行 发现一些奇特的用法 并且成功；
+2017/04/12  测试使用github；
