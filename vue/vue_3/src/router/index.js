@@ -2,7 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
 import defau from '@/components/default'
-import apply from '@/components/review/apply_for'
+import apply from '@/components/review/apply/apply_for'
+import sortBook from '@/components/review/apply/sortBook'
+import newBook from '@/components/review/apply/newBook'
+import Chapter from '@/components/review/apply/Chapter'
+import starWriter from '@/components/review/apply/starWriter'
 import approve from '@/components/review/approve'
 import dark from '@/components/review/small_dark'
 import mail from '@/components/mail/mail'
@@ -25,15 +29,26 @@ export default new Router({
       meta: { title: '首页' },
       children: [
         { path: '/defau', name: 'defau', meta: { title: '默认' }, component: defau },
-        { path: '/apply', name: 'apply', meta: { title: '业务申请' }, component: apply },
+        { path: '/apply',
+          name: 'apply',
+          redirect: 'sortBook',
+          meta: { title: '业务申请' },
+          component: apply,
+          children: [
+            { path: '/sortBook', name: 'sortBook', component: sortBook },
+            { path: '/newBook', name: 'newBook', meta: { title: '新书审核' }, component: newBook },
+            { path: '/Chapter', name: 'Chapter', meta: { title: '章节审核' }, component: Chapter },
+            { path: '/starWriter', name: 'starWriter', meta: { title: '星标作家' }, component: starWriter }
+          ]
+        },
         { path: '/approve', name: 'approve', meta: { title: '业务通过' }, component: approve },
         { path: '/dark', name: 'dark', meta: { title: '小黑屋' }, component: dark },
         {
           path: '/mail',
           name: 'mail',
-          component: mail,
           redirect: 'mail_all',
           meta: { title: '信箱' },
+          component: mail,
           children: [
             { path: '/mail_all', name: 'mail_all', component: mailAll },
             { path: '/Inbox', name: 'Inbox', meta: { title: '收件箱' }, component: Inbox },

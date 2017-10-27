@@ -57,12 +57,7 @@
             show: true,
             orient: 'vertical',
             left: 'right',
-            top: 'center',
-            feature: {
-              dataView: {readOnly: false},
-              restore: {},
-              saveAsImage: {}
-            }
+            top: 'center'
           },
           series: [
             {
@@ -301,13 +296,14 @@
     height:calc(100% - 130px);
     display: flex;
     flex-wrap:wrap;
+    overflow: auto;
   }
   #defau_man,#defau_cpu{
     width:50%;
-    height:50%;
+    height:300px;
   }
   #defau_sales{
-    height:50%;
+    height:300px;
     width:100%;
   }
 </style>
