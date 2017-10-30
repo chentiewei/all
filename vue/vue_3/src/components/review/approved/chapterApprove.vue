@@ -1,10 +1,10 @@
 <template>
-  <div class="Chapter">
+  <div class="chapterApprove">
     <_pagenav genre="章节审核"></_pagenav>
-    <div class="ChapterTable">
+    <div class="chapterApproveTable">
       <el-table
               ref="multipleTable"
-              :data="ChapterTable"
+              :data="chapterApproveTable"
               tooltip-effect="dark"
               style="width: 100%"
               @selection-change="handleSelectionChange"
@@ -19,7 +19,7 @@
         <el-table-column
                 sortable
                 prop="date"
-                label="日期"
+                label="通过日期"
                 width="120">
         </el-table-column>
         <el-table-column
@@ -46,11 +46,10 @@
         <el-table-column
                 label="操作"
                 align="center"
-                width="200">
+                width="150">
           <template scope="scope">
             <el-button size="small">查看</el-button>
-            <el-button size="small">通过</el-button>
-            <el-button size="small">关</el-button>
+            <el-button size="small">和谐</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -61,11 +60,11 @@
 <script>
   import _pagenav from '@/components/common/pagenav'
   export default {
-    name: 'Chapter',
+    name: 'chapterApprove',
     data () {
       return {
         search: '',
-        ChapterTable: [{
+        chapterApproveTable: [{
           date: '2016-05-03',
           name: '2小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
@@ -124,15 +123,15 @@
 
 
 <style scoped lang="less">
-  .Chapter{
+  .chapterApprove{
     width:100%;
     height:100%;
     background:#fff;
-    .ChapterTable{
-      padding:10px;
-      padding-top:0;
-      height:calc(100% - 56px);
-      overflow: auto;
-    }
+  .chapterApproveTable{
+    padding:10px;
+    padding-top:0;
+    height:calc(100% - 56px);
+    overflow: auto;
+  }
   }
 </style>

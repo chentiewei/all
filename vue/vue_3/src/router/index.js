@@ -7,7 +7,11 @@ import sortBook from '@/components/review/apply/sortBook'
 import newBook from '@/components/review/apply/newBook'
 import Chapter from '@/components/review/apply/Chapter'
 import starWriter from '@/components/review/apply/starWriter'
-import approve from '@/components/review/approve'
+import bookShow from '@/components/review/apply/book_show'
+import approve from '@/components/review/approved/approve'
+import newApprove from '@/components/review/approved/newApprove'
+import chapterApprove from '@/components/review/approved/chapterApprove'
+import historyApprove from '@/components/review/approved/historyApprove'
 import dark from '@/components/review/small_dark'
 import mail from '@/components/mail/mail'
 import mailAll from '@/components/mail/mail_all'
@@ -31,17 +35,30 @@ export default new Router({
         { path: '/defau', name: 'defau', meta: { title: '默认' }, component: defau },
         { path: '/apply',
           name: 'apply',
-          redirect: 'sortBook',
+          redirect: 'sortBook1',
           meta: { title: '业务申请' },
           component: apply,
           children: [
-            { path: '/sortBook', name: 'sortBook', component: sortBook },
+            { path: '/sortBook1', name: 'sortBook1', component: sortBook },
             { path: '/newBook', name: 'newBook', meta: { title: '新书审核' }, component: newBook },
             { path: '/Chapter', name: 'Chapter', meta: { title: '章节审核' }, component: Chapter },
-            { path: '/starWriter', name: 'starWriter', meta: { title: '星标作家' }, component: starWriter }
+            { path: '/starWriter', name: 'starWriter', meta: { title: '星标作家' }, component: starWriter },
+            { path: '/book_show/:id', name: 'book_show', meta: { title: '详情' }, component: bookShow }
           ]
         },
-        { path: '/approve', name: 'approve', meta: { title: '业务通过' }, component: approve },
+        {
+          path: '/approve',
+          name: 'approve',
+          redirect: 'sortBook2',
+          meta: { title: '业务通过' },
+          component: approve,
+          children: [
+            { path: '/sortBook2', name: 'sortBook2', component: sortBook },
+            { path: '/newApprove', name: 'newApprove', meta: { title: '新书通过' }, component: newApprove },
+            { path: '/chapterApprove', name: 'chapterApprove', meta: { title: '章节通过' }, component: chapterApprove },
+            { path: '/historyApprove', name: 'historyApprove', meta: { title: '历史通过' }, component: historyApprove }
+          ]
+        },
         { path: '/dark', name: 'dark', meta: { title: '小黑屋' }, component: dark },
         {
           path: '/mail',
