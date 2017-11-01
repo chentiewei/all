@@ -8,6 +8,7 @@ import newBook from '@/components/review/apply/newBook'
 import Chapter from '@/components/review/apply/Chapter'
 import starWriter from '@/components/review/apply/starWriter'
 import bookShow from '@/components/review/apply/book_show'
+import chapterShow from '@/components/review/apply/chapter_show'
 import approve from '@/components/review/approved/approve'
 import newApprove from '@/components/review/approved/newApprove'
 import chapterApprove from '@/components/review/approved/chapterApprove'
@@ -43,7 +44,8 @@ export default new Router({
             { path: '/newBook', name: 'newBook', meta: { title: '新书审核' }, component: newBook },
             { path: '/Chapter', name: 'Chapter', meta: { title: '章节审核' }, component: Chapter },
             { path: '/starWriter', name: 'starWriter', meta: { title: '星标作家' }, component: starWriter },
-            { path: '/book_show/:id', name: 'book_show', meta: { title: '详情' }, component: bookShow }
+            { path: '/book_show/:id', name: 'book_show', meta: { title: '详情' }, component: bookShow },
+            { path: '/chapter_show/:id', name: 'chapter_show', meta: { title: '详情' }, component: chapterShow }
           ]
         },
         {
