@@ -138,7 +138,7 @@
     .newBookTable{
       padding:10px;
       padding-top:0;
-      height:calc(100% - 56px);
+      height:calc(~"100% - 56px");
       overflow: auto;
     }
   }

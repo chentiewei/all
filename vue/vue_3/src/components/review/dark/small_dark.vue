@@ -1,5 +1,5 @@
 <template>
-    <div class="approve">
+    <div class="small_dark">
         <_menu :mess="mess"></_menu>
         <div class="apply_content">
             <router-view></router-view>
@@ -10,10 +10,10 @@
 <script>
     import _menu from '@/components/common/menu'
     export default {
-      name: 'approve',
+      name: 'small_dark',
       data () {
         return {
-          mess: { '新书通过': '/newApprove', '章节通过': '/chapterApprove', '历史通过': '/historyApprove', 0: '/sortBook' }
+          mess: { '黑屋交流库': '/darkChat', '和谐库': '/Chapter', 0: '/sortBook' }
         }
       },
       components: {
@@ -24,11 +24,11 @@
 
 
 <style scoped lang="less">
-  .approve{
-    height:100%;
-    .apply_content{
-      height:calc(~"100% - 40px");
-      padding:20px;
+    .small_dark{
+        height:100%;
+        .apply_content{
+            height:calc(~"100% - 40px");
+            padding:20px;
+        }
     }
-  }
 </style>

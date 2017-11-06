@@ -214,8 +214,8 @@
       </div>
     </div>
     <div class="bth_share">
-      <el-button>通过</el-button>
-      <el-button>关</el-button>
+      <el-button @click="approve">通过</el-button>
+      <el-button @click="close">关</el-button>
     </div>
   </div>
 </template>
@@ -229,6 +229,42 @@
       }
     },
     methods: {
+      close () {
+        this.$confirm('此操作将该文件送入小黑屋, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$router.push({name: 'newBook'})
+          this.$message({
+            type: 'success',
+            message: '送入小黑屋!'
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消操作'
+          })
+        })
+      },
+      approve () {
+        this.$confirm('此操作将审核通过该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$router.push({name: 'newBook'})
+          this.$message({
+            type: 'success',
+            message: '审核通过!'
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消操作'
+          })
+        })
+      }
     },
     created () {
     },
@@ -366,7 +402,7 @@
         a{
           float: right;
           color: #b1b1b1;
-          font-size: 16px;
+          font-size: 14px;
           &:hover{
             color: #34c083;
             cursor:pointer;

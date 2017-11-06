@@ -13,7 +13,8 @@ import approve from '@/components/review/approved/approve'
 import newApprove from '@/components/review/approved/newApprove'
 import chapterApprove from '@/components/review/approved/chapterApprove'
 import historyApprove from '@/components/review/approved/historyApprove'
-import dark from '@/components/review/small_dark'
+import dark from '@/components/review/dark/small_dark'
+import darkChat from '@/components/review/dark/dark_chat'
 import mail from '@/components/mail/mail'
 import mailAll from '@/components/mail/mail_all'
 import Inbox from '@/components/mail/Inbox'
@@ -44,8 +45,8 @@ export default new Router({
             { path: '/newBook', name: 'newBook', meta: { title: '新书审核' }, component: newBook },
             { path: '/Chapter', name: 'Chapter', meta: { title: '章节审核' }, component: Chapter },
             { path: '/starWriter', name: 'starWriter', meta: { title: '星标作家' }, component: starWriter },
-            { path: '/book_show/:id', name: 'book_show', meta: { title: '详情' }, component: bookShow },
-            { path: '/chapter_show/:id', name: 'chapter_show', meta: { title: '详情' }, component: chapterShow }
+            { path: '/book_show/:id', name: 'book_show', meta: { title: '新书详情' }, component: bookShow },
+            { path: '/chapter_show/:id', name: 'chapter_show', meta: { title: '章节详情' }, component: chapterShow }
           ]
         },
         {
@@ -61,7 +62,15 @@ export default new Router({
             { path: '/historyApprove', name: 'historyApprove', meta: { title: '历史通过' }, component: historyApprove }
           ]
         },
-        { path: '/dark', name: 'dark', meta: { title: '小黑屋' }, component: dark },
+        { path: '/dark',
+          name: 'dark',
+          redirect: 'darkChat',
+          meta: { title: '小黑屋' },
+          component: dark,
+          children: [
+            { path: '/darkChat', name: 'darkChat', component: darkChat }
+          ]
+        },
         {
           path: '/mail',
           name: 'mail',

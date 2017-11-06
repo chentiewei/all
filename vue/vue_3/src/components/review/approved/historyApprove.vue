@@ -31,7 +31,7 @@
                 filter-placement="bottom-end">
           <template scope="scope">
             <el-tag
-                    :type="scope.row.tag === '家' ? 'primary' : 'success'"
+                    :type="scope.row.tag === '新章' ? 'primary' : 'success'"
                     close-transition>{{scope.row.tag}}</el-tag>
           </template>
         </el-table-column>
@@ -115,7 +115,7 @@
   .historyApproveTable{
     padding:10px;
     padding-top:0;
-    height:calc(100% - 56px);
+    height:calc(~"100% - 56px");
     overflow: auto;
   }
   }

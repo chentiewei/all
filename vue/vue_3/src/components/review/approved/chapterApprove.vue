@@ -127,11 +127,11 @@
     width:100%;
     height:100%;
     background:#fff;
-  .chapterApproveTable{
-    padding:10px;
-    padding-top:0;
-    height:calc(100% - 56px);
-    overflow: auto;
-  }
+    .chapterApproveTable{
+      padding:10px;
+      padding-top:0;
+      height:calc(~"100% - 56px");
+      overflow: auto;
+    }
   }
 </style>
