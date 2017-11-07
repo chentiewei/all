@@ -1,10 +1,10 @@
 <template>
-  <div class="chapterApprove">
-    <_pagenav genre="章节审核"></_pagenav>
-    <div class="chapterApproveTable">
+  <div class="chapted">
+    <_pagenav genre="和谐库"></_pagenav>
+    <div class="darkChatTable">
       <el-table
               ref="multipleTable"
-              :data="chapterApproveTable"
+              :data="chaptedTable"
               tooltip-effect="dark"
               style="width: 100%"
               @selection-change="handleSelectionChange"
@@ -19,7 +19,7 @@
         <el-table-column
                 sortable
                 prop="date"
-                label="通过日期"
+                label="日期"
                 width="120">
         </el-table-column>
         <el-table-column
@@ -33,14 +33,9 @@
                 show-overflow-tooltip>
         </el-table-column>
         <el-table-column
-                prop="chapterName"
-                label="章节名"
-                show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column
                 sortable
                 prop="theme"
-                label="题材"
+                label="标签"
                 width="120">
         </el-table-column>
         <el-table-column
@@ -48,8 +43,8 @@
                 align="center"
                 width="150">
           <template scope="scope">
-            <el-button size="small">查看</el-button>
-            <el-button size="small">关</el-button>
+            <el-button size="small" @click="handle(scope.row)">查看</el-button>
+            <el-button size="small" @click="approve(scope.row)">解除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -60,52 +55,58 @@
 <script>
   import _pagenav from '@/components/common/pagenav'
   export default {
-    name: 'chapterApprove',
+    name: 'chapted',
     data () {
       return {
-        search: '',
-        chapterApproveTable: [{
+        chaptedTable: [{
           date: '2016-05-03',
           name: '2小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
-          chapterName: '1',
-          theme: '玄幻'
+          theme: '玄幻',
+          id: 1,
+          uid: 0
         }, {
           date: '2016-05-02',
           name: '3小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
-          chapterName: '1',
-          theme: '玄幻'
+          theme: '玄幻',
+          id: 2,
+          uid: 1
         }, {
           date: '2016-05-04',
           name: '1小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
-          chapterName: '1',
-          theme: '玄幻'
+          theme: '玄幻',
+          id: 3,
+          uid: 0 /* 章节或新书 */
         }, {
           date: '2016-05-01',
           name: '王3小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
-          chapterName: '1',
-          theme: '玄幻'
+          theme: '玄幻',
+          id: 4,
+          uid: 0
         }, {
           date: '2016-05-08',
           name: '4小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
-          chapterName: '1',
-          theme: '玄幻'
+          theme: '玄幻',
+          id: 5,
+          uid: 1
         }, {
           date: '2016-05-06',
           name: '2小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
-          chapterName: '1',
-          theme: '玄幻'
+          theme: '玄幻',
+          id: 6,
+          uid: 0
         }, {
           date: '2016-05-07',
           name: '王小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
-          chapterName: '1',
-          theme: '玄幻'
+          theme: '玄幻',
+          id: 7,
+          uid: 1
         }],
         multipleSelection: []
       }
@@ -113,6 +114,19 @@
     methods: {
       handleSelectionChange (val) {
         this.multipleSelection = val
+      },
+      handle (row) {
+        this.$router.push({name: 'dark_msg_show', params: { id: row.id, uid: row.uid }})
+      },
+      close (row) {
+        for (var i in this.chaptedTable) {
+          this.chaptedTable[i].id === row.id && this.chaptedTable.splice(i, 1)
+        }
+      },
+      approve (row) {
+        for (var i in this.chaptedTable) {
+          this.chaptedTable[i].id === row.id && this.chaptedTable.splice(i, 1)
+        }
       }
     },
     components: {
@@ -123,15 +137,9 @@
 
 
 <style scoped lang="less">
-  .chapterApprove{
-    width:100%;
-    height:100%;
-    background:#fff;
-    .chapterApproveTable{
-      padding:10px;
-      padding-top:0;
-      height:calc(~"100% - 56px");
-      overflow: auto;
-    }
+  .darkChat{
+    width: 100%;
+    height: 100%;
+    background: #fff;
   }
 </style>

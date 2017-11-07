@@ -45,7 +45,7 @@
                 width="150">
           <template scope="scope">
             <el-button size="small">查看</el-button>
-            <el-button size="small">和谐</el-button>
+            <el-button size="small">关</el-button>
           </template>
         </el-table-column>
       </el-table>

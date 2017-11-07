@@ -26,6 +26,7 @@
                         <el-menu-item index="/apply"> 业务申请</el-menu-item>
                         <el-menu-item index="/approve">业务通过</el-menu-item>
                         <el-menu-item index="/dark">小黑屋</el-menu-item>
+                        <el-menu-item index="/ticket">工单</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-menu-item index="/I2">

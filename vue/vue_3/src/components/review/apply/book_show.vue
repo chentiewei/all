@@ -22,14 +22,14 @@
           妹纸一声好欧巴，转手就是摸摸大！
           “不要嘛！” </p>
       </div>
-      <div class="book-last">
+      <div class="book_last">
         <a class="ui-go">
           <strong>最新章节：</strong>
           第891章 终章
           <span>2017/8/18 16:08:00 更新</span>
         </a>
       </div>
-      <div class="book-catalog">
+      <div class="book_catalog ">
         <h2 class="title">章节目录</h2>
         <ul class="after">
           <li>
@@ -119,100 +119,6 @@
         </ul>
       </div>
     </div>
-    <div class="writer_his">
-      <div class="rest">
-        <h2>作者历史请求</h2>
-        <a class="more">更多 <span>&gt;</span></a>
-      </div>
-      <div class="book-list">
-        <ul>
-          <li>
-            <a href="/detail/index/9140517" class="book-wrap">
-              <div class="cover">
-                <div class="pic">
-                  <img src="https://smres.qudu99.com/site-517(new)/0/9140/coverbig.jpg" alt="无敌大民工">
-                </div>
-              </div>
-              <div class="name">无敌大民工</div>
-              <p class="desc">有人的地方就有江湖，平凡屌丝青年凌飞一次意外邂逅白富美，拜师高人获得《乾蓝心经》，且看我们的单身穷屌丝小处男如何纵横都市，快意情仇于江湖。
-                我欲牡丹花下死，做鬼也风流。
-                冷艳女总裁，来，给爷笑一个!
-                霸气警花，轻点，痛！
-                娇小美人，等急了吧！
-                性感女护士，哎呀，这裙子这么短，爷喜欢！</p>
-              <div class="info">
-                <span class="author">2017/8/18 16:00</span>
-                <span class="tags"><span class="tag">新书</span></span>
-              </div>
-              <input type="button" class="btn-read" data-link="/read/index/9140517" value="查看">
-            </a>
-          </li>
-          <li>
-            <a href="/detail/index/9140517" class="book-wrap">
-              <div class="cover">
-                <div class="pic">
-                  <img src="https://smres.qudu99.com/site-517(new)/0/9140/coverbig.jpg" alt="无敌大民工">
-                </div>
-              </div>
-              <div class="name">无敌大民工</div>
-              <p class="desc">有人的地方就有江湖，平凡屌丝青年凌飞一次意外邂逅白富美，拜师高人获得《乾蓝心经》，且看我们的单身穷屌丝小处男如何纵横都市，快意情仇于江湖。
-                我欲牡丹花下死，做鬼也风流。
-                冷艳女总裁，来，给爷笑一个!
-                霸气警花，轻点，痛！
-                娇小美人，等急了吧！
-                性感女护士，哎呀，这裙子这么短，爷喜欢！</p>
-              <div class="info">
-                <span class="author">2017/8/18 16:00</span>
-                <span class="tags"><span class="tag">章节</span></span>
-              </div>
-              <input type="button" class="btn-read" data-link="/read/index/9140517" value="查看">
-            </a>
-          </li>
-          <li>
-            <a href="/detail/index/9140517" class="book-wrap">
-              <div class="cover">
-                <div class="pic">
-                  <img src="https://smres.qudu99.com/site-517(new)/0/9140/coverbig.jpg" alt="无敌大民工">
-                </div>
-              </div>
-              <div class="name">无敌大民工</div>
-              <p class="desc">有人的地方就有江湖，平凡屌丝青年凌飞一次意外邂逅白富美，拜师高人获得《乾蓝心经》，且看我们的单身穷屌丝小处男如何纵横都市，快意情仇于江湖。
-                我欲牡丹花下死，做鬼也风流。
-                冷艳女总裁，来，给爷笑一个!
-                霸气警花，轻点，痛！
-                娇小美人，等急了吧！
-                性感女护士，哎呀，这裙子这么短，爷喜欢！</p>
-              <div class="info">
-                <span class="author">2017/8/18 16:00</span>
-                <span class="tags"><span class="tag">章节</span></span>
-              </div>
-              <input type="button" class="btn-read" data-link="/read/index/9140517" value="查看">
-            </a>
-          </li>
-          <li>
-            <a href="/detail/index/9140517" class="book-wrap">
-              <div class="cover">
-                <div class="pic">
-                  <img src="https://smres.qudu99.com/site-517(new)/0/9140/coverbig.jpg" alt="无敌大民工">
-                </div>
-              </div>
-              <div class="name">无敌大民工</div>
-              <p class="desc">有人的地方就有江湖，平凡屌丝青年凌飞一次意外邂逅白富美，拜师高人获得《乾蓝心经》，且看我们的单身穷屌丝小处男如何纵横都市，快意情仇于江湖。
-                我欲牡丹花下死，做鬼也风流。
-                冷艳女总裁，来，给爷笑一个!
-                霸气警花，轻点，痛！
-                娇小美人，等急了吧！
-                性感女护士，哎呀，这裙子这么短，爷喜欢！</p>
-              <div class="info">
-                <span class="author">2017/8/18 16:00</span>
-                <span class="tags"><span class="tag">章节</span></span>
-              </div>
-              <input type="button" class="btn-read" data-link="/read/index/9140517" value="查看">
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
     <div class="bth_share">
       <el-button @click="approve">通过</el-button>
       <el-button @click="close">关</el-button>
@@ -281,11 +187,8 @@
     background:#fff;
     overflow: auto;
     padding:10px;
-    display:flex;
-    flex-wrap:wrap;
-    align-content:flex-start;
     div.bookShow_content{
-      flex:1;
+      width:100%;
       display:flex;
       flex-wrap:wrap;
       align-content:flex-start;
@@ -295,7 +198,7 @@
         height:240px;
         flex: 0 0 180px;
       }
-      .book-last{
+      .book_last{
         width:100%;
         margin-top: 10px;
         padding: 10px 0;
@@ -316,7 +219,7 @@
           margin-left: 14px;
         }
       }
-      .book-catalog{
+      .book_catalog{
         width:100%;
         h2{
           font-weight: 700;
@@ -385,122 +288,6 @@
           color: #888;
           font-size: 14px;
           padding-right:15px;
-        }
-      }
-    }
-    div.writer_his{
-      flex:0.5;
-      .rest{
-        padding: 10px 10px;
-        overflow: hidden;
-        h2{
-          float: left;
-          font-size: 16px;
-          font-weight: 700;
-          margin-right: 20px;
-        }
-        a{
-          float: right;
-          color: #b1b1b1;
-          font-size: 14px;
-          &:hover{
-            color: #34c083;
-            cursor:pointer;
-          }
-        }
-      }
-      .book-list{
-        ul{
-          overflow: hidden;
-          font-size: 12px;
-          li{
-            margin-top: -1px;
-            float: left;
-            border-top: 1px dashed #e0dad5;
-            float: none;
-            width: auto;
-            list-style:none;
-            a{
-              display: block;
-              padding: 20px 20px 20px 125px;
-              color: #2e2e2e;
-              .cover{
-                float: left;
-                position: relative;
-                margin-left: -115px;
-                width: 98px;
-                .pic{
-                  border: 1px solid #e6e5e3;
-                  position: relative;
-                  padding-bottom: 138.7%;
-                  height: 0!important;
-                  overflow: hidden;
-                  img{
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                  }
-                }
-              }
-              .name{
-                height:25px;
-                line-height: 25px;
-                font-size: 14px;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-              }
-              .desc{
-                height: 40px;
-                line-height: 20px;
-                margin-top:5px;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                color: #888;
-              }
-              .info{
-                margin-top:6px;
-                overflow: hidden;
-                .author{
-                  display: block;
-                  float: left;
-                  color: #888;
-                  height:22px;
-                  line-height: 22px;
-                }
-                .tags{
-                  float: right;
-                  color: #34c083;
-                  .tag{
-                    display: inline-block;
-                    padding: 0 3.5px;
-                    height:22px;
-                    line-height: 22px;
-                    border-radius: 3px;
-                    margin-left: .5em;
-                    border: 1px solid #34c083;
-                  }
-                }
-              }
-              .btn-read{
-                width: 80px;
-                height: 26px;
-                line-height: 26px;
-                text-align: center;
-                border-radius: 3px;
-                border: none;
-                color: #fff;
-                cursor: pointer;
-                margin-top: 10px;
-                background-color: #34c083;
-              }
-            }
-          }
         }
       }
     }

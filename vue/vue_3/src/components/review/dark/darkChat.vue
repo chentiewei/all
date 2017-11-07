@@ -1,10 +1,10 @@
 <template>
   <div class="darkChat">
     <_pagenav genre="黑屋交流库"></_pagenav>
-    <div class="newBookTable">
+    <div class="darkChatTable">
       <el-table
               ref="multipleTable"
-              :data="newBookTable"
+              :data="darkChatTable"
               tooltip-effect="dark"
               style="width: 100%"
               @selection-change="handleSelectionChange"
@@ -35,7 +35,7 @@
         <el-table-column
                 sortable
                 prop="theme"
-                label="题材"
+                label="标签"
                 width="120">
         </el-table-column>
         <el-table-column
@@ -59,7 +59,7 @@
     name: 'darkChat',
     data () {
       return {
-        newBookTable: [{
+        darkChatTable: [{
           date: '2016-05-03',
           name: '2小虎',
           bookname: '上海市普陀区金沙江路 1518 弄',
@@ -103,6 +103,24 @@
           id: 7
         }],
         multipleSelection: []
+      }
+    },
+    methods: {
+      handleSelectionChange (val) {
+        this.multipleSelection = val
+      },
+      handle (row) {
+        this.$router.push({name: 'dark_msg_show', params: { id: row.id }})
+      },
+      close (row) {
+        for (var i in this.darkChatTable) {
+          this.darkChatTable[i].id === row.id && this.darkChatTable.splice(i, 1)
+        }
+      },
+      approve (row) {
+        for (var i in this.darkChatTable) {
+          this.darkChatTable[i].id === row.id && this.darkChatTable.splice(i, 1)
+        }
       }
     },
     components: {

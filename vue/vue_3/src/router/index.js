@@ -13,8 +13,9 @@ import approve from '@/components/review/approved/approve'
 import newApprove from '@/components/review/approved/newApprove'
 import chapterApprove from '@/components/review/approved/chapterApprove'
 import historyApprove from '@/components/review/approved/historyApprove'
-import dark from '@/components/review/dark/small_dark'
-import darkChat from '@/components/review/dark/dark_chat'
+import dark from '@/components/review/dark/smallDark'
+import darkMsgShow from '@/components/review/dark/dark_msg_show'
+import chapted from '@/components/review/dark/chapted'
 import mail from '@/components/mail/mail'
 import mailAll from '@/components/mail/mail_all'
 import Inbox from '@/components/mail/Inbox'
@@ -64,11 +65,12 @@ export default new Router({
         },
         { path: '/dark',
           name: 'dark',
-          redirect: 'darkChat',
+          redirect: 'chapted',
           meta: { title: '小黑屋' },
           component: dark,
           children: [
-            { path: '/darkChat', name: 'darkChat', component: darkChat }
+            { path: '/chapted', name: 'chapted', meta: { title: '和谐库' }, component: chapted },
+            { path: '/dark_msg_show/:id/:uid', name: 'dark_msg_show', meta: { title: '交流详情' }, component: darkMsgShow }
           ]
         },
         {

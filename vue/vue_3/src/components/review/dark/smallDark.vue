@@ -13,7 +13,7 @@
       name: 'small_dark',
       data () {
         return {
-          mess: { '黑屋交流库': '/darkChat', '和谐库': '/Chapter', 0: '/sortBook' }
+          mess: { '和谐库': '/chapted', 0: '/chapted' }
         }
       },
       components: {
