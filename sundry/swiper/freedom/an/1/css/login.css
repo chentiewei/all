@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.login .fa-info-circle{
+    color:#AFC7E4;
+}
+.login .fa-exclamation-circle{
+     color:#ff6700;
+ }
+.login .fa-check-circle{
+    color: #1bad42;
+}
+body{
+    background: #F5F5F5;
+}
+.login{
+    margin: 0 auto;
+    margin-top:10%;
+    background: #ffffff;
+    width:855px;
+    height:550px;
+    box-sizing: border-box;
+    text-align: center;
+    padding:50px 80px 0 80px;
+
+}
+.login form{
+    text-align: left;
+    font-size:14px;
+}
+.login form div:nth-child(2n+1){
+   height:35px;
+}
+.login form div:nth-child(2n){
+    height:15px;
+}
+.login label{
+    float:left;
+    width:70%;
+}
+.login label>output{
+    display: inline-block;
+    width:40%;
+    text-align: right;
+}
+.login h3{
+    height:50px;
+    line-height: 50px;
+}
+.login form input{
+     border-radius: 6px;
+     border:1px solid #ccc;
+     outline: none;
+     width:56%;
+     height:35px;
+     margin-right:10px;
+     box-sizing: border-box;
+ }
+.login form .auth-code input{
+    width:15%;
+}
+.login form .auth-code a{
+    color:red;
+}
+.login form .auth-code p{
+    position:relative;
+    top:12px;
+    top: -27px;
+    right: -70%;
+    width: 30%;
+}
+.login form input.alert{
+    border:1px solid #e4393c;
+}
+.login form input.focus{
+    border:1px solid deepskyblue;
+}
+#canv{
+    display: inline-block;
+    position:relative;
+    top:12px;
+}
+.login>form>div>p{
+    color:#808080;
+    font-size: 13px;
+    height:18px;
+    line-height: 18px;
+    display:none;
+    padding-top: 8px;
+}
+.login>form>div>div>p{
+    color:#808080;
+    font-size: 13px;
+    display:none;
+}
+.login>form>div p.alert{
+    color:#ff6700;
+}
+.login>form b.count{
+    color: #808080;
+    font-size:14px;
+    font-weight: normal;
+    visibility: hidden;
+}
+.login em{
+    display: inline-block;
+    width:40px;
+    height:15px;
+    margin-right:1px;
+    font-style: normal;
+    font-size: 13px;
+    background: #e8cc9b;
+    text-align: center;
+ }
+.login em.active{
+    background:#ff6700;
+    color:#fff;
+}
+.register{
+    margin-top:20px;;
+}
+.login .register button{
+    background: #ff6700;
+    font-size: 16px;
+    height: 35px;
+    width: 57%;
+    border:0;
+    color:#fff;
+}
+.login>p{
+    width: 41%;
+    padding-right: 18px;
+    margin: 10px auto;
+    font-size:12px;
+    color: #9D9D9D;
+}
+.login>p>a{
+    font-size:12px;
+    color: #333;
+    font-weight: bold;
+}
+.footer>ul.language{
+    text-align: center;
+    width:265px;
+    margin:15px auto;
+    height:20px;
+    line-height:20px;
+}
+.footer>ul.language>li{
+    float:left;
+    font-size:12px;
+    color:#757575;
+}
+.footer>ul.language>li a,.footer>p>a{
+    font-size:12px;
+    color:#757575;
+}
+.footer>p{
+    text-align:center;
+    font-size:12px;
+    color:#757575;
+}

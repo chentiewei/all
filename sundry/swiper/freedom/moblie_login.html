@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, maximum-scale=1,user-scalable=no">
+		<title>登陆</title>
+		<style>
+		*{box-sizing:border-box;margin:0;padding:0;}
+		html, body {position: relative;height: 100%;}
+		body {background: #f6f6f6;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;font-size: 10px;list-style: none;color:#000;margin: 0;padding: 0;}
+		ul,li{list-style:none;margin:0;padding:0;}
+		header{height:0.8rem;width:100%;padding:0.2rem 0.3rem 0.1rem;margin-bottom:0.2rem;border-bottom:1px solid #E7E7E7;}
+		header>div{height:100%;}
+		header>div>a{float:left;font-size:0.25rem;line-height:0.5rem;text-decoration: none;color:#5D6E80;}
+		header>div>span{float:right;height:0.5rem;font-size:0.4rem;color:#5D6E80;}
+		.form{margin-top:1.5rem;}
+		.form input,.form button,.form img{display: block;margin:0 auto}
+		.form img{width:3.5rem;margin-bottom:1rem;}
+		.form input{border:none;border-bottom:2px solid #7CD4C3;width:4.5rem;height:0.7rem;outline: none;font-size: 0.25rem;text-align:center;margin-bottom:0.4rem}
+		.form button{background: #02B290;border:none;width:4.5rem;margin-top:0.8rem;height:0.6rem;color:#fff;font-size:0.3rem}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div>
+				<a href='../moblie.html'>关闭</a>
+				<span>登陆</span>
+			</div>
+		</header>
+		<div class='form'>
+			<img src="../img/moblie/logo_2.png" alt="" />
+			<input type="text" name="" placeholder='账号' value="" />
+			<input type="password" name="" placeholder='密码' value="" />
+			<button>登陆</button>
+		</div>
+		<script>
+			(function(doc, win) {
+	var docEl = doc.documentElement,
+		resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		recalc = function() {
+			var clientWidth = docEl.clientWidth;
+			if (!clientWidth) return;
+			if (clientWidth >= 640) {
+				docEl.style.fontSize = '100px';
+			} else {
+				docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
+			}
+		};
+	if (!doc.addEventListener) return;
+	win.addEventListener(resizeEvt, recalc, false);
+	doc.addEventListener('DOMContentLoaded', recalc, false);
+})(document, window);
+		</script>
+	</body>
+</html>

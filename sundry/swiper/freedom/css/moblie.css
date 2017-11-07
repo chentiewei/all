@@ -1,0 +1,89 @@
+*{box-sizing:border-box;margin:0;padding:0;}
+		    html, body {position: relative;height: 100%;}
+		    body {background: #eee;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;font-size: 10px;list-style: none;color:#000;margin: 0;padding: 0;}
+		    ul,li{list-style:none;margin:0;padding:0;}
+    		.hidden{display: none;}
+    		.swiper-container {width: 100%;height: 100%;}
+    		.swiper-slide {text-align: center;font-size: 18px;/* Center slide text vertically */display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;}
+    		.swiper-container-v {background: #eee;}
+    		.swiper-container-h .swiper-slide:nth-child(1){background:url('../img/moblie/1/h1.png') no-repeat;background-size:cover ;}
+    		.swiper-container-h .swiper-slide:nth-child(2){background:url('../img/moblie/1/h2.png') no-repeat;background-size:cover ;}
+    		.swiper-container-h .swiper-slide:nth-child(3){background:url('../img/moblie/1/h3.png') no-repeat;background-size:cover ;}
+    		.swiper-container-x{background:url('../img/moblie/3/bg3.png') no-repeat;background-size:cover ;}
+    		.swiper-container-z{background:url('../img/moblie/4/bg4.png') no-repeat;background-size:cover ;}
+			.to{overflow:hidden;}
+			.to>div{position:absolute;color:#fff;top:50%;left: 50%;width:80%;-webkit-transform: translateX(-50%) translateY(-50%);-webkit-transform: translateX(-50%) translateY(-50%);-moz-transform: translateX(-50%) translateY(-50%);-ms-transform: translateX(-50%) translateY(-50%);transform: translateX(-50%) translateY(-50%);}
+			.to>div>h3{font-size: 0.4rem;margin:0.1rem 0;}
+			.to>div>div{width:100%;}
+			.to>div>p{font-size: 0.7rem;color:#00DFB8;font-weight:bold;margin:0.5rem 0;}
+			.to>div>span{font-size: 0.21rem;margin-top:0.4rem;display: block;}
+			.to>div img{width:100%;height:100%;}
+			
+			.two{background:url('../img/moblie/2/bg2.png') no-repeat;background-size:cover ;}
+			.two>div{position:absolute;color:#fff;top:50%;left: 50%;width:80%;-webkit-transform: translateX(-50%) translateY(-50%);-webkit-transform: translateX(-50%) translateY(-50%);-moz-transform: translateX(-50%) translateY(-50%);-ms-transform: translateX(-50%) translateY(-50%);transform: translateX(-50%) translateY(-50%);}
+			.two>div>h3{font-size: 0.4rem;margin:0.1rem 0;}
+			.two>div>span{font-size: 0.21rem;margin:0.1rem 0;display: block;}
+			.two img{width:100%;}
+			.two>div>div>div{position: relative;margin-bottom:0.5rem;}
+			.two>div>div>div:nth-child(1){margin-top:0.5rem;}
+			.two>div>div>div>img{width:3rem;}
+			.two>div>div>div>img:nth-child(1),.two>div>div>div>img:nth-child(2){margin-left:0.6rem;}
+			.two>div>div>div>img:nth-child(3){width:1rem;position: absolute;left:0;top:0;}
+			.two>div>div>div>img:nth-child(4){width:0.6rem;position: absolute;left:0.2rem;margin-top:0.2rem;top:0;}
+			.contact>div:nth-child(2) img{width:30%;position: absolute;top:1.6rem;}
+    		.contact>div:nth-child(2) img:nth-child(1){left:1.1rem;}
+    		.contact>div:nth-child(2) img:nth-child(2){left:2.2rem;}
+    		.contact>div:nth-child(2) img:nth-child(3){left:3.3rem;}
+
+			.three>div>div{margin-top:0.8rem}
+			.three>div>div>div>img{width:25%;height:100%;}
+			.three>div>div>p{margin-top:1rem;}
+			.three>div>div>p>img{width:65%;height:100%;}
+			.three:nth-child(2)>div>div>div>img{width:20%}
+			.tir>img:nth-child(1),.tir>img:nth-child(3){width:1rem}
+			.tir>img:nth-child(2){width:1.2rem;}
+
+			.foure>div>h3{margin-bottom:0.75rem;}
+			.foure>div>div>div:nth-child(1){float:left;width:10%;height:100%;}
+			.foure>div>div>div:nth-child(1)>img{width:0.035rem;height:0.8rem;display: block;margin:0 auto;}
+			.foure>div>div>div:nth-child(1)>img.dc{width:0.2rem;height:0.2rem;}
+			.foure>div>div>div:nth-child(2){float:right;width:90%;}
+			.foure>div>div>div:nth-child(2)>div{height:1rem;}
+			.foure>div>div>div:nth-child(2)>div>img{height:50%;}
+			.foure>div>div{overflow:hidden;}
+			#body .foure .dss>img{height:1rem;}
+			
+			.five{width:100%;height:2.5rem;position:fixed;z-index:100;background:#FFFFFF;bottom:-2.5rem;}			
+			.five>div:nth-child(1){height:30%;text-align:center;margin-top:-0.5rem;}
+			.five>div:nth-child(1) img{width:2.5rem}
+			.five>div:nth-child(2){overflow:hidden;height:100%;text-align: center;}
+			.five>div:nth-child(2) img{width:100%;}
+			.five>div:nth-child(2)>div{float:left;height:100%;}
+			.five>div:nth-child(2)>div:nth-child(1){width:70%;}
+			.five>div:nth-child(2)>div:nth-child(1)>div:nth-child(1){height:0.5rem;margin-top:0.15rem;}
+			.five>div:nth-child(2)>div:nth-child(1)>div:nth-child(2){height:0.3rem;margin-top:0.15rem;}
+			.five>div:nth-child(2)>div:nth-child(1)>div:nth-child(3){height:1rem;margin-top:0.15rem;}
+			.five>div:nth-child(2)>div:nth-child(1)>div>img{height:90%;width:70%;}
+			.five>div:nth-child(2)>div:nth-child(2){width:30%;}
+			.five>div:nth-child(2)>div:nth-child(2)>img{width:1.8rem;margin-top:1rem;margin-right:0.2rem}
+
+			.baid{position:relative;}
+			.baid>div:nth-child(1){position:absolute;top:0;bottom:0;left:0;right:0;z-index:100;}
+
+			nav{border-bottom:1px solid #eee;height:0.8rem;padding:0.2rem;position:fixed;top:0;z-index:200;background:#fff;width:100%}
+			nav img{height:0.4rem}
+			nav>div:nth-child(1),nav>div:nth-child(2){float:left;margin-left:0.1rem;}
+			nav>div:nth-child(2){position:absolute;left:calc(50% - 1.14rem/2);}
+			nav>div:nth-child(3){float:right;margin-right:0.1rem;}
+			aside{position:fixed;z-index:100;height:100%;width:100%;}
+			aside>ul{height:100%;width:1.5rem;background:url('../img/moblie/sign_bk.png') no-repeat;position:absolute;top:-100%;}
+			aside>ul img{width:0.8rem;display: block;margin:0 auto;padding:0.2rem 0;}
+			.contact{width:100%;height:100%;position: fixed;z-index:100;}
+			.contact>div:nth-child(1){padding:0.2rem;text-align:center;position: fixed;top:-0.8rem;height:0.8rem;width:100%;z-index: 100;background:#fff;}
+			.contact>div:nth-child(1)>span{display: inline-block;height:100%;width:30%;}
+			.contact>div:nth-child(1) img{height:100%;}
+			.contact>div:nth-child(1)>span:nth-child(1) img{float:right;}
+			.contact>div:nth-child(1)>span:nth-child(3) img{float:left;}
+			
+			.mask_loading{position: fixed;top:0;left:0;bottom:0;right:0;z-index:1000;background:#151517;}
+			#loading{position: absolute;top:50%;left:50%;margin-top:-94px;margin-left:-94px;}

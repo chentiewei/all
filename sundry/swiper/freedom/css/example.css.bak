@@ -1,0 +1,166 @@
+/*通用样式设计*/
+img{
+    vertical-align:middle;
+    border:none;
+}
+body{
+    font:12px Microsoft YaHei,tahoma,arial,Helvetica,sans-serif;
+    color:#333;
+    margin:0;
+    padding:0;
+}
+ul,ol,p,h1,h2,h3,h4,h5,h6,dl,dt,dd{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+input{
+    border:0;
+}
+a{
+    color:#666;
+    text-decoration:none;
+}
+a:hover{
+
+    text-decoration:none;
+}
+
+/*框架自带样式*/
+html, body {
+    position: relative;
+    height: 100%;
+}
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*导航条样式*/
+#nav{
+    width: 100%;
+    background-color:transparent;
+    position: fixed;
+    top: 0;
+    left:0;
+    z-index: 100;
+    height: 80px;
+}
+#nav>a{
+    display: inline-block;
+    margin: 30px 130px;
+}
+.navigation{
+    float:right;
+    height:80px;
+    line-height: 80px;
+}
+.navigation>li{
+    float: right;
+}
+.navigation>li>a{
+    padding:30px;
+    cursor:pointer;
+    font-size: 20px;
+    font-weight:bold;
+    color:#CCCCCC;
+}
+.navigation>li:nth-child(4)>a{
+    color:#63DBC1;
+}
+.navigation>li>a:hover{
+    color:#63DBC1;
+}
+/*板块设计*/
+.bg1{
+    background: url(../img/bg.png)no-repeat;
+    /*background-size:cover;*/
+}
+.bg2{
+    background: url(../img/bg2.png)no-repeat;
+}
+/*提示条*/
+.prompt{
+    z-index: 100;
+    background-color: #fff;
+    padding: 20px 15px;
+    border-radius: 100px;
+    box-shadow: 0 4px 9px 0 rgba(43,43,49,.1),0 7px 14px 0 rgba(43,43,49,.13);
+}
+/**页面布局1**/
+.happyMove{
+    position: absolute;
+    top: 17%;
+    left: 37%;
+    background-color: red;
+}
+.happy{
+    width:375px;
+    height:50px;
+    font-size: 38px;
+    text-align: center;
+    line-height:50px;
+    color:#FFF;
+}
+.freedomMove{
+    position: absolute;
+    top: 35%;
+    left: 26%;
+
+}
+.freedom{
+    width:690px;
+    height:60px;
+    font-size:60px;
+    text-align: center;
+    line-height: 60px;
+    color:#00DFB8;
+    font-weight:bold;
+}
+.welcomeMove{
+    position: absolute;
+    top: 53%;
+    left: 34%;
+}
+.welcome{
+    width: 480px;
+    height: 30px;
+    font-size: 33px;
+    text-align: center;
+    line-height: 30px;
+    color: #DFE1E3;
+    font-weight: bold;
+}
+.exampleMove{
+    position: absolute;
+    top: 73%;
+    left: 44%;
+}
+.example{
+    width: 200px;
+    height: 20px;
+    font-size: 17px;
+    text-align: center;
+    color: #DFE0E2;
+    font-weight: bold;
+}
+.goBottom{
+    position: absolute;
+    top: 92%;
+    left: 50%;
+}
+.bottom{
+    display: inline-block;
+    width:30px;
+    height:5px;
+    background-color: #38DEA7;
+}

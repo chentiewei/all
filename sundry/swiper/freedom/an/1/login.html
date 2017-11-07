@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>小米账号注册</title>
+    <link rel="icon" href="imgs/favicon.ico">
+    <link rel="stylesheet" href="css/font-awesome.css"/>
+    <link rel="stylesheet" href="css/login.css"/>
+</head>
+<body>
+
+    <div class="login">
+        <img src="imgs/logo-footer.png" width="50px"   alt=""/>
+        <h3>小米账号注册</h3>
+        <form action="enter.html" method="post" id="form">
+            <div>
+                <label >
+                    <output>用户名：</output>
+                    <input name='username' type="text" autofocus >
+
+                </label>
+                <p class="msg"><i class="fa fa-info-circle"></i>5-25个字符，一个汉字为2个字符，推荐使用中文账号</p>
+            </div>
+            <div>
+                <label ><output></output><b class="count"> 0个字符</b></label>
+            </div>
+            <div class="pwd-input">
+                <label >
+                    <output>密码：</output>
+                    <input name='pwd' type="password" class="pwd1">
+                </label>
+                <div>
+                    <p class="msg"><i class="fa fa-info-circle"></i>长度为6-16位字符</p>
+                    <p class="msg"><i class="fa fa-info-circle"></i>不能是9位以下纯数字</p>
+                    <p class="msg"><i class="fa fa-info-circle"></i>不能包含空格</p>
+                </div>
+            </div>
+            <div class="pwd-check">
+                <label>
+                    <output></output> <em class="active">弱</em><em>中</em><em>强</em>
+                </label>
+            </div>
+            <div class="pwd-input">
+                <label >
+                    <output>确认密码：</output>
+                    <input name='pwd' type="password" class="pwd2" disabled>
+                </label>
+                <p class="msg"><i class="fa fa-info-circle"></i>请再次输入密码</p>
+            </div>
+            <div></div>
+            <div class="auth-code">
+                <label>
+                    <output>验证码：</output>
+                    <input type="text"  />
+                    <canvas id="canv" width="80" height="35">
+                        您的浏览器不支持canvas！
+                    </canvas>
+                    <a href="javascript:;">看不清，换一张</a>
+                </label>
+                <p class="msg"><i class="fa fa-info-circle"></i>请输入验证码</p>
+            </div>
+            <div></div>
+            <div class="register">
+                <label>
+                    <output></output>
+                    <button type="button">立即注册</button>
+                </label>
+            </div>
+        </form>
+        <p>
+            点击“立即注册”，即表示您同意并愿意遵守小米 <a href="javascript:;">用户协议</a> 和 <a href="javascript:;">隐私政策</a>
+        </p>
+    </div>
+    <div class="footer">
+
+    </div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

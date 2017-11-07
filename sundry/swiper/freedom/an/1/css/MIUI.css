@@ -1,0 +1,178 @@
+/*******通用样式*********/
+*{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    vertical-align:baseline;
+    background:transparent;
+}
+ul,ol{list-style:none;}
+a{text-decoration:none;}
+table{
+    border-collapse:collapse;
+}
+input,select{
+    vertical-align:middle;
+}
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #ccc;
+    margin:1em 0;
+    padding:0;
+}
+td{padding:0;}
+
+
+
+/*主体部分*/
+#main .brand{
+    width:960px;
+    height: 340px;
+    margin:0 auto;
+    box-sizing: border-box;
+    padding:30px 0;
+    border:1px  solid #ccc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#main .brand td:nth-child(1){
+    width:115px;
+}
+#main .brand ul li{
+    float:left;
+    width:113px;
+    margin-right:25px;
+    margin-bottom:22px;
+    height: 58px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    overflow:hidden;
+}
+#main .brand ul li:nth-child(1){
+    background: url("../MIUIIMG/all.png");
+}
+#main .brand ul li:nth-child(1):hover{
+    background: url("../MIUIIMG/all_1.png") no-repeat -1px 1px;
+}
+#main .brand ul li:nth-child(1).hover{
+    background: url("../MIUIIMG/all_1.png") no-repeat -1px 1px;
+}
+#main .brand ul li:nth-child(2){
+    background: url("../MIUIIMG/xiaomi.png");
+}
+#main .brand ul li:nth-child(2):hover{
+    background: url("../MIUIIMG/xiaomi_2.png") no-repeat -1px -1px;
+}
+#main .brand ul li:nth-child(2).hover{
+    background: url("../MIUIIMG/xiaomi_2.png") no-repeat -1px -1px;
+}
+#main .brand ul li:nth-child(3){
+    background: url("../MIUIIMG/google.png");
+}
+#main .brand ul li:nth-child(3):hover{
+    background: url("../MIUIIMG/google1.png") no-repeat -1px -1px;
+}
+#main .brand ul li:nth-child(3).hover{
+    background: url("../MIUIIMG/google1.png") no-repeat -1px -1px;
+}
+#main .brand ul li:nth-child(4){
+    background: url("../MIUIIMG/htc.png");
+}
+#main .brand ul li:nth-child(4):hover{
+    background: url("../MIUIIMG/htc_1.png") no-repeat 0 -1px;
+}
+#main .brand ul li:nth-child(4).hover{
+    background: url("../MIUIIMG/htc_1.png") no-repeat 0 -1px;
+}
+#main .brand ul li:nth-child(5){
+    background: url("../MIUIIMG/sum.png");
+}
+#main .brand ul li:nth-child(5):hover{
+    background: url("../MIUIIMG/sum1.png") no-repeat 0 1px;
+}
+#main .brand ul li:nth-child(5).hover{
+    background: url("../MIUIIMG/sum1.png") no-repeat 0 1px;
+}
+#main .brand ul li:nth-child(6){
+    background: url("../MIUIIMG/moto.png");
+}
+#main .brand ul li:nth-child(6):hover{
+    background: url("../MIUIIMG/moto_1.png") no-repeat 0 0px;
+}
+#main .brand ul li:nth-child(6).hover{
+    background: url("../MIUIIMG/moto_1.png") no-repeat 0 0px;
+}
+#main .brand ul li:nth-child(7){
+    background: url("../MIUIIMG/lg.png");
+}
+#main .brand ul li:nth-child(7):hover{
+    background: url("../MIUIIMG/lg_1.png") no-repeat 1px 0px;
+}
+#main .brand ul li:nth-child(7).hover{
+    background: url("../MIUIIMG/lg_1.png") no-repeat 1px 0px;
+}
+#main .brand ul li:nth-child(8){
+    background: url("../MIUIIMG/soni.png") 0 1px;
+}
+#main .brand ul li:nth-child(8):hover{
+    background: url("../MIUIIMG/soni_1.png") no-repeat 1px -1px;
+}
+#main .brand ul li:nth-child(8).hover{
+    background: url("../MIUIIMG/soni_1.png") no-repeat 1px -1px;
+}
+#main .brand ul li:nth-child(9){
+     background: url("../MIUIIMG/zhong.png") 0 1px;
+ }
+#main .brand ul li:nth-child(9):hover{
+    background: url("../MIUIIMG/zhong_1.png") no-repeat 1px 0px;
+}
+#main .brand ul li:nth-child(9).hover{
+    background: url("../MIUIIMG/zhong_1.png") no-repeat 1px 0px;
+}
+#main .brand ul li:nth-child(10){
+    background: url("../MIUIIMG/opo.png") 0 -2px;
+}
+#main .brand ul li:nth-child(10):hover{
+    background: url("../MIUIIMG/opo_1.png") no-repeat -1px 0px;
+}
+#main .brand ul li:nth-child(10).hover{
+    background: url("../MIUIIMG/opo_1.png") no-repeat -1px 0px;
+}
+#main .brand ul li:nth-child(11){
+    background: url("../MIUIIMG/huawei.png") 0 -2px;
+}
+#main .brand ul li:nth-child(11):hover{
+    background: url("../MIUIIMG/huawei_1.png") no-repeat 0px -1px;
+}
+#main .brand ul li:nth-child(11).hover{
+    background: url("../MIUIIMG/huawei_1.png") no-repeat 0px -1px;
+}
+#main .brand ul li:nth-child(12){
+    background: url("../MIUIIMG/mei.png") -1px 0px;
+}
+#main .brand ul li:nth-child(12):hover{
+    background: url("../MIUIIMG/mei_1.png") no-repeat 1px -1px;
+}
+#main .brand ul li:nth-child(12).hover{
+    background: url("../MIUIIMG/mei_1.png") no-repeat 1px -1px;
+}
+#main .brand ul li:nth-child(13){
+    background: url("../MIUIIMG/other_1.png") -1px 0px;
+}
+#main .brand ul li:nth-child(13):hover{
+    background: url("../MIUIIMG/other.png") no-repeat -3px -1px;
+}
+#main .brand ul li:nth-child(13).hover{
+    background: url("../MIUIIMG/other.png") no-repeat -3px -1px;
+}
+#main .brand table td{
+    position:relative;
+}
+#main .brand table h2{
+    position:absolute;
+    top:20px;
+    left: 20px;
+}

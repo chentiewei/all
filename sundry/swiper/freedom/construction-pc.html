@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--[if It IE9]><script>window.location.href="http://www.baidu.com"</script><![endif]-->
+<!--[if It IE8]><script>window.location.href="http://www.baidu.com"</script><![endif]-->
+<!--[if It IE7]><script>window.location.href="http://www.baidu.com"</script><![endif]-->
+<!--[if It IE6]><script>window.location.href="http://www.baidu.com"</script><![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <title>弗莱顿工作室——招聘</title>
+    <style>
+       .body{
+           background:url("img/im/construction.jpg") left 100% no-repeat;
+           background-size:cover;
+           background-attachment: fixed;
+       }
+    </style>
+    <script>
+        var wap_domain = "construction-mobile.html"; //移动端地址
+        function browserRedirect() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE ||bIsWM) {
+//                window.location.href = wap_domain;
+            } else {
+//                window.location.href="http://taobao.com";//填写本页面的链接地址
+
+            }
+        }
+        browserRedirect();
+//        setTimeout(function(){
+//            location.replace("example/example.html");
+//        },2000)
+    </script>
+</head>
+<body class="body">
+</body>
+</html>
