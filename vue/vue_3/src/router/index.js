@@ -16,6 +16,19 @@ import historyApprove from '@/components/review/approved/historyApprove'
 import dark from '@/components/review/dark/smallDark'
 import darkMsgShow from '@/components/review/dark/dark_msg_show'
 import chapted from '@/components/review/dark/chapted'
+import ticket from '@/components/review/ticket/ticket'
+import tickAll from '@/components/review/ticket/tick_all'
+import inHand from '@/components/review/ticket/in_hand'
+import untreated from '@/components/review/ticket/untreated'
+import resolved from '@/components/review/ticket/resolved'
+import addTicked from '@/components/review/ticket/add_ticked'
+import tickShow from '@/components/review/ticket/tick_show'
+import bookManager from '@/components/BookManager/BookManager'
+import bookList from '@/components/BookManager/book_list'
+import addBook from '@/components/BookManager/add_book'
+import soldBook from '@/components/BookManager/sold_book'
+import rackingBook from '@/components/BookManager/racking_book'
+import bookManagerShow from '@/components/BookManager/book_show'
 import mail from '@/components/mail/mail'
 import mailAll from '@/components/mail/mail_all'
 import Inbox from '@/components/mail/Inbox'
@@ -70,7 +83,34 @@ export default new Router({
           component: dark,
           children: [
             { path: '/chapted', name: 'chapted', meta: { title: '和谐库' }, component: chapted },
-            { path: '/dark_msg_show/:id/:uid', name: 'dark_msg_show', meta: { title: '交流详情' }, component: darkMsgShow }
+            { path: '/dark_msg_show/:id/:uid', name: 'dark_msg_show', meta: { title: '和谐详情' }, component: darkMsgShow }
+          ]
+        },
+        { path: '/ticket',
+          name: 'ticket',
+          redirect: 'tick_all',
+          meta: { title: '工单' },
+          component: ticket,
+          children: [
+            { path: '/tick_all', name: 'tick_all', meta: { title: '全部' }, component: tickAll },
+            { path: '/in_hand', name: 'in_hand', meta: { title: '处理中' }, component: inHand },
+            { path: '/untreated', name: 'untreated', meta: { title: '未处理' }, component: untreated },
+            { path: '/resolved', name: 'resolved', meta: { title: '已解决' }, component: resolved },
+            { path: '/add_ticked/:id', name: 'add_ticked', meta: { title: '工单添加' }, component: addTicked },
+            { path: '/tick_show/:id', name: 'tick_show', meta: { title: '工单详情' }, component: tickShow }
+          ]
+        },
+        { path: '/bookManager',
+          name: 'bookManager',
+          redirect: 'book_list',
+          meta: { title: '书籍管理' },
+          component: bookManager,
+          children: [
+                { path: '/book_list', name: 'book_list', meta: { title: '书籍列表' }, component: bookList },
+                { path: '/add_book', name: 'add_book', meta: { title: '添加书籍' }, component: addBook },
+                { path: '/sold_book', name: 'sold_book', meta: { title: '下架书籍' }, component: soldBook },
+                { path: '/racking_book', name: 'racking_book', meta: { title: '下架书籍' }, component: rackingBook },
+                { path: '/book_manager_show/:id/:sold', name: 'book_manager_show', meta: { title: '书籍展示' }, component: bookManagerShow }
           ]
         },
         {

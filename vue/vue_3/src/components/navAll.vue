@@ -19,7 +19,7 @@
                 <el-submenu index="/apply">
                     <template slot="title">
                         <i class="iconfont icon-tasklist_fill"></i>
-                        <span slot="title">业务审核</span>
+                        <span slot="title">业务管理</span>
                     </template>
                     <el-menu-item-group>
                         <span slot="title">业务状态</span>
@@ -29,6 +29,10 @@
                         <el-menu-item index="/ticket">工单</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
+                <el-menu-item index="/bookManager">
+                    <i class="iconfont icon-dynamic_fill"></i>
+                    <span slot="title">书籍管理</span>
+                </el-menu-item>
                 <el-menu-item index="/I2">
                     <i class="iconfont icon-dynamic_fill"></i>
                     <span slot="title">统计图表</span>
