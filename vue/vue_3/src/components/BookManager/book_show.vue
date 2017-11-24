@@ -120,7 +120,6 @@
       </div>
     </div>
     <div class="bth_share">
-      <el-button @click="approve">通过</el-button>
       <el-button v-if="$route.params.sold">上架</el-button>
       <el-button v-else>下架</el-button>
     </div>
