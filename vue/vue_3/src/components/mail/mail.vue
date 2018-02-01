@@ -1,12 +1,6 @@
 <template>
     <div class="mail">
-        <el-menu  default-active="/mail_all" class="el-menu-demo" mode="horizontal" @select="handleSelect" router>
-            <el-menu-item index="/Inbox">收件箱</el-menu-item>
-            <el-menu-item index="/Write">写信</el-menu-item>
-            <el-menu-item index="/Import">重要</el-menu-item>
-            <el-menu-item index="/Draft">草稿</el-menu-item>
-            <el-menu-item index="/Dustbin">垃圾箱</el-menu-item>
-        </el-menu>
+        <_menu :mess="mess"></_menu>
         <div class="mail_content">
             <router-view></router-view>
         </div>
@@ -14,16 +8,16 @@
 </template>
 
 <script>
+    import _menu from '@/components/common/menu'
     export default {
       name: 'mail',
       data () {
         return {
+          mess: { '收件箱': '/Inbox', '写信': '/Write', '重要': '/Import', '草稿': '/Draft', '垃圾箱': '/Dustbin', 0: '/mail_all' }
         }
       },
-      methods: {
-        handleSelect (key, keyPath) {
-          console.log(key, keyPath)
-        }
+      components: {
+        _menu
       }
     }
 </script>
@@ -39,13 +33,5 @@
         overflow: auto;
         padding:20px;
     }
-    .el-menu--horizontal .el-menu-item{
-        height: 40px;
-        line-height: 40px;
-        border-bottom: 2px solid transparent;
-    }
-    .el-menu--horizontal .el-menu-item:hover{
-        background: #e2eaf7;
-        border-bottom: 2px solid #e2eaf7;
-    }
+
 </style>

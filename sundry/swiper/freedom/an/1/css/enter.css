@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    background: #F5F5F5;
+}
+.enter{
+    background: #ffffff;
+    width:855px;
+    height:630px;
+    box-sizing: border-box;
+    padding-top:50px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top:5%;
+}
+.enter h1{
+    height:90px;
+    line-height: 90px;
+}
+.enter form input{
+    outline:none;
+}
+input{
+    width:360px;
+    height: 50px;
+    padding-left:15px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+.info {
+    margin: 0 auto;
+}
+.info p{
+    height:21px;
+    display: none;
+    width:358px;
+    color:#FF6700;
+    margin:0 auto;
+    margin-top: 15px;
+    text-align: left;
+}
+input[type='button']{
+    background:#FF6700;
+    color:#fff;
+    font-size:16px;
+    border:0;
+}
+button>a{
+    display:inline-block;
+    width:360px;
+    height:50px;
+    line-height: 50px;
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+    border:0;
+    background: #EF5B00;
+}
+.enter>form{
+    margin-bottom: 20px;
+}
+.enter>p{
+    margin-top:30px;
+}
+.enter>p,.enter>p a {
+    color: #757575;
+    font-size: 14px;
+}
+.enter>p a:hover{
+    color: #FF6700;
+}
+.enter>form>p{
+    color:#B0B0B0;
+    font-size: 13px;
+    height:20px;
+    line-height: 20px;
+}
+.enter>form>p>span{
+    padding-left:130px;
+    border-top:1px solid #B0B0B0;
+    position: relative;
+    top:7px;
+}
+.link{
+    text-align: center;
+    margin-top: 10px;
+}
+.link a{
+    display:inline-block;
+    width:35px;
+    height: 35px;
+    padding-right: 15px;
+}
+.link a:nth-child(1){
+    background: url("../imgs/qq.png") no-repeat;
+}
+.link a:nth-child(2){
+    background: url("../imgs/xl.png") no-repeat;
+}
+.link a:nth-child(3){
+    background: url("../imgs/zf.png") no-repeat;
+}
+.link a:nth-child(1):hover{
+    background: url("../imgs/qq1.png") no-repeat 0 -1px;
+}
+.link a:nth-child(2):hover{
+    background: url("../imgs/xl1.png") no-repeat 1px -1px;
+}
+.link a:nth-child(3):hover {
+    background: url("../imgs/zf1.png") no-repeat -2px -1px;
+}
+.footer>ul.language{
+    text-align: center;
+    width:265px;
+    margin:15px auto;
+    height:20px;
+    line-height:20px;
+}
+.footer>ul.language>li{
+    float:left;
+    font-size:12px;
+    color:#757575;
+}
+.footer>ul.language>li a,.footer>p>a{
+    font-size:12px;
+    color:#757575;
+}
+.footer>p{
+    text-align:center;
+    font-size:12px;
+    color:#757575;
+}

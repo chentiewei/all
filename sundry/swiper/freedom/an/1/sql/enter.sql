@@ -1,0 +1,16 @@
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS xiaomi;
+CREATE DATABASE xiaomi CHARSET=UTF8;
+
+USE xiaomi;
+CREATE TABLE user_message(
+  uid INT PRIMARY KEY AUTO_INCREMENT,
+  useName VARCHAR(32),
+  userPwd VARCHAR(32)
+);
+INSERT INTO user_message
+VALUES(NULL,'小确幸','q123456');
+INSERT INTO user_message
+VALUES(NULL,'tombaby','q123456');
+
+SELECT * FROM user_message;

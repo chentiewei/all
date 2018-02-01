@@ -11,14 +11,15 @@ app.get('/',function(req,res){
             if(err){
                 return next(err);
             }
-            var $ = cheerio.load(sra.text);
+            var $ = cheerio.load(sra.text, {decodeEntities: false});
             var items=[];
             $('#topic_list .topic_title').each(function(i,p){
                 var item=$(p);
                 items.push({
                     title:item.attr('title'),
                     href:item.attr('href'),
-                    author:item.attr('author')
+                    author:item.attr('author'),
+                    html:item.html()
                 })
             })
             $('#topic_list .user_avatar img').each(function(i,p){

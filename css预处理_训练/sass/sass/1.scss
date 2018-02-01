@@ -1,0 +1,42 @@
+@import "_base.scss";
+$a:#bbb;
+@mixin alert($b,$c) {
+    background:darken($b,10%);
+    div{
+        height:$c;
+    }
+}
+#div {
+    color: $a;
+    @include alert(#fff,40px);
+}
+
+#h1 {
+    background: #kkk;
+    border:1px soild #fff {
+        left: 0;
+        right: 0;
+    }
+    @extend #div;
+}
+$i:10,20,30,40,50;
+@each $z in $i{
+    .s{
+        width:$z;
+        height:#{$z}
+    }
+}
+$j:10 20 30 40  50;
+@each $k in $j{
+    .s{
+        width:$k;
+        height:#{$k}
+    }
+}
+
+$a:5;
+@for $b from 1 through $a{
+    .col-#{$b}{
+        width:100%/$b;
+    }
+}

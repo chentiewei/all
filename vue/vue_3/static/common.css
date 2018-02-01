@@ -11,8 +11,15 @@ body{
 .dis{
   display: none;
 }
+/**********字体引用*************/
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fontFamily/SourceSansPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 /**********盒子模型*************/
-html {box-sizing: border-box;font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}
+html {box-sizing: border-box;font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;}
 *, *:before, *:after {box-sizing: inherit;}
 .after:after {content: '';width: 0;display: block;clear: both;}
 /*************改变浏览器滚动条样式*************/
@@ -39,9 +46,15 @@ html {
   /*背景阴影*/
   scrollbar-dark-shadow-color: #EBEBEB;
 }
-.after{
+.after:after{
   content: '';
   width:0;
   display: block;
   clear: both;
+}
+.text-el{
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
