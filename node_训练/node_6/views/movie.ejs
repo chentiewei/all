@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>汁源共享-每天晚上11点会员群首发！</title>
+  <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0,width=device-width">
+  <link rel='stylesheet' href='../css/cssreset.css' />
+  <style>
+    *{
+      font-family: "微软雅黑";
+    }
+    p{
+      line-height:2;
+    }
+    .h1{
+      font-size:18px;
+      font-weight: normal;
+      text-align: center;
+      margin-top:40px;
+      margin-bottom:40px;
+    }
+    .qcode{
+      text-align: center;
+    }
+    .qcode p{
+      color:#00b0f0;
+      font-size: 16px;
+      text-align: center;
+    }
+    hr{
+      margin:30px 0;
+    }
+    .nodeps{
+    	padding:10px;
+    }
+  </style>
+</head>
+<body>
+<h1 class="h1">汁源共享-每天晚上11点会员群首发！</h1>
+<div class="nodeps"><%- html %></div>
+<hr>
+<div class="qcode">
+  <p>
+    关注二维码获取更多资源!
+  </p>
+  <img src="../images/qcode.jpg" alt="">
+</div>
+<script src="../js/jquery.js"></script>
+<script>
+  $('.nodeps strong').each(function(i,p){
+    if($(p).html()=='综艺节目'||$(p).html()=='最新电视剧'||$(p).html()=='最新电影'||$(p).html()=='美剧'||$(p).html()=='最新韩剧'){
+      $(p).closest('p').css({
+        'margin':'20px 0',
+        'text-align':'center'
+      });
+    }
+  })
+  $('.nodeps').find('img').closest('p').next().remove();
+  $('.nodeps').find('img').closest('p').prev().remove();
+  $('.nodeps').find('img').closest('p').remove();
+</script>
+</body>
+</html>
