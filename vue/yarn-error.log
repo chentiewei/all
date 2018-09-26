@@ -1,0 +1,36 @@
+Arguments: 
+  D:\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js init
+
+PATH: 
+  C:\Users\zwh\bin;C:\apps\Git\mingw64\bin;C:\apps\Git\usr\local\bin;C:\apps\Git\usr\bin;C:\apps\Git\usr\bin;C:\apps\Git\mingw64\bin;C:\apps\Git\usr\bin;C:\Users\zwh\bin;C:\Ruby24-x64\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\apps\tortoisesvn\bin;C:\Python27;C:\apps\Git\usr\bin;D:\nssm;C:\apps\tortoisegit\bin;C:\apps\visual_svn\bin;D:\nodejs;C:\Program Files\Microsoft SQL Server\110\Tools\Binn;D:\netbeans_java\java\jdk1.8\jdk1.8.0_11\bin;D:\netbeans_java\java\jdk1.8\jdk1.8.0_11\jre\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;D:\Microsoft VS Code\bin;C:\Users\zwh\AppData\Roaming\npm;C:\Users\zwh\AppData\Local\atom\bin;C:\Users\zwh\AppData\Local\Yarn\bin;C:\apps\Git\usr\bin\vendor_perl;C:\apps\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  6.3.1
+
+Platform: 
+  win32 ia32
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:128791:13)
+      at emitNone (events.js:86:13)
+      at Interface.emit (events.js:185:7)
+      at Interface._ttyWrite (readline.js:715:16)
+      at ReadStream.onkeypress (readline.js:119:10)
+      at emitTwo (events.js:106:13)
+      at ReadStream.emit (events.js:191:7)
+      at emitKeys (internal/readline.js:385:14)
+      at next (native)
+      at ReadStream.onData (readline.js:947:36)
