@@ -23,7 +23,11 @@ class App extends Component {
        this.setState({show:!this.state.show});
     }
     submitFun() {
-        this.setState({username2:this.state.username,password:this.state.password},function(){
+      if(!this.state.password||!this.state.username){
+        alert('请填写完相应属性')
+        return ;
+      }
+        this.setState({username2:this.state.username,password2:this.state.password,password:'',username:''},function(){
             console.log(this.state);
         });
     };
@@ -43,10 +47,10 @@ class App extends Component {
           这是一个悲伤的故事谁都猜不到应该怎么办，学习react是在一个夜黑风高的夜晚，希望大家谨慎学习.
           <button  onClick={this.showed.bind(this)}>点一下，我偷偷的告诉你 他刚刚输了什么。</button>
           <div style={{display: this.state.show ? "block" : "none"}}>
-            账号：{this.state.username}
+            账号：{this.state.username2}
           </div>
           <div style={{display: this.state.show ? "block" : "none"}}>
-            密码：{this.state.password}
+            密码：{this.state.password2}
           </div>
       </div>
     );
