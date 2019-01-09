@@ -1,7 +1,13 @@
 <template>
   <div>
     <div class="header">
-      <router-link v-for="(v,i) in newrouter" :key="i" :to="{name:v.name}">{{v.name}}</router-link>
+      <div  v-for="(v,i) in newrouter" :key="i">
+        <router-link :to="{name:v.name}"  v-if="!v.children">{{v.name}}</router-link>
+        <div  v-else-if="v.children">{{v.name}}</div>
+        <div v-for="(k,j) in v.children">
+          <router-link  :to="{name:k.name}">{{k.name}}</router-link>
+        </div>
+      </div>
     </div>
     <div class="main">
       <router-view></router-view>
@@ -45,7 +51,10 @@
 <style scoped lang="stylus">
   .header
     padding 0px
+    div
+      display inline-block
     a
+      display inline-block
       padding 30px
   .nav_box
     border-bottom 0px

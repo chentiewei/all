@@ -14,6 +14,7 @@ router.beforeEach((to, from, next) => {
       next();
     }else{
       let newrouter=[];
+      let ce=[];
       _role.forEach((i)=>{
         powerRouter.forEach((k)=>{
           if(k.name==i.name){
@@ -21,6 +22,14 @@ router.beforeEach((to, from, next) => {
           }
         })
       })
+      _role.forEach((i)=>{
+        powerRouter.forEach((k)=>{
+          if(k.name==i.name){
+            ce.push(k)
+          }
+        })
+      })
+      console.log(ce)
       router.addRoutes(newrouter) //添加动态路由
       store.dispatch('Roles',newrouter).then(res => {
         next({ ...to })
