@@ -10,8 +10,9 @@
           <div class="content">已生成9160份</div>
         </div>
         <div class="s-rightBem">
-          <swiper auto height="aspect-ratio" :show-dots="dots">
+          <swiper loop auto height="aspect-ratio" :show-dots="dots">
             <swiper-item class="black"><span>123afasd是的反思</span><b>已获取面相报告</b><div class="div-box"><img src="https://faceplus.qqwechat.com/2019-02-27_b51200423584200c02bb08064f704632.png?x-oss-process=image/crop,x_8,y_65,w_272,h_272" alt=""></div></swiper-item>
+            <swiper-item class="black"><span>阿斯顿发送到发的</span><b>已获取面相报告</b><div class="div-box"><img src="https://faceplus.qqwechat.com/2019-02-27_64d4e7deaa87e5f4ae2c27e9bdfde37e.png?x-oss-process=image/crop,x_234,y_80,w_485,h_485" alt=""></div></swiper-item>
             <swiper-item class="black"><span>阿斯顿发送到发的</span><b>已获取面相报告</b><div class="div-box"><img src="https://faceplus.qqwechat.com/2019-02-27_64d4e7deaa87e5f4ae2c27e9bdfde37e.png?x-oss-process=image/crop,x_234,y_80,w_485,h_485" alt=""></div></swiper-item>
           </swiper>
         </div>

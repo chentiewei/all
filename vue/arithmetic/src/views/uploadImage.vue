@@ -123,7 +123,7 @@
             <br >
             当您有其他的投诉、建议、未成年人个人信息相关问题时，请通过微信公众号“算术”留言与我们联系。您也可以将您的问题发送至Dataprivacy@sums.ai告知我们，我们将尽快审核所涉问题，并在验证您的用户身份后的3-5个工作日内予以回复。
           </div>
-          <router-link tag="div" :to="{name:'uploadImage'}" class="s-btn-tost">我已阅读完并同意</router-link>
+          <div class="s-btn-tost"  @click="uploadImage">我已阅读完并同意</div>
         </div>
       </transition>
     </div>
@@ -141,6 +141,9 @@ export default {
   methods:{
     showDiaContent(){
       this.showdia=!this.showdia;
+    },
+    uploadImage(){
+      console.log(1234)
     }
   },
   components: {
