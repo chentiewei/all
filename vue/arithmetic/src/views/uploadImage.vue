@@ -135,7 +135,7 @@ export default {
   name: 'uploadImage',
   data(){
     return {
-      showdia:true
+      showdia:false
     }
   },
   methods:{
