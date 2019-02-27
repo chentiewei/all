@@ -2,9 +2,7 @@
   <div class="home">
     <div class="g-title">微算面相</div>
     <div class="g-swiper">
-      <swiper :list="swiperList">
-
-      </swiper>
+      <swiper :list="swiperList"></swiper>
     </div>
   </div>
 </template>
