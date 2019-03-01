@@ -88,7 +88,7 @@
     left: 0.4rem;
     width: 4rem;
     z-index: 80;
-
+    animation fadein 1s linear
   .g-swiper
     height: 12.33333333rem;
     position relative
