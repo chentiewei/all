@@ -34,9 +34,9 @@
       <router-link :to="{name:'userCenter'}" tag="div" class="s-box">
         <img src="../assets/images/tabl.png">
       </router-link>
-      <div class="s-box">
+      <router-link :to="{name:'paylist'}" tag="div" class="s-box">
         <img src="../assets/images/tabr.png">
-      </div>
+      </router-link>
     </div>
     <diaps :showdia="showdia" @showDiaContent="showDiaContent"/>
   </div>
@@ -78,7 +78,6 @@
   .home
     position relative
     height 100vh
-
   .g-title
     color #fff
     font-size: 25px;

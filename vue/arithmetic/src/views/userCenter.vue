@@ -20,12 +20,18 @@
           </div>
           <div>删除报告</div>
         </li>
-        <li>
+        <router-link :to="{name:'join'}" tag="li">
           <div class="icon">
             <img src="../assets/images/join.png" alt="">
           </div>
           <div>推广渠道招募</div>
-        </li>
+        </router-link>
+        <router-link :to="{name:'agentdetails'}" tag="li">
+          <div class="icon">
+            <img src="../assets/images/fenxiaohehuo.png" alt="">
+          </div>
+          <div>合伙人收益</div>
+        </router-link>
       </ul>
     </div>
     <div class="listDiv">
@@ -220,4 +226,10 @@
         display: block;
         img
           width: 6.66666667rem;
+</style>
+
+<style lang="stylus">
+  .vux-x-dialog
+    .weui-dialog__hd
+      padding 10px
 </style>
