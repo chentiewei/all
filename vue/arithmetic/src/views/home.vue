@@ -12,11 +12,11 @@
     </div>
     <div class="g-home-tab">
       <div class="m-tab">
-        <div class="s-box" style="background: rgb(67, 71, 110);">
+        <router-link :to="{name:'dictionaries'}" tag="div" class="s-box" style="background: rgb(67, 71, 110);">
           <p class="textPs1">面相</p>
           <p class="textPs2">报告</p>
           <img src="../assets/images/page1.png" mode="widthFix" class="home-page__tab-item--img">
-        </div>
+        </router-link>
         <div class="s-box" style="background: rgb(255, 204, 0);">
           <p class="textPs1">大师</p>
           <p class="textPs2">看相</p>
@@ -118,11 +118,10 @@
     background: linear-gradient(rgba(220, 220, 220, 0) 0%, #ffffff 50%);
     padding: 0.4rem 0 0;
     z-index: 10;
-    width: 10rem;
+    width 100%
     height: 3.2rem;
     position: absolute;
     top: 10rem
-    overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
     padding 0 10px
     box-sizing border-box

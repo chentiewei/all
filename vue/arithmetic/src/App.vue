@@ -48,4 +48,18 @@
       opacity: 0;
     100%
       opacity: 1;
+  /*移入*/
+  @keyframes showtitleanima
+    0%
+      margin-left: 1rem;
+    100%
+      margin-left: 0
+  /*渐渐移入*/
+  @keyframes leftinto
+    0%
+      margin-left: 1rem;
+      opacity: 0.5;
+    100%
+      margin-left: 0
+      opacity: 1;
 </style>

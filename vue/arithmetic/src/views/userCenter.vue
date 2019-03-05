@@ -14,12 +14,12 @@
           </div>
           <div>使用协议</div>
         </router-link>
-        <li>
+        <router-link :to="{name:'reportlist'}" tag="li">
           <div class="icon">
             <img src="../assets/images/in.png" alt="">
           </div>
           <div>删除报告</div>
-        </li>
+        </router-link>
         <router-link :to="{name:'join'}" tag="li">
           <div class="icon">
             <img src="../assets/images/join.png" alt="">

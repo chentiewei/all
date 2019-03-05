@@ -11,6 +11,9 @@ const agentdetails = () => import('./views/agentdetails')
 const agentwact = () => import('./views/agentwact')
 const agentwact3 = () => import('./views/agentwact3')
 const paylist = () => import('./views/paylist')
+const dictionaries = () => import('./views/dictionaries')
+const reportlist = () => import('./views/reportlist')
+const report = () => import('./views/report')
 
 Vue.use(Router)
 
@@ -81,6 +84,24 @@ export default new Router({
       meta: {title: '微算面相-', keepalive: false},
       name: 'paylist',
       component: paylist
+    },
+    {
+      path: '/dictionaries',
+      meta: {title: '微算面相-面相报告', keepalive: false},
+      name: 'dictionaries',
+      component: dictionaries
+    },
+    {
+      path: '/reportlist',
+      meta: {title: '微算面相-报告列表', keepalive: false},
+      name: 'reportlist',
+      component: reportlist
+    },
+    {
+      path: '/report',
+      meta: {title: '微算面相-报告', keepalive: false},
+      name: 'report',
+      component: report
     }
   ]
 })
