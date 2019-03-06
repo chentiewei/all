@@ -81,7 +81,7 @@ export default new Router({
     },
     {
       path: '/paylist',
-      meta: {title: '微算面相-', keepalive: false},
+      meta: {title: '微算面相-支付列表', keepalive: false},
       name: 'paylist',
       component: paylist
     },

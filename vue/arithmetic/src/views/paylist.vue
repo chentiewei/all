@@ -50,7 +50,7 @@
   .paylist
     background: #f6f6f6;
     height: 100vh;
-    overflow: hidden;
+    overflow-y: scroll;
 
   .g-paylist-friendlist
     padding 10px
@@ -104,18 +104,25 @@
       padding-bottom: 0.26666667rem;
       padding-bottom: 0.66666667rem;
       .paylist-box-cause,.paylist-box-love
-        background: url(https://faceplus.qqwechat.com/UI_IMG/careereport1.png) no-repeat;
+        background: url(../assets/images/careereport1.png) no-repeat;
         background-size: 100%;
         width: 8.66666667rem;
         border-radius: 0.08rem;
         padding: 0 0.4rem 0 0.4rem;
         margin: 0 auto 0.4rem;
       .paylist-box-love
-        background: url(https://faceplus.qqwechat.com/UI_IMG/lovereport.png) no-repeat;
+        background: url(../assets/images/lovereport.png) no-repeat;
+        background-size: 100%;
       .result-detail
         width: 8.26666667rem;
         margin: 0 auto;
         border-radius: 0.08rem;
+        padding-bottom 10px
+        .caree
+          color: #394C9A;
+          top: -10px;
+        .love
+          color: #FD103E
         .result-detail__title
           width: 7.33333333rem;
           height: 0.37333333rem;

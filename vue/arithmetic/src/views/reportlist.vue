@@ -2,14 +2,14 @@
 <div class="reportlist">
   <div class="g-title">我添加的报告</div>
   <div class="g-face-list">
-    <div class="m-list">
+    <router-link :to="{name:'report'}" tag="div" class="m-list">
       <div>
         <img class="s-img" src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_87,y_156,w_534,h_534" >
         <div class="s-nub">面相报告<div class="nub-hot"></div></div>
         <img class="s-icon2" src="../assets/images/deleteitem.png" v-show="deleting" @click="outing">
         <img class="s-icon" src="../assets/images/1.svg"  v-show="!deleting">
       </div>
-    </div>
+    </router-link>
   </div>
   <div class="g-report-click" @click="deleting=!deleting">
     <div class="report-competele" v-if="deleting">
