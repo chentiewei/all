@@ -1,43 +1,60 @@
 <template>
 <div class="reportlist">
   <div class="g-title">我添加的报告</div>
-  <div class="g-face-list">
-    <router-link :to="{name:'report'}" tag="div" class="m-list">
-      <div>
-        <img class="s-img" src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_87,y_156,w_534,h_534" >
-        <div class="s-nub">面相报告<div class="nub-hot"></div></div>
-        <img class="s-icon2" src="../assets/images/deleteitem.png" v-show="deleting" @click="outing">
-        <img class="s-icon" src="../assets/images/1.svg"  v-show="!deleting">
+  <div v-if="list.length!=0">
+    <div class="g-face-list">
+      <div :to="{name:'report'}" class="m-list" @click="outing">
+        <div>
+          <img class="s-img" src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_87,y_156,w_534,h_534" >
+          <div class="s-nub">面相报告<div class="nub-hot"></div></div>
+          <img class="s-icon2" src="../assets/images/deleteitem.png" v-show="deleting">
+          <img class="s-icon" src="../assets/images/1.svg"  v-show="!deleting">
+        </div>
       </div>
-    </router-link>
-  </div>
-  <div class="g-report-click" @click="deleting=!deleting">
-    <div class="report-competele" v-if="deleting">
-      <div>完成</div>
     </div>
-    <div class="report-delete" v-else>
-      <img src="../assets/images/delete.png" alt="">
+    <div class="g-report-click" @click="deleting=!deleting">
+      <div class="report-competele" v-if="deleting">
+        <div>完成</div>
+      </div>
+      <div class="report-delete" v-else>
+        <img src="../assets/images/delete.png" alt="">
+      </div>
+    </div>
+    <div v-transfer-dom>
+      <confirm v-model="show"
+               title="删除报告后不可恢复"
+               @on-cancel="onCancel"
+               @on-confirm="onConfirm">
+        <p style="text-align:center;">确定删除面相报告吗？</p>
+      </confirm>
     </div>
   </div>
-  <div v-transfer-dom>
-    <confirm v-model="show"
-             title="删除报告后不可恢复"
-             @on-cancel="onCancel"
-             @on-confirm="onConfirm">
-      <p style="text-align:center;">确定删除面相报告吗？</p>
-    </confirm>
+  <div v-else>
+    <div class="g-report">
+      <p>目前暂无报告</p>
+      <div class="m-add-report"  @click="showDiaContent">
+        <div class="s-add-pic">
+          <img src="../assets/images/reportadd.svg" alt="">
+        </div>
+        <div class="s-add-text">添加新的面相报告 </div>
+      </div>
+    </div>
+    <diaps :showdia="showdia" @showDiaContent="showDiaContent"/>
   </div>
 </div>
 </template>
 
 <script>
   import { Confirm,TransferDomDirective as TransferDom } from 'vux'
+  import diaps from '../components/diaPs'
   export default {
     name: "reportlist",
     data(){
       return {
         deleting:false,
-        show: false
+        show: false,
+        showdia: false,
+        list:[],
       }
     },
     methods:{
@@ -48,11 +65,19 @@
         console.log('确认')
       },
       outing(){
-        this.show=!this.show
+        if(this.deleting){
+          this.show=!this.show
+        }else{
+          this.$router.push({ path: 'report' })
+        }
+      },
+      showDiaContent() {
+        this.showdia = !this.showdia;
       }
     },
     components: {
-      Confirm
+      Confirm,
+      diaps
     },
     directives: {
       TransferDom
@@ -140,4 +165,31 @@
     img
       width: 0.66666667rem;
       height: 0.66666667rem;
+.g-report
+  p
+    font-size: 16px;
+    line-height: 2.66666667rem;
+    text-align: center;
+    color: #888;
+    margin-bottom: 1.33333333rem;
+    margin-top:60px;
+  .m-add-report
+    width: 4rem;
+    height: 1.86666667rem;
+    font-size: 0.42666667rem;
+    color: #4A4A4A;
+    margin 0 auto
+    .s-add-pic
+      width: 1.06666667rem;
+      height: 1.06666667rem;
+      background: #ffffff;
+      border-radius: 100%;
+      margin: 0 auto 0.13333333rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      -ms-flex-pack: center;
+      justify-content: center;
+    .s-add-text
+      text-align center
 </style>

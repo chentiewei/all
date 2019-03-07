@@ -8228,6 +8228,11 @@ vue-wechat-title@^2.0.5:
   resolved "http://registry.npm.taobao.org/vue-wechat-title/download/vue-wechat-title-2.0.5.tgz#628dd4bedca10ef39b9a98f67ca564a4db77260b"
   integrity sha1-Yo3UvtyhDvObmpj2fKVkpNt3Jgs=
 
+vue@^2.2.1:
+  version "2.6.8"
+  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.8.tgz#f21cbc536bfc14f7d1d792a137bb12f69e60ea91"
+  integrity sha1-8hy8U2v8FPfR15KhN7sS9p5g6pE=
+
 vue@^2.6.6:
   version "2.6.7"
   resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.7.tgz#254f188e7621d2d19ee28d0c0442c6d21b53ae2d"
@@ -8268,12 +8273,20 @@ vux-loader@^1.2.9:
     webpack-merge "^1.1.2"
     webpack-sources "^0.1.2"
 
+vux-uploader@^0.1.9:
+  version "0.1.9"
+  resolved "http://registry.npm.taobao.org/vux-uploader/download/vux-uploader-0.1.9.tgz#7a50620a28f75ca9b4fd220c7a92ecf9b871c5c9"
+  integrity sha1-elBiCij3XKm0/SIMepLs+bhxxck=
+  dependencies:
+    vue "^2.2.1"
+    vux "^2.1.1-rc.6"
+
 vux-xscroll@^3.1.10:
   version "3.1.12"
   resolved "http://registry.npm.taobao.org/vux-xscroll/download/vux-xscroll-3.1.12.tgz#e352e7f9dc5f9fee9253db331c967dd56b3bc950"
   integrity sha1-41Ln+dxfn+6SU9szHJZ91Ws7yVA=
 
-vux@^2.9.2:
+vux@^2.1.1-rc.6, vux@^2.9.2:
   version "2.9.2"
   resolved "http://registry.npm.taobao.org/vux/download/vux-2.9.2.tgz#9c6664106b57d33a6566c68f756f9a88b1bc1a47"
   integrity sha1-nGZkEGtX0zplZsaPdW+aiLG8Gkc=

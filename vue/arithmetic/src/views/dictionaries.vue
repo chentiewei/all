@@ -1,7 +1,7 @@
 <template>
   <div class="dictionaries">
     <div class="g-dictionaries-title">面相报告</div>
-    <div class="g-add-report">
+    <div class="g-add-report"  @click="showDiaContent">
       <div class="m-add-pic">
         <img src="../assets/images/reportadd.svg" alt="">
       </div>
@@ -22,27 +22,42 @@
           <img src="../assets/images/1.svg" class="s-icon">
         </div>
       </router-link>
-      <div class="m-list">
+      <router-link :to="{name:'single'}" tag="div" class="m-list">
         <div>
-          <div class="s-name">我的面相报告</div>
+          <div class="s-name">事业运详解</div>
           <div class="s-nub">5469人已获取<div class="nub-hot"></div></div>
           <img src="../assets/images/1.svg" class="s-icon">
         </div>
-      </div>
-      <div class="m-list">
+      </router-link>
+      <router-link :to="{name:'emotion'}" tag="div" class="m-list">
         <div>
-          <div class="s-name">我的面相报告</div>
+          <div class="s-name">情感详解</div>
           <div class="s-nub">5469人已获取<div class="nub-hot"></div></div>
           <img src="../assets/images/1.svg" class="s-icon">
         </div>
-      </div>
+      </router-link>
     </div>
+    <diaps :showdia="showdia" @showDiaContent="showDiaContent"/>
   </div>
 </template>
 
 <script>
+  import diaps from '../components/diaPs'
   export default {
-    name: "dictionaries"
+    name: "dictionaries",
+    data(){
+      return {
+        showdia: false
+      }
+    },
+    methods: {
+      showDiaContent() {
+        this.showdia = !this.showdia;
+      }
+    },
+    components: {
+      diaps
+    }
   }
 </script>
 

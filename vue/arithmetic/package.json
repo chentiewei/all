@@ -13,7 +13,8 @@
     "vue-router": "^3.0.1",
     "vue-wechat-title": "^2.0.5",
     "vuex": "^3.0.1",
-    "vux": "^2.9.2"
+    "vux": "^2.9.2",
+    "vux-uploader": "^0.1.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.1",

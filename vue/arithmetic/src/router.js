@@ -14,6 +14,8 @@ const paylist = () => import('./views/paylist')
 const dictionaries = () => import('./views/dictionaries')
 const reportlist = () => import('./views/reportlist')
 const report = () => import('./views/report')
+const single = () => import('./views/single')
+const emotion = () => import('./views/emotion')
 
 Vue.use(Router)
 
@@ -102,6 +104,18 @@ export default new Router({
       meta: {title: '微算面相-报告', keepalive: false},
       name: 'report',
       component: report
+    },
+    {
+      path: '/single',
+      meta: {title: '微算面相-报告', keepalive: false},
+      name: 'single',
+      component: single
+    },
+    {
+      path: '/emotion',
+      meta: {title: '微算面相-报告', keepalive: false},
+      name: 'emotion',
+      component: emotion
     }
   ]
 })

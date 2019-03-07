@@ -36,12 +36,18 @@
   .slide-fade-enter, .slide-fade-leave-to
     transform: translateY(-10px);
     opacity: 0;
-  /*转圈*/
+  /*转圈-正向*/
   @keyframes circle
     0%
       transform rotate(0deg)
     100%
       transform rotate(360deg)
+  /*转圈-逆向*/
+  @keyframes circleR
+    0%
+      transform rotate(360deg)
+    100%
+      transform rotate(0deg)
   /*渐显*/
   @keyframes fadein
     0%
