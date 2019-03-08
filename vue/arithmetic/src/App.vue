@@ -27,45 +27,8 @@
 </style>
 
 <style lang="stylus">
+  @import "/assets/css/animation.styl"
   #app
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
-  /*缓慢下降*/
-  .slide-fade-enter-active, .slide-fade-leave-active
-    transition: all 0.8s
-  .slide-fade-enter, .slide-fade-leave-to
-    transform: translateY(-10px);
-    opacity: 0;
-  /*转圈-正向*/
-  @keyframes circle
-    0%
-      transform rotate(0deg)
-    100%
-      transform rotate(360deg)
-  /*转圈-逆向*/
-  @keyframes circleR
-    0%
-      transform rotate(360deg)
-    100%
-      transform rotate(0deg)
-  /*渐显*/
-  @keyframes fadein
-    0%
-      opacity: 0;
-    100%
-      opacity: 1;
-  /*移入*/
-  @keyframes showtitleanima
-    0%
-      margin-left: 1rem;
-    100%
-      margin-left: 0
-  /*渐渐移入*/
-  @keyframes leftinto
-    0%
-      margin-left: 1rem;
-      opacity: 0.5;
-    100%
-      margin-left: 0
-      opacity: 1;
 </style>

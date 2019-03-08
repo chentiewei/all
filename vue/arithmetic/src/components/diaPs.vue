@@ -377,7 +377,6 @@
       display: flex;
       flex-direction: column;
       border-radius: 0.21333333rem;
-      animation: topinto-data-v-2267e271 1s;
       &>p
         margin-top: 0.53333333rem;
         font-size: 0.53333333rem;
@@ -456,4 +455,12 @@
         line-height: 1.17333333rem;
         margin: 0 auto 0.4rem;
         text-align center
+
+  /*缓慢下降*/
+  .slide-fade-enter-active, .slide-fade-leave-active
+    transition: all 0.8s
+
+  .slide-fade-enter, .slide-fade-leave-to
+    transform: translateY(-10px);
+    opacity: 0;
 </style>

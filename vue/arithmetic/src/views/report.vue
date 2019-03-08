@@ -661,40 +661,5 @@
           color: #888;
           margin-top: 0.66666667rem;
           font-size 12px
-  /*渐移入*/
-  @keyframes leftinto
-    0%
-      margin-left: 1rem;
-      opacity: 0.5;
-    100%
-      margin-left: 0
-      opacity: 1;
 
-  /*线断变化-1*/
-  @keyframes widthshow1
-    0%
-      width: 0;
-    100%
-      width: 4rem;
-
-  /*线断变化-2*/
-  @keyframes widthshow2
-    0%
-      width: 0;
-    100%
-      width: 3.33333333rem
-
-  /*波段线-竖*/
-  @keyframes myfirst
-    0%
-      height 0
-    100%
-      height 100%
-
-  /*波段线-横*/
-  @keyframes myfirs
-    0%
-      width 0
-    100%
-      width 100%
 </style>
