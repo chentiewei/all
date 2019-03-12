@@ -9,6 +9,8 @@
   "dependencies": {
     "amfe-flexible": "^2.2.1",
     "axios": "^0.18.0",
+    "js-md5": "^0.7.3",
+    "qs": "^6.6.0",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vue-wechat-title": "^2.0.5",
@@ -22,7 +24,6 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "postcss-px2rem": "^0.3.0",
-    "qs": "^6.6.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-loader": "14.2.2",

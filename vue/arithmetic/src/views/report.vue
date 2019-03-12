@@ -240,6 +240,7 @@
 </template>
 
 <script>
+  import { reportDetails } from '@/assets/js/api'
   export default {
     name: "report",
     data(){
@@ -247,9 +248,18 @@
         showdia:false
       }
     },
+    created(){
+      this.reportBit()
+    },
     methods:{
       showDiaContent(){
         this.showdia=!this.showdia;
+      },
+      reportBit(){
+        const id = this.$route.query.id;
+        reportDetails({id:id}).then((data)=>{
+          console.log(data)
+        })
       }
     }
   }

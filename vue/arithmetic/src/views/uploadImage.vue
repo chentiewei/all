@@ -1,8 +1,8 @@
 <template>
   <div class="uploadImage">
     <div class="g-upload-image" :class="{'g-upload-image-fff':type==1,'g-upload-image-top':type!=1}">
-      <img class="m-upload-image-true" :class="{' m-upload-image-scol':type>=3}"
-           src="https://faceplus.qqwechat.com/2019-03-07_8b27517d3a41c4e820cd54beb102c205.png?x-oss-process=image/crop,x_253,y_565,w_567,h_567">
+      <img v-if="bit.img" class="m-upload-image-true" :class="{' m-upload-image-scol':type>=3}" :src="bit.img">
+      <img v-else class="m-upload-image-true" :class="{' m-upload-image-scol':type>=3}" src="@/assets/images/shilizhaopian.png">
     </div>
     <div v-if="type==1">
       <div class="g-upload">
@@ -60,54 +60,102 @@
         </div>
       </div>
     </div>
-    <div v-else-if="type>=4" :class="{ 'uploadLoade':type>=4}">
+    <div v-show="type>=4" :class="{ 'uploadLoade':type>=4}">
       <div class="g-upload-type3-img">
-        <img class="m-type3-img-center"
-             src="https://faceplus.qqwechat.com/2019-03-07_e61970aced5d04cce29fb9dc01a608c7.jpeg?x-oss-process=image/crop,x_253,y_565,w_567,h_567">
-        <img v-if="type==5" class="m-type3-img-body" src="../assets/images/quanquan.png">
+        <img class="m-type3-img-center" src="https://faceplus.qqwechat.com/2019-03-07_e61970aced5d04cce29fb9dc01a608c7.jpeg?x-oss-process=image/crop,x_253,y_565,w_567,h_567">
+        <img v-if="type>=5" class="m-type3-img-body" src="../assets/images/quanquan.png">
         <img class="m-type3-img-wbody" src="../assets/images/biankuang.png">
       </div>
-      <div v-if="type==5" class="upload-loade__waiat">
+      <div v-if="type==6" class="upload-loade__waiat">
         <div class="upload-loade__tab">
-          <div class="upload-loade__tab-item time1">测量三庭长度</div>
-          <div class="upload-loade__tab-item time1">定位五官</div>
-          <div class="upload-loade__tab-item">综合分析</div>
+          <div class="upload-loade__tab-item" :class="{'time1':gif>=1}">测量三庭长度</div>
+          <div class="upload-loade__tab-item" :class="{'time1':gif>=2}">定位五官</div>
+          <div class="upload-loade__tab-item" :class="{'time1':gif>=3}">综合分析</div>
         </div>
-        <div class="upload-loade_center type1">
+        <div v-if="gif==1" class="upload-loade_center type1">
+          <div class="upload-loade_center-item--top">上庭数据提取</div>
+          <div class="upload-loade_center-item">
+            <div class="upload-loade_center-item--cen">
+              <div class="upload-loade_center-item--cen-item type-item1"></div>
+            </div>
+            <div v-if="!load[0]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
+          </div>
+          <div class="upload-loade_center-item--top">中庭数据提取</div>
+          <div class="upload-loade_center-item">
+            <div class="upload-loade_center-item--cen">
+              <div class="upload-loade_center-item--cen-item type-item2"></div>
+            </div>
+            <div v-if="!load[1]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
+          </div>
+          <div class="upload-loade_center-item--top">下庭数据提取</div>
+          <div class="upload-loade_center-item">
+            <div class="upload-loade_center-item--cen">
+              <div class="upload-loade_center-item--cen-item type-item3"></div>
+            </div>
+            <div v-if="!load[2]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
+          </div>
+        </div>
+        <div v-if="gif==2" class="upload-loade_center type2">
           <div class="upload-loade_center-item--top">定位眉头-眉峰-眉尾</div>
           <div class="upload-loade_center-item">
             <div class="upload-loade_center-item--cen">
               <div class="upload-loade_center-item--cen-item type-item1"></div>
             </div>
-            <div class="upload-loade_center-item--bot">
-              <img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-if="!load[0]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
           </div>
           <div class="upload-loade_center-item--top">定位眼长-眼高</div>
           <div class="upload-loade_center-item">
             <div class="upload-loade_center-item--cen">
               <div class="upload-loade_center-item--cen-item type-item2"></div>
             </div>
-            <div class="upload-loade_center-item--bot">
-              <img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1">
-            </div>
+            <div v-if="!load[1]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
           </div>
           <div class="upload-loade_center-item--top">定位鼻高-鼻翼宽</div>
           <div class="upload-loade_center-item">
             <div class="upload-loade_center-item--cen">
               <div class="upload-loade_center-item--cen-item type-item3"></div>
             </div>
-            <div class="upload-loade_center-item--bot_load1">
-              <img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1">
-            </div>
+            <div v-if="!load[2]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
           </div>
           <div class="upload-loade_center-item--top">定位嘴宽-嘴唇厚度</div>
           <div class="upload-loade_center-item">
             <div class="upload-loade_center-item--cen">
               <div class="upload-loade_center-item--cen-item type-item4"></div>
             </div>
-            <div class="upload-loade_center-item--bot_load1">
-              <img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1">
+            <div v-if="!load[3]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
+          </div>
+        </div>
+        <div v-if="gif==3" class="upload-loade_center type1">
+          <div class="upload-loade_center-item--top">量取下颌角度</div>
+          <div class="upload-loade_center-item">
+            <div class="upload-loade_center-item--cen">
+              <div class="upload-loade_center-item--cen-item type-item1"></div>
             </div>
+            <div v-if="!load[0]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
+          </div>
+          <div class="upload-loade_center-item--top">对比各部位数据</div>
+          <div class="upload-loade_center-item">
+            <div class="upload-loade_center-item--cen">
+              <div class="upload-loade_center-item--cen-item type-item2"></div>
+            </div>
+            <div v-if="!load[1]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
+          </div>
+          <div class="upload-loade_center-item--top">匹配五行格局</div>
+          <div class="upload-loade_center-item">
+            <div class="upload-loade_center-item--cen">
+              <div class="upload-loade_center-item--cen-item type-item3"></div>
+            </div>
+            <div v-if="!load[2]" class="upload-loade_center-item--bot_load1"><img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1"></div>
+            <div v-else class="upload-loade_center-item--bot"><img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1"></div>
           </div>
         </div>
       </div>
@@ -116,21 +164,64 @@
 </template>
 
 <script>
+  import { upImage } from '@/assets/js/api'
   export default {
     name: 'uploadImage',
     data() {
       return {
-        type: 1, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=最后执行动画*/
+        bit:{
+          img:''
+        },
+        type: 1, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画*/
         show: false,
-        detection: false/*检测结果是否人脸，是否可以进入type3（动画）*/
+        detection: false,/*检测结果是否人脸，是否可以进入type3（动画）*/
+        gif:1,/*type=6时，（.upload-loade__waiat）的动画*/
+        load:[0,0,0,0]/*(upload-loade_center-item--bot_ok1)图片是load还是ok*/
       }
     },
     created() {
+
     },
     methods: {
       uploadImage() {
-        console.log(1234)
-        this.type = 2;
+        upImage().then((data)=>{
+          if(data.status_code==200){
+            this.bit=data.data;
+            this.type = 2;
+          }
+        })
+      },
+      loadFun(){/*(upload-loade_center-item--bot_ok1)图片是load还是ok，方法*/
+        let clearLoadFun=(i)=>{/*清空load状态*/
+          if(this.load.length==(i+1)&&this.gif<3){
+            setTimeout(() => {
+              this.load.forEach((v, i) => {
+                this.load.splice(i, 1, 0)
+              })
+            },3000)
+          }
+        }
+        let setFun=(i)=>{/*改变load状态*/
+          let time=(i+1) * 2000+2000
+          setTimeout(() => {
+            this.load.splice(i,1,1)
+            clearLoadFun(i)
+          }, time)
+        }
+        this.load.forEach((v,i)=>{
+          setFun(i)
+        })
+      },
+      gifFun(){/*type=6时，（.upload-loade__waiat）的动画，方法*/
+        this.loadFun()
+        setTimeout(() => {
+          this.gif = 2;
+          this.loadFun()
+        }, 13000)
+        setTimeout(() => {
+          this.gif = 3;
+          this.loadFun()
+        }, 26000)
       },
       sub() {
         this.type = 3
@@ -139,7 +230,11 @@
         }, 2200)
         setTimeout(() => {
           this.type = 5;
-        }, 4100)
+        }, 4200)
+        setTimeout(() => {
+          this.type = 6;
+          this.gifFun();
+        }, 6200)
       }
     },
     components: {}
@@ -364,7 +459,7 @@
     overflow: auto;
     height: 16rem;
     position: relative;
-    animation: waiatshow 32s;
+    animation: waiatshow 38s;
     .upload-loade__tab
       display: flex;
       background: #fff;
@@ -392,9 +487,7 @@
       padding: 0.4rem 0;
       margin: 0.4rem auto;
       font-size: 0.37333333rem;
-      &.type1
-        animation: shopinfo 13s;
-      &.type1
+      &.type1,&.type2,&.type3
         animation: shopinfo 13s;
       .upload-loade_center-item--top
         margin: 0 0.93333333rem;

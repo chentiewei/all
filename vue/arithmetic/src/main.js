@@ -11,6 +11,16 @@ const FastClick = require('fastclick')
 FastClick.attach(document.body)
 Vue.use(VueWechatTitle)
 
+
+router.beforeEach(function (to, from, next) {
+  store.commit('updateLoadingStatus', {isLoading: true})
+  next()
+})
+
+router.afterEach(function (to) {
+  store.commit('updateLoadingStatus', {isLoading: false})
+})
+
 new Vue({
   router,
   store,

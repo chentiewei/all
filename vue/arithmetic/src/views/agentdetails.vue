@@ -132,7 +132,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  z-index: 99;
   .m-item
     flex: 1;
     border-right: 1px solid #CBCBCB;
