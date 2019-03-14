@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="g-title" style="font-family: webfont;top: 55px;">微算面相</div>
     <div class="g-title">微算面相</div>
     <div class="g-swiper">
       <swiper loop auto height="100%" dots-class="dots" dots-position="center">

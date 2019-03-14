@@ -1,6 +1,12 @@
 <template>
   <div class="paylist">
-    <div class="g-paylist-friendlist">
+
+    <div class="paylist-friendlist">
+      <div class="paylist-friendlist__list paylist-friendlist__lists">
+        <div class="paylist-friendlist__list-name">我的报告</div>
+      </div>
+    </div>
+    <div v-if="bit.length>0" class="g-paylist-friendlist">
       <div class="m-box">
         <div class="s-top">
           <div class="pic">
@@ -31,22 +37,72 @@
         </div>
       </div>
     </div>
-    <div class="g-paylist-noresult">
+    <div v-else class="g-paylist-noresult">
       <img src="../assets/images/noresult.png" class="m-noresult-img">
       <p class="m-title">报告空缺</p>
       <p class="m-content">系统检测到您删除了您的面相报告，快去重新生成吧！</p>
-      <div class="m-noresult-button">重新生成我的面相报告</div>
+      <div class="m-noresult-button" @click="showDiaContent">重新生成我的面相报告</div>
     </div>
+    <diaps :showdia="showdia" @showDiaContent="showDiaContent"/>
   </div>
 </template>
 
 <script>
+  import diaps from '../components/diaPs'
   export default {
-    name: "paylist"
+    name: "paylist",
+    data(){
+      return {
+        showdia: false,
+        bit:[]
+      }
+    },
+    methods: {
+      showDiaContent() {
+        this.showdia = !this.showdia;
+      }
+    },
+    components: {
+      diaps
+    }
   }
 </script>
 
 <style scoped lang="stylus">
+  .paylist-friendlist
+    padding-left: 0.53333333rem;
+    height: 1.33333333rem;
+    background: #fff;
+    display: flex;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.06)
+    .paylist-friendlist__list
+      margin-right: 1.01333333rem;
+      line-height: 1.33333333rem;
+    .paylist-friendlist__list-name
+      font-size: 0.37333333rem;
+      font-weight: 400;
+      color: #4a4a4a;
+      line-height: 1.33333333rem
+    .paylist-friendlist__lists
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center
+      .paylist-friendlist__list-name
+        font-size: 0.37333333rem;
+        font-weight: 600;
+        color: #ffffff;
+        height: 0.72rem;
+        background: #969696;
+        border-radius: 0.37333333rem;
+        line-height: 0.72rem;
+        text-align: center;
+        padding: 0 0.26666667rem
   .paylist
     background: #f6f6f6;
     height: 100vh;

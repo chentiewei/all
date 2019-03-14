@@ -9,6 +9,7 @@ const explain = () => import('./views/explain')
 const join = () => import('./views/join')
 const agentdetails = () => import('./views/agentdetails')
 const agentwact = () => import('./views/agentwact')
+const agentwact2 = () => import('./views/agentwact2')
 const agentwact3 = () => import('./views/agentwact3')
 const paylist = () => import('./views/paylist')
 const dictionaries = () => import('./views/dictionaries')
@@ -76,6 +77,12 @@ export default new Router({
       component: agentwact
     },
     {
+      path: '/agentwact2',
+      meta: {title: '微算面相-代理小程序', keepalive: false},
+      name: 'agentwact2',
+      component: agentwact2
+    },
+    {
       path: '/agentwact3',
       meta: {title: '微算面相-大流量渠道合作', keepalive: false},
       name: 'agentwact3',
@@ -107,13 +114,13 @@ export default new Router({
     },
     {
       path: '/single',
-      meta: {title: '微算面相-报告', keepalive: false},
+      meta: {title: '微算面相-事业报告', keepalive: false},
       name: 'single',
       component: single
     },
     {
       path: '/emotion',
-      meta: {title: '微算面相-报告', keepalive: false},
+      meta: {title: '微算面相-情感报告', keepalive: false},
       name: 'emotion',
       component: emotion
     }

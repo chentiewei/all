@@ -62,9 +62,14 @@
     </div>
     <div v-show="type>=4" :class="{ 'uploadLoade':type>=4}">
       <div class="g-upload-type3-img">
-        <img class="m-type3-img-center" src="https://faceplus.qqwechat.com/2019-03-07_e61970aced5d04cce29fb9dc01a608c7.jpeg?x-oss-process=image/crop,x_253,y_565,w_567,h_567">
+        <img v-if="bit.img" class="m-type3-img-center" :src="bit.img">
+        <img v-else class="m-type3-img-center" src="https://faceplus.qqwechat.com/2019-03-14_32b058a3468d703fe53148d1c74454e6.png?x-oss-process=image/crop,x_87,y_156,w_534,h_534">
         <img v-if="type>=5" class="m-type3-img-body" src="../assets/images/quanquan.png">
         <img class="m-type3-img-wbody" src="../assets/images/biankuang.png">
+        <svg class="loadimg">
+          <circle :cx="v"  cy="50"  r="1.2" fill="#fff" v-for="(v,i) in arr" :key="i"/>
+          <line :x1="v" y1="0" x2="300" y2="300" style="stroke:#dbd3ce;stroke-width:0.8;" v-for="(v,i) in arr" :key="i"/>
+        </svg>
       </div>
       <div v-if="type==6" class="upload-loade__waiat">
         <div class="upload-loade__tab">
@@ -160,11 +165,13 @@
         </div>
       </div>
     </div>
+    <login v-if="loginState"/>
   </div>
 </template>
 
 <script>
   import { upImage } from '@/assets/js/api'
+  import login from '../components/login'
   export default {
     name: 'uploadImage',
     data() {
@@ -172,7 +179,9 @@
         bit:{
           img:''
         },
-        type: 1, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画*/
+        arr:[50,30,80],
+        loginState:false,/*是否登录*/
+        type: 4, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画*/
         show: false,
         detection: false,/*检测结果是否人脸，是否可以进入type3（动画）*/
         gif:1,/*type=6时，（.upload-loade__waiat）的动画*/
@@ -180,7 +189,9 @@
       }
     },
     created() {
-
+      setTimeout(()=>{
+        this.arr.push(100)
+      },2500)
     },
     methods: {
       uploadImage() {
@@ -237,7 +248,9 @@
         }, 6200)
       }
     },
-    components: {}
+    components: {
+      login
+    }
   }
 </script>
 <style scoped lang="stylus">
@@ -517,4 +530,18 @@
             animation: myfirs 2s 8s forwards;
         .upload-loade_center-item--bot_load1
           animation: circle 2s linear infinite;
+  svg.loadimg
+    position absolute
+    width 100%
+    top: 1.86666667rem;
+    left: 2.66666667rem;
+    width: 4.66666667rem;
+    height: 4.66666667rem;
+    line
+      animation lineOpacity 1.5s
+  @keyframes lineOpacity
+    0%
+      stroke-opacity 0
+    100%
+      stroke-opacity 1
 </style>
