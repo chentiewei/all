@@ -29,7 +29,7 @@
       }
     },
     created(){
-      getAll()
+      //getAll()
     },
     computed: {
       ...mapState({

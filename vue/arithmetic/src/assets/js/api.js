@@ -14,8 +14,8 @@ export function getAll() {
  * @date 图片数据流
  * @Description: 用途（提交图片）
  */
-export function upImage() {
-  return post(fcae+'/restfulApi/face/checkFace')
+export function upImage(data) {
+  return post(fcae+'/restfulApi/face/checkFace',data)
 }
 
 /**

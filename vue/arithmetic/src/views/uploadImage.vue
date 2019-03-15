@@ -67,8 +67,8 @@
         <img v-if="type>=5" class="m-type3-img-body" src="../assets/images/quanquan.png">
         <img class="m-type3-img-wbody" src="../assets/images/biankuang.png">
         <svg class="loadimg">
-          <circle :cx="v"  cy="50"  r="1.2" fill="#fff" v-for="(v,i) in arr" :key="i"/>
-          <line :x1="v" y1="0" x2="300" y2="300" style="stroke:#dbd3ce;stroke-width:0.8;" v-for="(v,i) in arr" :key="i"/>
+          <circle :cx="v"  cy="50"  r="1.2" fill="#fff" v-for="(v,i) in arr" :key="i+'s'"/>
+          <line :x1="v" y1="0" x2="300" y2="300" style="stroke:#dbd3ce;stroke-width:0.8;" v-for="(v,i) in arr" :key="i+'k'"/>
         </svg>
       </div>
       <div v-if="type==6" class="upload-loade__waiat">
@@ -181,7 +181,7 @@
         },
         arr:[50,30,80],
         loginState:false,/*是否登录*/
-        type: 4, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画*/
+        type: 1, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画*/
         show: false,
         detection: false,/*检测结果是否人脸，是否可以进入type3（动画）*/
         gif:1,/*type=6时，（.upload-loade__waiat）的动画*/
@@ -195,7 +195,7 @@
     },
     methods: {
       uploadImage() {
-        upImage().then((data)=>{
+        upImage({img:'https://faceplus.qqwechat.com/UI_IMG/shilizhaopian.png'}).then((data)=>{
           if(data.status_code==200){
             this.bit=data.data;
             this.type = 2;

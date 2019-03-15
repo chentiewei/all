@@ -4,10 +4,10 @@
       <div class="app-login__title">登录</div>
       <div class="app-login__content">
         <div class="app-login__content-phone">
-          <input placeholder="填写手机号">
+          <input placeholder="填写手机号" type="number" pattern="\d*">
         </div>
         <div class="app-login__content-code">
-          <input placeholder="验证码">
+          <input placeholder="验证码" type="number" pattern="\d*">
           <div class="app-login__content-code--getcode">获取验证码</div>
         </div>
       </div>
