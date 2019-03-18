@@ -10,7 +10,7 @@ Vue.config.productionTip = false
 const FastClick = require('fastclick')
 FastClick.attach(document.body)
 Vue.use(VueWechatTitle)
-Vue.prototype.$img='http://47.104.244.226'//图片路径
+
 
 router.beforeEach(function (to, from, next) {
   store.commit('updateLoadingStatus', {isLoading: true})
