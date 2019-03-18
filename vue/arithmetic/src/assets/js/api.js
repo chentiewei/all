@@ -11,11 +11,20 @@ export function getAll() {
 
 /**
  * @author uploadImage提交图片接口
+ * @date 图片地址
+ * @Description: 用途（提交图片）
+ */
+export function checkFace(data) {
+  return post(fcae+'/restfulApi/face/checkFace',data)
+}
+
+/**
+ * @author uploadImg上传图片接口
  * @date 图片数据流
  * @Description: 用途（提交图片）
  */
-export function upImage() {
-  return post(fcae+'/restfulApi/face/checkFace')
+export function uploadImg(data) {
+  return post(fcae+'/restfulApi/face/uploadImg',data,{ showLoading: true,parsed:false })
 }
 
 /**

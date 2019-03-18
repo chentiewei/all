@@ -43,10 +43,10 @@
       <div class="agent-details__login">
         <div class="agent-details__login-title">手机号</div>
         <div class="agent-details__login-phone">
-          <input placeholder="输入手机号码">
+          <input placeholder="输入手机号码" type="number" pattern="\d*">
         </div>
         <div class="agent-details__login-password">
-          <input placeholder="输入验证码">
+          <input placeholder="输入验证码" type="number" pattern="\d*">
           <div class="agent-details__login-password-code">获取验证码</div>
         </div>
       </div>
