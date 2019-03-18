@@ -393,10 +393,11 @@
           allPlace:false//三庭全部展示
         },
         name:'',/*报告名称*/
-        type: 2, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画，7=动画全部结束（出现输入框按钮）*/
+        type: 1, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画，7=动画全部结束（出现输入框按钮）*/
         detection: false, /*检测结果是否人脸，是否可以进入type3（动画）*/
         gif: 1, /*type=6时，（.upload-loade__waiat）的动画*/
-        load: [0, 0, 0, 0]/*(upload-loade_center-item--bot_ok1)图片是load还是ok*/
+        load: [0, 0, 0, 0],/*(upload-loade_center-item--bot_ok1)图片是load还是ok*/
+        code_201:0
       }
     },
     created() {
@@ -410,9 +411,11 @@
         param.append('files',file,file.name);//通过append向form对象添加数据
         this.clearInputImage=false;
         uploadImg(param).then((data)=>{
-          //this.checkImage(this.$img+data.data)
-          this.checkImage('https://faceplus.qqwechat.com/UI_IMG/shilizhaopian.png')
-          this.clearInputImage=true;
+          if(data.status_code==200){
+            this.checkImage(this.$img+data.data)
+            //this.checkImage('https://faceplus.qqwechat.com/UI_IMG/shilizhaopian.png')
+            this.clearInputImage=true;
+          }
         })
       },
       arrangeCoordinate(data) {/*整理坐标（坐标是原图，需要转化为现图坐标）*/
@@ -450,11 +453,14 @@
       },
       checkImage(img) {/*检查图片*/
         checkFace({img: img}).then((data) => {
-          if (data.status_code == 200) {
+          if(data.status_code == 200) {
             this.bit = data.data;
             this.type = 2;
             this.arrangeCoordinate(this.bit)
             this.faceChartPlce(['left_eyebrow_upper_middle','nose_middle_contour','contour_chin'])
+          }else if(data.status_code == 201){
+            console.log(data)
+            this.type = 2;
           }
         })
       },

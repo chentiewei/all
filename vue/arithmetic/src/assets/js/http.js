@@ -58,7 +58,7 @@ axios.interceptors.request.use(
     return config;
   },
   error => {
-    return Promise.reject(err);
+    return Promise.reject(error);
   }
 );
 /*请求响应拦截*/
@@ -66,6 +66,9 @@ axios.interceptors.response.use(
   response => {
     if(response.config.showLoading){
       tryHideFullScreenLoading()
+    }
+    if(response.data.status_code==400||response.data.status_code==401){//程序状态码 特殊处理
+      store.commit('updateToastStatus', {state: true,text:response.data.message})
     }
     return response;
   },
