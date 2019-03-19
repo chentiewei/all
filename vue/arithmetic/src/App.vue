@@ -21,7 +21,6 @@
 <script>
   import { Loading,Toast,TransferDomDirective as TransferDom } from 'vux'
   import { mapState } from 'vuex'
-  import { getAll } from './assets/js/api'
   export default {
     name: "app",
     data(){
@@ -29,7 +28,6 @@
       }
     },
     created(){
-      //getAll()
     },
     computed: {
       ...mapState({

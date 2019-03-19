@@ -1,12 +1,13 @@
 <template>
 <div class="reportlist">
   <div class="g-title">我添加的报告</div>
-  <div v-if="list.length!=0">
+  <div v-if="bit.length!=0">
     <div class="g-face-list">
-      <div :to="{name:'report'}" class="m-list" @click="outing">
+      <div :to="{name:'report'}" class="m-list" @click="outing(v.id)" v-for="(v,i) in bit" :key="i">
         <div>
-          <img class="s-img" src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_87,y_156,w_534,h_534" >
-          <div class="s-nub">面相报告<div class="nub-hot"></div></div>
+          <img v-if="v.img" class="s-img" :src="v.img" >
+          <img v-else class="s-img" src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_87,y_156,w_534,h_534" >
+          <div class="s-nub">{{v.name}}<div class="nub-hot"></div></div>
           <img class="s-icon2" src="../assets/images/deleteitem.png" v-show="deleting">
           <img class="s-icon" src="../assets/images/1.svg"  v-show="!deleting">
         </div>
@@ -45,34 +46,51 @@
 </template>
 
 <script>
+  import {reportList,deleteReport} from '@/assets/js/api'
   import { Confirm,TransferDomDirective as TransferDom } from 'vux'
   import diaps from '../components/diaPs'
   export default {
     name: "reportlist",
     data(){
       return {
-        deleting:false,
-        show: false,
-        showdia: false,
-        list:[],
+        deleting:false,//删除显示
+        show: false,//删除报告确认框
+        showdia: false,//添加报告弹窗框
+        bit:[],//基础数据
+        deletId:0//删除id
       }
+    },
+    created(){
+      this.bitFun()
     },
     methods:{
       onCancel(){
         console.log('取消')
       },
       onConfirm(){
-        console.log('确认')
+        deleteReport({id:this.deletId}).then((data)=>{
+          if(data.status_code==200){
+            this.$store.commit('updateToastStatus', {state: true,text:'删除成功'})
+          }
+        })
       },
-      outing(){
+      outing(id){
         if(this.deleting){
           this.show=!this.show
+          this.deletId=id
         }else{
-          this.$router.push({ path: 'report' })
+          this.$router.push({ path: 'report',query:{id:id}})
         }
       },
       showDiaContent() {
         this.showdia = !this.showdia;
+      },
+      bitFun(){
+        reportList().then((data)=>{
+          if(data.status_code==200){
+            this.bit=data.data
+          }
+        })
       }
     },
     components: {

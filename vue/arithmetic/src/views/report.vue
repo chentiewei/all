@@ -20,9 +20,8 @@
     </div>
     <div class="g-result-carde">
       <p class="m-result-carde-title title">面相概述</p>
-      <div class="m-result-carde-content">天庭饱满圆润，额头有肉，光滑明亮，一生近贵，前途广阔，而且智慧高，有学识。额如覆肝，长而丰隆，方而广阔，社会地位高，人生前途广阔，并且父亲身体好。
-        中庭势阔，鼻柱丰隆端正，不偏不倚，一生财运好，做事有能力有主意，能够忍辱负，重完成大业。
-        下庭，主老年运，下庭长的人寿命长，很多80岁以上的老人，下庭都是比较长的。如果是尖下巴，则属于好动型，不喜欢宅在家里，喜欢外出；而下巴圆润的人一整天宅在家里也不会觉得闷。
+      <div class="m-result-carde-content">
+        {{bit.face}}
       </div>
     </div>
     <div class="g-result-garde">
@@ -30,7 +29,7 @@
       <div class="m-result-garde-content">
         <div class="s-result-garde-item">
           <div class="bem-mark">
-            <div class="nub" style="height: 32%;">
+            <div class="nub" :style="{height: bit.court_up_num/10*100+'%'}">
               <div class="bem-animate"></div>
             </div>
           </div>
@@ -38,7 +37,7 @@
         </div>
         <div class="s-result-garde-item">
           <div class="bem-mark">
-            <div class="nub" style="height: 32%;">
+            <div class="nub" :style="{height: bit.court_mid_num/10*100+'%'}">
               <div class="bem-animate"></div>
             </div>
           </div>
@@ -46,7 +45,7 @@
         </div>
         <div class="s-result-garde-item">
           <div class="bem-mark">
-            <div class="nub" style="height: 32%;">
+            <div class="nub" :style="{height: bit.court_down_num/10*100+'%'}">
               <div class="bem-animate"></div>
             </div>
           </div>
@@ -54,7 +53,7 @@
         </div>
         <div class="s-result-garde-item">
           <div class="bem-mark">
-            <div class="nub" style="height: 32%;">
+            <div class="nub" :style="{height: bit.eyebrow_num/10*100+'%'}">
               <div class="bem-animate"></div>
             </div>
           </div>
@@ -62,7 +61,7 @@
         </div>
         <div class="s-result-garde-item">
           <div class="bem-mark">
-            <div class="nub" style="height: 32%;">
+            <div class="nub" :style="{height: bit.eye_num/10*100+'%'}">
               <div class="bem-animate"></div>
             </div>
           </div>
@@ -70,7 +69,7 @@
         </div>
         <div class="s-result-garde-item">
           <div class="bem-mark">
-            <div class="nub" style="height: 32%;">
+            <div class="nub" :style="{height: bit.nose_num/10*100+'%'}">
               <div class="bem-animate"></div>
             </div>
           </div>
@@ -78,7 +77,7 @@
         </div>
         <div class="s-result-garde-item">
           <div class="bem-mark">
-            <div class="nub" style="height: 32%;">
+            <div class="nub" :style="{height: bit.mouth_num/10*100+'%'}">
               <div class="bem-animate"></div>
             </div>
           </div>
@@ -87,13 +86,13 @@
       </div>
       <div class="m-result-garde-chart-text">
         <div class="s-result-garde-chart-left">
-          面相评分: <span>65</span>
+          面相评分: <span>{{bit.face_num}}</span>
         </div>
         <div class="s-result-garde-chart-middle">总分100分</div>
-        <div class="s-result-garde-chart-right">面相一般</div>
+        <div class="s-result-garde-chart-right">{{bit.face_num<80&&bit.face_num>=60?'面相一般':bit.face_num<60?'面相欠佳':'面相较好'}}</div>
       </div>
       <div class="m-result-garde-chart-all" style="background-color: rgb(232, 232, 232); width: 94%;">
-        <div style="width: 65%;">
+        <div :style="{width:bit.face_num+'%'}">
           <div class="isFixed"></div>
         </div>
       </div>
@@ -105,7 +104,7 @@
             眼睛
           </div>
           <div class="result-imgcard__top-right">
-            眼睛细长
+            {{bit.eye_title}}
           </div>
         </div>
         <div class="result-imgcard__bot">
@@ -115,7 +114,7 @@
                  class="result-imgcard__bot-imgcon heightauto">
           </div>
           <div>
-            若是男性，在三十岁前难以成就事业，但天性乐观，在逆境中依然能够保持积极心态，沉着应对困难，三十岁后会逐渐把握机遇发展事业。个性温良，心思慎密，略带泄神经敏感的特质，行事喜柔缓，不疾不徐，常会考虑较多，而具依赖心态，若是眉毛太细又过于稀疏，则为人显得自利心重。
+            {{bit.eye_info}}
           </div>
         </div>
       </div>
@@ -125,7 +124,7 @@
             嘴巴
           </div>
           <div class="result-imgcard__top-right">
-            嘴角上翘
+            {{bit.mouth_title}}
           </div>
         </div>
         <div class="result-imgcard__bot">
@@ -134,9 +133,7 @@
                  src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_266,y_377,w_249,h_249"
                  class="result-imgcard__bot-imgcon heightauto">
           </div>
-          <div>
-            这样的唇形，易有贵格，比较容易有社会地位，说话做事能过脑子，所以在某一方面会比较擅长，能做到行业的顶尖水平。（相学中称为弯弓仰月口），聪明有为，具有才华，为人感情丰富，颇知上进。任重道远，不太会和人计较，能得朋友的信赖。如果唇色红润明亮，更是晚运亨通之相。嘴巴方而阔，轮线清晰。生性仁慈敦厚，度量很大，做起事来十分有前瞻性、有胆识和担当，不会畏首畏尾，很有大将之风。嘴唇薄，个性欠稳重、无责任感，讲话办事靠不住，说话毒蛇一针见血，容易得罪人，作风看似豪放私下却有性冷淡的倾向。嘴唇代表口福和交际，嘴唇适中不容易
-          </div>
+          <div>{{bit.mouth_info}}</div>
         </div>
       </div>
       <div class="result-imgcard">
@@ -145,7 +142,7 @@
             鼻子
           </div>
           <div class="result-imgcard__top-right">
-            鼻翼中正
+            {{bit.nose_title}}
           </div>
         </div>
         <div class="result-imgcard__bot noPay">
@@ -154,15 +151,16 @@
                  src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_244,y_262,w_237,h_237"
                  class="result-imgcard__bot-imgcon heightauto">
           </div>
-          <div class="pay">
-            <div data-v-d8bacbb6=""
-                 style="width: 174px; height: 12px; background: rgb(244, 244, 244); margin-bottom: 17px;"></div>
-            <div data-v-d8bacbb6=""
-                 style="width: 116px; height: 12px; background: rgb(244, 244, 244); margin-bottom: 25px;"></div>
+          <div class="pay" v-if="bit.nose_lock==1">
+            <div style="width: 174px; height: 12px; background: rgb(244, 244, 244); margin-bottom: 17px;"></div>
+            <div style="width: 116px; height: 12px; background: rgb(244, 244, 244); margin-bottom: 25px;"></div>
             <div class="pay-botton">
               <img src="../assets/images/facelock.svg" alt="">
               <span>2元解锁鼻相解读</span>
             </div>
+          </div>
+          <div class="result-imgcard__top-right" v-else-if="bit.nose_lock==2">
+            {{bit.nose_info}}
           </div>
         </div>
       </div>
@@ -245,7 +243,8 @@
     name: "report",
     data(){
       return {
-        showdia:false
+        showdia:false,
+        bit:{},//基础数据
       }
     },
     created(){
@@ -258,7 +257,7 @@
       reportBit(){
         const id = this.$route.query.id;
         reportDetails({id:id}).then((data)=>{
-          console.log(data)
+          this.bit=data.data
         })
       }
     }

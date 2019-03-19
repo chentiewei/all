@@ -22,46 +22,88 @@
       </div>
       <div class="g-btn-submit">
         拍照/上传美照
-        <input v-if="clearInputImage" type="file" @change="uploadImage($event)"  accept="image/*" name="avatar" >
+        <input v-if="clearInputImage" type="file" @change="uploadImage($event)" accept="image/*" name="avatar">
       </div>
     </div>
     <div v-else-if="type==2">
-      <div class="g-upload-type2-bottom">
-        <div class="isupdate">
-          <div class="isupdate-item">
-            <div class="isupdate-item__left">头部姿势</div>
-            <div class="isupdate-item__right">右倾斜1°</div>
-            <img src="../assets/images/Correct.png">
+      <div v-if="bit.error">
+        <div class="g-upload-type2-bottom">
+          <div class="isupdate">
+            <div class="isupdate-item">
+              <div class="isupdate-item__left">头部姿势</div>
+              <div class="isupdate-item__right" v-if="bit.error.no_face.value">{{bit.error.no_face.str}}</div>
+              <div class="isupdate-item__right" v-else>
+                {{bit.error.roll_angle.value>=0?'右倾斜':'左倾斜'}}{{Math.abs(parseInt(bit.error.roll_angle.value))}}°
+              </div>
+              <img src="../assets/images/Correct.png"
+                   v-if="Math.abs(bit.error.yaw_angle.value)<30&&!bit.error.no_face.value">
+              <img src="../assets/images/error.png" v-else>
+            </div>
+            <div class="isupdate-item">
+              <div class="isupdate-item__left">左眼状态</div>
+              <div class="isupdate-item__right text" v-if="bit.error.no_face.value">{{bit.error.no_face.str}}</div>
+              <div class="isupdate-item__right text" v-else>
+                {{bit.error.left_eye_close.value?'左眼闭合':bit.error.left_eye_occlusion.value?'左眼遮挡':'睁眼，未戴眼镜'}}
+              </div>
+              <img src="../assets/images/error.png"
+                   v-if="bit.error.left_eye_close.value||bit.error.left_eye_occlusion.value">
+              <img src="../assets/images/Correct.png" v-else>
+            </div>
+            <div class="isupdate-item">
+              <div class="isupdate-item__left">右眼状态</div>
+              <div class="isupdate-item__right text" v-if="bit.error.no_face.value">{{bit.error.no_face.str}}</div>
+              <div class="isupdate-item__right text" v-else>
+                {{bit.error.right_eye_close.value?'右眼闭合':bit.error.right_eye_occlusion.value?'右眼遮挡':'睁眼，未戴眼镜'}}
+              </div>
+              <img src="../assets/images/error.png"
+                   v-if="bit.error.right_eye_close.value||bit.error.right_eye_occlusion.value">
+              <img src="../assets/images/Correct.png" v-else>
+            </div>
           </div>
-          <div class="isupdate-item">
-            <div class="isupdate-item__left">左眼状态</div>
-            <div class="isupdate-item__right text">睁眼，未戴眼镜</div>
-            <img src="../assets/images/Correct.png">
-          </div>
-          <div class="isupdate-item">
-            <div class="isupdate-item__left">右眼状态</div>
-            <div class="isupdate-item__right text">睁眼，未戴眼镜</div>
-            <img src="../assets/images/error.png">
+        </div>
+        <div class="g-btn-submit2" @click="detection=!detection">确认提交</div>
+        <div class="g-btn-upload2">重新上传<input v-if="clearInputImage" type="file" @change="uploadImage($event)"
+                                              accept="image/*" name="avatar"></div>
+        <div class="g-upload-err-dia" v-if="detection" @click="detection=!detection">
+          <div class="m-err-box">
+            <div class="s-err-title">您的照片未符合以下标准：</div>
+            <div class="s-err-content">
+              <div class="err-item" v-for="(v,i) in bit.error" v-if="i!='yaw_angle'&&i!='pitch_angle'" :key="'error'+i">
+                <div class="err-left"></div>
+                <div class="err-right">{{v.str}}</div>
+                <!--<div class="err-right">没有人脸<span>(要求人脸照)</span></div>-->
+              </div>
+            </div>
+            <div class="s-err-sub">
+              <input v-if="clearInputImage" type="file" @change="uploadImage($event)" accept="image/*" name="avatar">
+              重新上传
+            </div>
           </div>
         </div>
       </div>
-      <div class="g-btn-submit2" @click="detection=!detection">确认提交</div>
-      <div class="g-btn-upload2">重新上传<input v-if="clearInputImage" type="file" @change="uploadImage($event)"  accept="image/*" name="avatar" ></div>
-      <div @click="sub" style="text-align: center">下一步</div>
-      <div class="g-upload-err-dia" v-if="detection" @click="detection=!detection">
-        <div class="m-err-box">
-          <div class="s-err-title">您的照片未符合以下标准：</div>
-          <div class="s-err-content">
-            <div class="err-item">
-              <div class="err-left"></div>
-              <div class="err-right">没有人脸<span>(要求人脸照)</span></div>
+      <div v-else>
+        <div class="g-upload-type2-bottom">
+          <div class="isupdate">
+            <div class="isupdate-item">
+              <div class="isupdate-item__left">头部姿势</div>
+              <div class="isupdate-item__right">{{bit.headpose.roll_angle>=0?'右倾斜':'左倾斜'}}{{Math.abs(parseInt(bit.headpose.roll_angle))}}°</div>
+              <img src="../assets/images/Correct.png">
+            </div>
+            <div class="isupdate-item">
+              <div class="isupdate-item__left">左眼状态</div>
+              <div class="isupdate-item__right text">睁眼，未戴眼镜</div>
+              <img src="../assets/images/Correct.png">
+            </div>
+            <div class="isupdate-item">
+              <div class="isupdate-item__left">右眼状态</div>
+              <div class="isupdate-item__right text">睁眼，未戴眼镜</div>
+              <img src="../assets/images/Correct.png">
             </div>
           </div>
-          <div class="s-err-sub">
-            <input v-if="clearInputImage" type="file" @change="uploadImage($event)"  accept="image/*" name="avatar" >
-            重新上传
-          </div>
         </div>
+        <div class="g-btn-submit2" @click="sub">确认提交</div>
+        <div class="g-btn-upload2">重新上传<input v-if="clearInputImage" type="file" @change="uploadImage($event)"
+                                              accept="image/*" name="avatar"></div>
       </div>
     </div>
     <div v-show="type>=4" :class="{ 'uploadLoade':type>=4}">
@@ -74,9 +116,13 @@
           <div class="face-result-line1"></div>
           <div class="face-result-text" :style="{top:linePlace[0].top/2+'px'}">{{linePlace[0].text}}</div>
           <div class="face-result-line1" :style="{top:linePlace[0].top+'px'}"></div>
-          <div class="face-result-text" :style="{top:(linePlace[0].top+linePlace[1].top)/2+'px'}">{{linePlace[1].text}}</div>
+          <div class="face-result-text" :style="{top:(linePlace[0].top+linePlace[1].top)/2+'px'}">
+            {{linePlace[1].text}}
+          </div>
           <div class="face-result-line1" :style="{top:linePlace[1].top+'px'}"></div>
-          <div class="face-result-text" :style="{top:(linePlace[1].top+linePlace[2].top)/2+'px'}">{{linePlace[2].text}}</div>
+          <div class="face-result-text" :style="{top:(linePlace[1].top+linePlace[2].top)/2+'px'}">
+            {{linePlace[2].text}}
+          </div>
           <div class="face-result-line1" :style="{top:linePlace[2].top+'px'}"></div>
         </div>
         <div class="m-linePlace m-linePlace1" v-if="placeBit.showPlace1"><!--上庭展示-->
@@ -86,17 +132,23 @@
         </div>
         <div class="m-linePlace m-linePlace2" v-if="placeBit.showPlace2"><!--中庭展示-->
           <div class="face-result-line1" :style="{top:linePlace[0].top+'px'}"></div>
-          <div class="face-result-text" :style="{top:(linePlace[0].top+linePlace[1].top)/2+'px'}">{{linePlace[1].text}}</div>
+          <div class="face-result-text" :style="{top:(linePlace[0].top+linePlace[1].top)/2+'px'}">
+            {{linePlace[1].text}}
+          </div>
           <div class="face-result-line1" :style="{top:linePlace[1].top+'px'}"></div>
         </div>
         <div class="m-linePlace m-linePlace3" v-if="placeBit.showPlace3"><!--下庭展示-->
           <div class="face-result-line1" :style="{top:linePlace[1].top+'px'}"></div>
-          <div class="face-result-text" :style="{top:(linePlace[1].top+linePlace[2].top)/2+'px'}">{{linePlace[2].text}}</div>
+          <div class="face-result-text" :style="{top:(linePlace[1].top+linePlace[2].top)/2+'px'}">
+            {{linePlace[2].text}}
+          </div>
           <div class="face-result-line1" :style="{top:linePlace[2].top+'px'}"></div>
         </div>
         <svg class="loadimg">
-          <line :x1="v[0].x" :y1="v[0].y" :x2="v[1].x" :y2="v[1].y" style="stroke:#d5cbcb;stroke-width:1.2;" v-for="(v,i) in lines" :key="'line'+i"/>
-          <line :x1="v[0].x" :y1="v[0].y" :x2="v[1].x" :y2="v[1].y" style="stroke:#fff;stroke-width:1.2;" v-for="(v,i) in angle" :key="'angle'+i"/>
+          <line :x1="v[0].x" :y1="v[0].y" :x2="v[1].x" :y2="v[1].y" style="stroke:#d5cbcb;stroke-width:1.2;"
+                v-for="(v,i) in lines" :key="'line'+i"/>
+          <line :x1="v[0].x" :y1="v[0].y" :x2="v[1].x" :y2="v[1].y" style="stroke:#fff;stroke-width:1.2;"
+                v-for="(v,i) in angle" :key="'angle'+i"/>
           <circle :cx="v.x" :cy="v.y" r="1.2" fill="#fff" v-for="(v,i) in circles" :key="'circles'+i"/>
         </svg>
       </div>
@@ -163,7 +215,7 @@
               <div class="upload-loade_center-item--cen-item type-item2"></div>
             </div>
             <div v-if="!load[1]" class="upload-loade_center-item--bot_load1">
-              <img src="../assets/images/load.png"  class="upload-loade_center-item--bot_ok1">
+              <img src="../assets/images/load.png" class="upload-loade_center-item--bot_ok1">
             </div>
             <div v-else class="upload-loade_center-item--bot">
               <img src="../assets/images/ok.svg" class="upload-loade_center-item--bot_ok1">
@@ -247,7 +299,6 @@
       </div>
     </div>
     <login v-if="loginState"/>
-
   </div>
 </template>
 
@@ -259,14 +310,15 @@
     name: 'uploadImage',
     data() {
       return {
-        //bit:{img:''},
+        bit: {img: ''},
         bit: {
-          "id": 2948,
-          "img": "https:\/\/faceplus.qqwechat.com\/UI_IMG\/shilizhaopian.png?x-oss-process=image\/crop,x_89,y_157,w_533,h_533",
+          "id": 2978,
+          "img": "http:\/\/47.104.244.226\/upload\/20190319\/201903195c908d2be7b99.png",
           "img_size": "89,157,533,533",
           "is_glass": 0,
           "sex": 2,
           "age": 27,
+          "headpose": {"yaw_angle": 4.7571, "pitch_angle": 10.396841, "roll_angle": -1.4086682},
           "position": {
             "contour_chin": {"y": 595, "x": 367},
             "left_eye_upper_left_quarter": {"y": 308, "x": 260},
@@ -374,47 +426,96 @@
             "mouth_lower_lip_top": {"y": 498, "x": 362},
             "right_eye_upper_left_quarter": {"y": 311, "x": 418},
             "right_eye_pupil": {"y": 316, "x": 438}
-          }
+          },
+          "beautifyImg": "http:\/\/47.104.244.226.\/upload\/20190319\/jpg"
         },
-        lines: [],/*线连接*/
-        angle: [],/*angle夹角*/
+        /*bit:{
+          error:{
+            "no_face":1,
+            "face_num":1,
+            "left_eye_close":1,
+            "right_eye_close":1,
+            "left_eye_occlusion":1,
+            "right_eye_occlusion":1,
+            "pitch_angle":10.396841,
+            "roll_angle":-1.4086682,
+            "yaw_angle":4.7571
+          },
+          "img":"http:\/\/47.104.244.226\/upload\/20190319\/201903195c9054c3ed5fc.png"
+        },*/
+        errMsg: {
+          /*错误情况*/
+          no_face: '未识别人脸',
+          face_num: '请上传单人照片',
+          left_eye_close: '左眼闭合',
+          right_eye_close: '右眼闭合',
+          left_eye_occlusion: '左眼遮挡',
+          right_eye_occlusion: '右眼遮挡',
+          yaw_angle: '摇头',
+          pitch_angle: '抬头',
+          roll_angle: '倾斜角度小于30'
+        },
+        lines: [], /*线连接*/
+        angle: [], /*angle夹角*/
         circles: [], /*点坐标*/
-        clearInputImage:true,/*上传图片清空(让他可以上传重复图片)*/
+        clearInputImage: true, /*上传图片清空(让他可以上传重复图片)*/
         loginState: false, /*是否登录*/
-        linePlace:[/*上中下三挺*/
-          {top:0,text:'上庭'},
-          {top:0,text:'中庭'},
-          {top:0,text:'下庭'}
+        linePlace: [/*上中下三挺*/
+          {top: 0, text: '上庭'},
+          {top: 0, text: '中庭'},
+          {top: 0, text: '下庭'}
         ],
-        placeBit:{/*上中下三挺显示*/
-          showPlace1:false,//上庭全部展示
-          showPlace2:false,//中庭全部展示
-          showPlace3:false,//下庭全部展示
-          allPlace:false//三庭全部展示
+        placeBit: {
+          /*上中下三挺显示*/
+          showPlace1: false,//上庭全部展示
+          showPlace2: false,//中庭全部展示
+          showPlace3: false,//下庭全部展示
+          allPlace: false//三庭全部展示
         },
-        name:'',/*报告名称*/
-        type: 1, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画，7=动画全部结束（出现输入框按钮）*/
+        name: '', /*报告名称*/
+        type: 7, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画，7=动画全部结束（出现输入框按钮）*/
         detection: false, /*检测结果是否人脸，是否可以进入type3（动画）*/
         gif: 1, /*type=6时，（.upload-loade__waiat）的动画*/
-        load: [0, 0, 0, 0],/*(upload-loade_center-item--bot_ok1)图片是load还是ok*/
-        code_201:0
+        load: [0, 0, 0, 0], /*(upload-loade_center-item--bot_ok1)图片是load还是ok*/
+        code_201: 0
       }
     },
     created() {
-      this.arrangeCoordinate(this.bit)
-      this.faceChartPlce(['left_eyebrow_upper_middle','nose_middle_contour','contour_chin'])
+      //this.arrangeCoordinate(this.bit)
+      //this.faceChartPlce(['left_eyebrow_upper_middle', 'nose_middle_contour', 'contour_chin'])
+      /*for(let i in this.bit.error){
+        if(this.errMsg[i]){
+          let _value=this.bit.error[i]
+          this.bit.error[i]={};
+          this.bit.error[i].value=_value
+          this.bit.error[i].str=this.errMsg[i]
+        }
+      }*/
     },
     methods: {
       uploadImage(e) {/*图片上传*/
         let file = e.target.files[0];
         let param = new FormData(); //创建form对象
-        param.append('files',file,file.name);//通过append向form对象添加数据
-        this.clearInputImage=false;
-        uploadImg(param).then((data)=>{
-          if(data.status_code==200){
-            this.checkImage(this.$img+data.data)
-            //this.checkImage('https://faceplus.qqwechat.com/UI_IMG/shilizhaopian.png')
-            this.clearInputImage=true;
+        param.append('files', file, file.name);//通过append向form对象添加数据
+        this.clearInputImage = false;
+        checkFace(param).then((data) => {
+          this.clearInputImage = true;
+          if (data.status_code == 200) {
+            this.bit = data.data;
+            this.type = 2;
+            this.arrangeCoordinate(this.bit)
+            this.faceChartPlce(['left_eyebrow_upper_middle', 'nose_middle_contour', 'contour_chin'])
+          } else if (data.status_code == 201) {
+            this.bit = data.data;
+            for (let i in this.bit.error) {/*整理错误文本*/
+              if (this.errMsg[i]) {
+                let _value = this.bit.error[i]
+                this.bit.error[i] = {};
+                this.bit.error[i].value = _value
+                this.bit.error[i].str = this.errMsg[i]
+              }
+            }
+            this.type = 2;
           }
         })
       },
@@ -439,30 +540,17 @@
           data.position[i].y = (y - zy) * (picBox / h)
         }
       },
-      faceChartPlce(strArr){/*整理3庭位置*/
+      faceChartPlce(strArr) {/*整理3庭位置*/
         const data = this.bit.position;
         for (let i in data) {
           if (strArr[0].indexOf(i) != -1) {
-            this.linePlace[0].top=data[i].y
-          }else if(strArr[1].indexOf(i) != -1){
-            this.linePlace[1].top=data[i].y
-          }else if(strArr[2].indexOf(i) != -1){
-            this.linePlace[2].top=data[i].y
+            this.linePlace[0].top = data[i].y
+          } else if (strArr[1].indexOf(i) != -1) {
+            this.linePlace[1].top = data[i].y
+          } else if (strArr[2].indexOf(i) != -1) {
+            this.linePlace[2].top = data[i].y
           }
         }
-      },
-      checkImage(img) {/*检查图片*/
-        checkFace({img: img}).then((data) => {
-          if(data.status_code == 200) {
-            this.bit = data.data;
-            this.type = 2;
-            this.arrangeCoordinate(this.bit)
-            this.faceChartPlce(['left_eyebrow_upper_middle','nose_middle_contour','contour_chin'])
-          }else if(data.status_code == 201){
-            console.log(data)
-            this.type = 2;
-          }
-        })
       },
       faceChartCircle(arr, strArr) {/*点的归类*/
         const data = this.bit.position;
@@ -472,27 +560,27 @@
           }
         }
       },
-      faceChartLine(arr,strArr){
+      faceChartLine(arr, strArr) {
         const data = this.bit.position;
-        let lineArr=[];
-         for (let i in data) {
-           if (strArr.indexOf(i) != -1) {
-             lineArr.push(data[i])
-           }
-         }
-         arr.push(lineArr)
-      },
-      faceChartEarLeft(arr,strArr){
-        const data = this.bit.position;
-        let lineArr=[]
-        let j=0
+        let lineArr = [];
         for (let i in data) {
           if (strArr.indexOf(i) != -1) {
-            if(j==0){
+            lineArr.push(data[i])
+          }
+        }
+        arr.push(lineArr)
+      },
+      faceChartEarLeft(arr, strArr) {
+        const data = this.bit.position;
+        let lineArr = []
+        let j = 0
+        for (let i in data) {
+          if (strArr.indexOf(i) != -1) {
+            if (j == 0) {
               lineArr.push(data[i])
-            }else{
-              data[i].x=data[i].x-50;
-              data[i].y=data[i].y-50;
+            } else {
+              data[i].x = data[i].x - 50;
+              data[i].y = data[i].y - 50;
               lineArr.push(data[i])
             }
             j++
@@ -500,17 +588,17 @@
         }
         arr.push(lineArr)
       },
-      faceChartEarRight(arr,strArr){
+      faceChartEarRight(arr, strArr) {
         const data = this.bit.position;
-        let lineArr=[]
-        let j=0
+        let lineArr = []
+        let j = 0
         for (let i in data) {
           if (strArr.indexOf(i) != -1) {
-            if(j==0){
+            if (j == 0) {
               lineArr.push(data[i])
-            }else{
-              data[i].x=data[i].x+50;
-              data[i].y=data[i].y-50;
+            } else {
+              data[i].x = data[i].x + 50;
+              data[i].y = data[i].y - 50;
               lineArr.push(data[i])
             }
             j++
@@ -519,15 +607,15 @@
         arr.push(lineArr)
       },
       animationGif1(i) {/*三庭动画(gif1动画)*/
-        const showClear=(str,allFalse)=>{
-          for(let i in this.placeBit){
-            if(allFalse){
-              this.placeBit[i]=false
+        const showClear = (str, allFalse) => {
+          for (let i in this.placeBit) {
+            if (allFalse) {
+              this.placeBit[i] = false
             }
-            if(str==i){
-              this.placeBit[i]=true
-            }else{
-              this.placeBit[i]=false
+            if (str == i) {
+              this.placeBit[i] = true
+            } else {
+              this.placeBit[i] = false
             }
           }
         }
@@ -560,80 +648,81 @@
           this.faceChartCircle(this.circles, ['mouth_right_corner', 'mouth_left_corner', 'mouth_lower_lip_left_contour3', 'mouth_lower_lip_bottom', 'mouth_lower_lip_right_contour3', 'mouth_upper_lip_left_contour1', 'mouth_upper_lip_right_contour1'])
         }
       },
-      animationGif3(i){/*定位综合(gif3动画)*/
-        if(i == 0){
-          this.faceChartLine(this.angle, ['contour_chin','contour_right16'])
-          this.faceChartLine(this.angle, [ 'contour_chin','contour_left16'])
-          this.faceChartLine(this.angle, ['contour_chin','contour_right14'])
-          this.faceChartLine(this.angle, [ 'contour_chin','contour_left14'])
-        }else if(i==1){
-          this.angle=[]/*去除颚部夹角*/
+      animationGif3(i) {/*定位综合(gif3动画)*/
+        if (i == 0) {
+          this.faceChartLine(this.angle, ['contour_chin', 'contour_right16'])
+          this.faceChartLine(this.angle, ['contour_chin', 'contour_left16'])
+          this.faceChartLine(this.angle, ['contour_chin', 'contour_right14'])
+          this.faceChartLine(this.angle, ['contour_chin', 'contour_left14'])
+        } else if (i == 1) {
+          this.angle = []
+          /*去除颚部夹角*/
           /*
           *点的延迟链接
           */
-          setTimeout(()=>{
+          setTimeout(() => {
             /*左眉*/
             this.faceChartCircle(this.circles, ['left_eyebrow_upper_middle', 'left_eyebrow_left_corner', 'left_eyebrow_upper_right_corner'])
             /*右眉*/
             this.faceChartCircle(this.circles, ['right_eyebrow_upper_middle', 'right_eyebrow_right_corner', 'right_eyebrow_upper_left_corner'])
-          },100)
-          setTimeout(()=>{
+          }, 100)
+          setTimeout(() => {
             /*左眼*/
             this.faceChartCircle(this.circles, ['left_eye_top', 'left_eye_bottom', 'left_eye_right_corner', 'left_eye_left_corner'])
             /*右眼*/
             this.faceChartCircle(this.circles, ['right_eye_top', 'right_eye_bottom', 'right_eye_right_corner', 'right_eye_left_corner'])
-          },200)
-          setTimeout(()=>{
+          }, 200)
+          setTimeout(() => {
             /*鼻子*/
             this.faceChartCircle(this.circles, ['nose_left_contour1', 'nose_right_contour1', 'nose_tip', 'nose_middle_contour', 'nose_left_contour3', 'nose_right_contour3'])
-          },300)
-          setTimeout(()=>{
+          }, 300)
+          setTimeout(() => {
             /*嘴巴*/
             this.faceChartCircle(this.circles, ['mouth_right_corner', 'mouth_left_corner', 'mouth_lower_lip_left_contour3', 'mouth_lower_lip_bottom', 'mouth_lower_lip_right_contour3', 'mouth_upper_lip_left_contour1', 'mouth_upper_lip_right_contour1'])
-          },400)
+          }, 400)
           /*
           *线的延迟链接
           */
-          setTimeout(()=>{
+          setTimeout(() => {
             /*眼睛链接*/
-            this.faceChartLine(this.lines, ['left_eye_left_corner','left_eye_right_corner'])
-            this.faceChartLine(this.lines, ['right_eye_right_corner','right_eye_left_corner'])
-            this.faceChartLine(this.lines, ['left_eye_top','left_eye_bottom'])
-            this.faceChartLine(this.lines, ['right_eye_top','right_eye_bottom'])
-          },500)
-          setTimeout(()=>{
+            this.faceChartLine(this.lines, ['left_eye_left_corner', 'left_eye_right_corner'])
+            this.faceChartLine(this.lines, ['right_eye_right_corner', 'right_eye_left_corner'])
+            this.faceChartLine(this.lines, ['left_eye_top', 'left_eye_bottom'])
+            this.faceChartLine(this.lines, ['right_eye_top', 'right_eye_bottom'])
+          }, 500)
+          setTimeout(() => {
             /*左眉链接*/
             this.faceChartLine(this.lines, ['left_eyebrow_upper_middle', 'left_eyebrow_left_corner'])
-            this.faceChartLine(this.lines, ['left_eyebrow_upper_middle',  'left_eyebrow_upper_right_corner'])
+            this.faceChartLine(this.lines, ['left_eyebrow_upper_middle', 'left_eyebrow_upper_right_corner'])
             this.faceChartLine(this.lines, ['left_eyebrow_left_corner', 'left_eyebrow_upper_right_corner'])
             /*右眉链接*/
-            this.faceChartLine(this.lines, ['right_eyebrow_upper_middle', 'right_eyebrow_right_corner', ])
-            this.faceChartLine(this.lines, ['right_eyebrow_upper_middle',  'right_eyebrow_upper_left_corner'])
+            this.faceChartLine(this.lines, ['right_eyebrow_upper_middle', 'right_eyebrow_right_corner',])
+            this.faceChartLine(this.lines, ['right_eyebrow_upper_middle', 'right_eyebrow_upper_left_corner'])
             this.faceChartLine(this.lines, ['right_eyebrow_right_corner', 'right_eyebrow_upper_left_corner'])
-          },600)
-          setTimeout(()=>{
+          }, 600)
+          setTimeout(() => {
             /*鼻子链接*/
             this.faceChartLine(this.lines, ['left_eyebrow_upper_right_corner', 'right_eyebrow_upper_left_corner'])
-            this.faceChartLine(this.lines, ['nose_left_contour1','nose_right_contour1'])
-            this.faceChartLine(this.lines, ['nose_left_contour1','left_eyebrow_upper_right_corner'])
-            this.faceChartLine(this.lines, ['nose_right_contour1','right_eyebrow_upper_left_corner'])
-            this.faceChartLine(this.lines, ['nose_left_contour1','nose_left_contour3'])
-            this.faceChartLine(this.lines, ['nose_right_contour1','nose_right_contour3'])
-            this.faceChartLine(this.lines, ['nose_tip','nose_right_contour3'])
-            this.faceChartLine(this.lines, ['nose_tip','nose_left_contour3'])
-          },700)
-          setTimeout(()=>{
+            this.faceChartLine(this.lines, ['nose_left_contour1', 'nose_right_contour1'])
+            this.faceChartLine(this.lines, ['nose_left_contour1', 'left_eyebrow_upper_right_corner'])
+            this.faceChartLine(this.lines, ['nose_right_contour1', 'right_eyebrow_upper_left_corner'])
+            this.faceChartLine(this.lines, ['nose_left_contour1', 'nose_left_contour3'])
+            this.faceChartLine(this.lines, ['nose_right_contour1', 'nose_right_contour3'])
+            this.faceChartLine(this.lines, ['nose_tip', 'nose_right_contour3'])
+            this.faceChartLine(this.lines, ['nose_tip', 'nose_left_contour3'])
+          }, 700)
+          setTimeout(() => {
             /*面部链接*/
-            this.faceChartLine(this.lines, ['left_eye_left_corner','left_eyebrow_left_corner'])
-            this.faceChartLine(this.lines, ['right_eye_right_corner','right_eyebrow_right_corner'])
-            this.faceChartLine(this.lines, ['left_eye_left_corner','mouth_left_corner'])
-            this.faceChartLine(this.lines, ['right_eye_right_corner','mouth_right_corner'])
-            this.faceChartLine(this.lines, ['mouth_lower_lip_bottom','mouth_right_corner'])
-            this.faceChartLine(this.lines, ['mouth_lower_lip_bottom','mouth_left_corner'])
-            this.faceChartLine(this.lines, ['mouth_right_corner','nose_right_contour3'])
-            this.faceChartLine(this.lines, ['mouth_left_corner','nose_left_contour3'])
-          },800)
-        }else{
+            this.faceChartLine(this.lines, ['left_eye_left_corner', 'left_eyebrow_left_corner'])
+            this.faceChartLine(this.lines, ['right_eye_right_corner', 'right_eyebrow_right_corner'])
+            this.faceChartLine(this.lines, ['left_eye_left_corner', 'mouth_left_corner'])
+            this.faceChartLine(this.lines, ['right_eye_right_corner', 'mouth_right_corner'])
+            this.faceChartLine(this.lines, ['mouth_lower_lip_bottom', 'mouth_right_corner'])
+            this.faceChartLine(this.lines, ['mouth_lower_lip_bottom', 'mouth_left_corner'])
+            this.faceChartLine(this.lines, ['mouth_right_corner', 'nose_right_contour3'])
+            this.faceChartLine(this.lines, ['mouth_left_corner', 'nose_left_contour3'])
+          }, 800)
+        } else {
 
         }
       },
@@ -652,20 +741,22 @@
           setTimeout(() => {
             this.load.splice(i, 1, 1)
             clearLoadFun(i)
-            if(this.gif == 1){
+            if (this.gif == 1) {
               this.animationGif1(i)
-            }else if (this.gif == 2) {
+            } else if (this.gif == 2) {
               this.animationGif2(i)
-            }else if(this.gif == 3){
+            } else if (this.gif == 3) {
               this.animationGif3(i)
             }
           }, time)
         }
         this.load.forEach((v, i) => {
-          if(this.gif==2){
-            this.placeBit.allPlace=false/*去除三庭*/
-          }else if(this.gif==3){
-            this.circles=[]/*去除定位点*/
+          if (this.gif == 2) {
+            this.placeBit.allPlace = false
+            /*去除三庭*/
+          } else if (this.gif == 3) {
+            this.circles = []
+            /*去除定位点*/
           }
           setFun(i)
         })
@@ -697,10 +788,10 @@
           this.gifFun();
         }, 6200)
       },
-      skipRouter(){/*跳转router*/
-        if(this.name){
+      skipRouter() {/*跳转router*/
+        if (this.name) {
           //ajax
-          this.$router.push({ name: 'report'})
+          this.$router.push({name: 'report'})
         }
       }
     },
@@ -851,6 +942,7 @@
           font-size: 0.48rem;
         .s-err-content
           height: 3.33333333rem;
+          overflow auto
           .err-item
             height: 0.66666667rem;
             margin: 0.06666667rem 0;
@@ -1012,14 +1104,16 @@
     left: 2.66666667rem;
     width: 4.66666667rem;
     height: 4.66666667rem;
-    line,circle
+    line, circle
       animation lineOpacity 1s
+
   .m-linePlace
     width: 6.4rem;
     height: 4.75rem;
     position absolute
     top: 1.8rem;
     left: 2.66666667rem;
+
   .face-result-line1
     width: 215px
     height: 0.026667rem;
@@ -1028,14 +1122,16 @@
     left 25px
     top 0
     animation: widthshow3 1.5s;
+
   .face-result-text
     font-size 12px
     color #fff
-    transform:translate(0,-50%)
+    transform: translate(0, -50%)
     right 0
     opacity 0
     position absolute
     animation: fadein 1s 0.5s forwards;
+
   .g-import
     img
       width: 1.21333333rem;
@@ -1045,7 +1141,7 @@
     .upload-loade-name
       text-align center
       span
-        color:#fff;
+        color: #fff;
         font-size 14px
       input
         display block

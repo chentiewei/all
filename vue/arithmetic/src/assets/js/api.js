@@ -1,21 +1,13 @@
 import {post,get} from '@/assets/js/http'
 const fcae='face'
-/**
- * @author 测试
- * @date 无
- * @Description: 用途（测试）
- */
-export function getAll() {
-  return post(fcae+'/restfulApi/face/list')
-}
 
 /**
  * @author uploadImage提交图片接口
- * @date 图片地址
+ * @date 图片数据流
  * @Description: 用途（提交图片）
  */
 export function checkFace(data) {
-  return post(fcae+'/restfulApi/face/checkFace',data)
+  return post(fcae+'/restfulApi/face/checkFace',data,{ showLoading: true,parsed:false })
 }
 
 /**
@@ -36,3 +28,20 @@ export function reportDetails(data) {
   return post(fcae+'/restfulApi/face/info',data)
 }
 
+/**
+ * @author report列表
+ * @date
+ * @Description: 用途（报告列表）
+ */
+export function reportList(data) {
+  return post(fcae+'/restfulApi/face/list')
+}
+
+/**
+ * @author report列表删除报告
+ * @date
+ * @Description: 用途（删除报告）
+ */
+export function deleteReport(data) {
+  return post(fcae+'/restfulApi/face/delete',data)
+}
