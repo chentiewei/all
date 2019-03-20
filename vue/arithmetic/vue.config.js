@@ -3,7 +3,7 @@ function resolve (dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
-  baseUrl: './',
+  baseUrl: '/',
   // vux 相关配置,使用vux-ui
   configureWebpack: config => {
     require('vux-loader').merge(config, {
