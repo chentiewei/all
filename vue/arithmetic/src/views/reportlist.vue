@@ -7,7 +7,7 @@
         <div>
           <img v-if="v.img" class="s-img" :src="v.img" >
           <img v-else class="s-img" src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_87,y_156,w_534,h_534" >
-          <div class="s-nub">{{v.name}}<div class="nub-hot"></div></div>
+          <div class="s-nub">{{v.name}}<div class="nub-hot" v-if="i==0"></div></div>
           <img class="s-icon2" src="../assets/images/deleteitem.png" v-show="deleting">
           <img class="s-icon" src="../assets/images/1.svg"  v-show="!deleting">
         </div>
@@ -140,17 +140,17 @@
         font-size: 0.34666667rem;
         color: #4A4A4A;
         margin: 0 0.50666667rem;
+        position relative
         span
           color: #FF9500;
         div
           position: absolute;
-          right: -0.2rem;
-          top: 0.13333333rem;
+          right: -0.5rem;
           width: 0.16rem;
           height: 0.16rem;
           background: #FF3B30;
           border-radius: 100%;
-          top 6px
+          top 7px
       .s-img
         width: 0.74666667rem;
         height: 0.74666667rem;

@@ -1,6 +1,6 @@
 <template>
   <div class="Single">
-    <div class="g-matter" v-if="!pay">
+    <div class="g-matter" v-if="bit.career_lock==1">
       <div class="link">事业运程报告<span>5535人已购买</span></div>
       <div class="demo">
         事业是好是坏全部隐藏在额头里，能否永远屹立不倒财运亨通则看鼻子，对工作的持续性和精力还看嘴唇<br>
@@ -42,18 +42,18 @@
         解锁事业运程报告
       </div>
     </div>
-    <div class="g-report" v-else>
-      <div class="title">情感运程详解</div>
-      <div class="content">
-        哈哈闪电发货卡萨丁弗兰克就撒娇的浪费了萨兰多夫就大打了卡啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-        <br>
-        发送卡掉了发链接拉萨绝地反击历史记录房间垃圾的设计费啦啦
+    <div class="g-report" v-else-if="bit.career_lock==2">
+      <div class="title">事业运程详解</div>
+      <div class="content" >
+        <p v-for="(v,i) in bit.career_info" v-if="v" :key="i">{{v}}。</p>
+      </div>
+      <div class="propose">
+        <b>择业建议</b>
+        <p>{{bit.vocation}}</p>
       </div>
       <div class="content-box">
-        <div class="content-box-title">桃花变动年纪</div>
-        <div class="content-box-years">40岁</div>
-        <div class="content-box-bit">哈哈大护法货收到了开发区微弱请勿额阿道夫卡士大夫老客户拉客户说的饭卡号士大夫撒代理费哈萨克</div>
-        <div class="content-box-ps">*注：哈哈大护法货收到了开发区微弱请勿额阿道夫卡士大夫老客户拉客户说的饭卡号士大夫撒代理费哈萨克qwer撒发射点发</div>
+        <div class="content-box-title">事业变动年纪</div>
+        <div class="content-box-years">{{bit.career_change_age}}</div>
       </div>
       <router-link :to="{name:'join'}" tag="div" class="content-btn">裂变强，付费率高，申请成为推广合伙人吧！</router-link>
     </div>
@@ -61,13 +61,31 @@
 </template>
 
 <script>
+  import { reportDetails } from '@/assets/js/api'
   export default {
     name: "Single",
     data(){
       return {
-        pay:false
+        bit:{love_lock:0,career_lock:0},
       }
-    }
+    },
+    created(){
+      this.reportBit()
+    },
+    methods:{
+      reportBit(){
+        const id = this.$route.query.id;
+        reportDetails({id:id,field:1}).then((data)=>{
+          this.bit=data.data
+          this.$store.dispatch('report',data.data)
+          if(this.bit.career_lock!=1){
+            this.bit.career_info=this.bit.career_info.split('。')
+          }
+        })
+      }
+    },
+    computed: {
+    },
   }
 </script>
 
@@ -153,6 +171,12 @@
       font-size: 0.38rem;
       color: #4a4a4a;
       line-height 1.7
+    .propose
+      margin-top 30px
+      b
+        font-size 16px
+      p
+        font-size 20px
     .content-box
       border-left 5px solid #f4413a
       margin-top 42.5px

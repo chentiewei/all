@@ -1,6 +1,6 @@
 <template>
   <div class="Single">
-    <div class="g-matter" v-if="!pay">
+    <div class="g-matter" v-if="bit.love_lock==1">
       <div class="link">情感运程报告<span>9239人已购买</span></div>
       <div class="demo">
         眉眼、嘴巴都隐藏着一个人的爱情密码。什么时候能遇上正缘？与伴侣能不能相伴永久？面相可以告诉你…
@@ -40,18 +40,16 @@
         解锁情感运程报告
       </div>
     </div>
-    <div class="g-report" v-else>
+    <div class="g-report" v-else-if="bit.love_lock==2">
       <div class="title">情感运程详解</div>
       <div class="content">
-        哈哈闪电发货卡萨丁弗兰克就撒娇的浪费了萨兰多夫就大打了卡啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-        <br>
-        发送卡掉了发链接拉萨绝地反击历史记录房间垃圾的设计费啦啦
+        <p v-for="(v,i) in bit.love_info" v-if="v" :key="i">{{v}}。</p>
       </div>
       <div class="content-box">
         <div class="content-box-title">桃花变动年纪</div>
-        <div class="content-box-years">40岁</div>
-        <div class="content-box-bit">哈哈大护法货收到了开发区微弱请勿额阿道夫卡士大夫老客户拉客户说的饭卡号士大夫撒代理费哈萨克</div>
-        <div class="content-box-ps">*注：哈哈大护法货收到了开发区微弱请勿额阿道夫卡士大夫老客户拉客户说的饭卡号士大夫撒代理费哈萨克qwer撒发射点发</div>
+        <div class="content-box-years">{{bit.love_change_age}}</div>
+        <div class="content-box-bit">{{bit.partner}}</div>
+        <div class="content-box-ps">*注：桃花变动年纪是说您在这一年会有感情变动，不一定是正缘，也可能是不好的感情变动请您注意识别</div>
       </div>
       <router-link :to="{name:'join'}" tag="div" class="content-btn">裂变强，付费率高，申请成为推广合伙人吧！</router-link>
     </div>
@@ -59,13 +57,30 @@
 </template>
 
 <script>
+  import { reportDetails } from '@/assets/js/api'
   export default {
-    name: "Single",
+    name: "emotion",
     data(){
       return{
-        pay:false
+        bit:{love_lock:0,career_lock:0},
       }
-    }
+    },
+    created(){
+      this.reportBit()
+    },
+    methods:{
+      reportBit(){
+        const id = this.$route.query.id;
+        reportDetails({id:id,field:1}).then((data)=>{
+          this.bit=data.data
+          this.$store.dispatch('report',data.data)
+          if(this.bit.love_lock!=1){
+            this.bit.love_info=this.bit.love_info.split('。')
+          }
+          console.log(this.bit)
+        })
+      }
+    },
   }
 </script>
 

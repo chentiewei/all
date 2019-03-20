@@ -1,4 +1,4 @@
 const getters = {
-  //sidebar: state => state.app.sidebar
+  reportBit: state => state.reportBit,//报告基础数据
 }
 export default getters

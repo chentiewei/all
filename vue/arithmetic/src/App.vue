@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-cloak>
     <keep-alive>
       <router-view
               v-wechat-title="$route.meta.title"

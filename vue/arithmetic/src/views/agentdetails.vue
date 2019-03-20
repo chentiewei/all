@@ -27,11 +27,11 @@
         </div>
       </div>
       <div class="g-bottom">
-        <router-link :to="{name:'agentwact'}" tag="div" class="m-left m-item">
+        <div @click="showMoneyDia=!showMoneyDia" class="m-left m-item m-money200" :class="{'m-money200':!money200}">
           <div class="s-img"><img src="../assets/images/agenticon1.png" alt=""></div>
           <div class="s-title">推荐合伙人</div>
           <div class="s-content">分佣抽成+10%<img data-v-8a0b7f4e="" src="../assets/images/gright.png"></div>
-        </router-link>
+        </div>
         <router-link :to="{name:'agentwact3'}" tag="div" class="m-right m-item">
           <div class="s-img"><img src="../assets/images/agenticon2.png" alt=""></div>
           <div class="s-title">大流量渠道合作</div>
@@ -50,9 +50,7 @@
           <div class="agent-details__login-password-code">获取验证码</div>
         </div>
       </div>
-      <div class="agent-details__login-bottom">
-        开始推广
-      </div>
+      <div class="agent-details__login-bottom">开始推广</div>
       <p class="agent-details__login-rule" @click="show=!show">了解推广细则</p>
     </div>
     <div class="g-ps" v-show="showdia" @click.self="showDiaContent">
@@ -84,11 +82,20 @@
         </div>
       </x-dialog>
     </div>
+    <div v-transfer-dom>
+      <confirm v-model="showMoneyDia"
+               title="提示"
+               confirm-text="了解详情"
+               @on-cancel="onCancel"
+               @on-confirm="onConfirm">
+        佣金满200可开启该权限
+      </confirm>
+    </div>
   </div>
 </template>
 
 <script>
-  import { XDialog, TransferDomDirective as TransferDom } from 'vux'
+  import { XDialog,Confirm, TransferDomDirective as TransferDom } from 'vux'
   export default {
     name: "agentdetails",
     directives: {
@@ -96,12 +103,15 @@
     },
     components: {
       XDialog,
+      Confirm
     },
     data(){
       return {
-        showdia:false,
+        showdia:false,//朋友圈推广图片
         show: false,
-        loginState:false
+        loginState:true,//是否登录代理账号
+        money200:true,//合伙人是否超过200元
+        showMoneyDia:false//推荐合伙人弹框
       }
     },
     methods:{
@@ -109,7 +119,10 @@
       },
       showDiaContent(){
         this.showdia=!this.showdia;
-      }
+      },
+      onConfirm (msg) {
+        this.$router.push({name:'agentwact'})
+      },
     },
   }
 </script>
@@ -154,7 +167,6 @@
   width: 9.25333333rem;
   height: 2.61333333rem;
   background: #fff;
-  -webkit-box-shadow: 0px 10px 26px -8px rgba(164, 90, 10, 0.21);
   box-shadow: 0px 10px 26px -8px rgba(164, 90, 10, 0.21);
   border-radius: 0.21333333rem;
   position: relative;
@@ -223,6 +235,10 @@
     border-radius: 0.21333333rem;
     &.m-right
       background: linear-gradient(90deg, #5cddf0 0%, #86e9f0 100%);
+    &.m-money200
+      box-shadow: 0px 22px 26px -20px rgba(0, 0, 0, 0.2);
+      filter: grayscale(100%);
+      background: #ddd;
     .s-img
       text-align: left;
       margin-left: 0.26666667rem;

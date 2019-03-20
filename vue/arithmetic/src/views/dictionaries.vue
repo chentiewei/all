@@ -8,7 +8,7 @@
       <div class="m-add-text">添加新的面相报告 </div>
     </div>
     <div class="g-face-list">
-      <router-link :to="{name:'report'}" tag="div" class="m-list">
+      <router-link :to="{name:'report',query:{id:bit.id}}" tag="div" class="m-list">
         <div>
           <div class="s-name">我的面相报告</div>
           <div class="s-nub"></div>
@@ -22,14 +22,14 @@
           <img src="../assets/images/1.svg" class="s-icon">
         </div>
       </router-link>
-      <router-link :to="{name:'single'}" tag="div" class="m-list">
+      <router-link :to="{name:'single',query:{id:bit.id}}" tag="div" class="m-list">
         <div>
           <div class="s-name">事业运详解</div>
           <div class="s-nub">5469人已获取<div class="nub-hot"></div></div>
           <img src="../assets/images/1.svg" class="s-icon">
         </div>
       </router-link>
-      <router-link :to="{name:'emotion'}" tag="div" class="m-list">
+      <router-link :to="{name:'emotion',query:{id:bit.id}}" tag="div" class="m-list">
         <div>
           <div class="s-name">情感详解</div>
           <div class="s-nub">5469人已获取<div class="nub-hot"></div></div>
@@ -42,17 +42,29 @@
 </template>
 
 <script>
+  import { firstInfo } from '@/assets/js/api'
   import diaps from '../components/diaPs'
   export default {
     name: "dictionaries",
     data(){
       return {
-        showdia: false
+        showdia: false,//提交图片弹出框
+        bit:{}
       }
+    },
+    created(){
+      this.firstIdFun()
     },
     methods: {
       showDiaContent() {
         this.showdia = !this.showdia;
+      },
+      firstIdFun(){
+        firstInfo().then((data)=>{
+          if(data.status_code==200){
+            this.bit=data.data
+          }
+        })
       }
     },
     components: {

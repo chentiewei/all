@@ -107,7 +107,7 @@
       </div>
     </div>
     <div v-show="type>=4" :class="{ 'uploadLoade':type>=4}">
-      <div class="g-upload-type3-img">
+      <div class="g-upload-type3-img" ref="imgHeight">
         <img v-if="bit.img" class="m-type3-img-center" :src="bit.img">
         <img v-else class="m-type3-img-center" src="@/assets/images/shilizhaopian.png">
         <img v-if="type>=5&&type!=7" class="m-type3-img-body" src="../assets/images/quanquan.png">
@@ -473,7 +473,7 @@
           allPlace: false//三庭全部展示
         },
         name: '', /*报告名称*/
-        type: 7, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画，7=动画全部结束（出现输入框按钮）*/
+        type: 1, /*1=照片未上传，2=照片上传,3=过渡动画(2到3的过渡动画)，4=动画开始,5=转圈动画,6=综合分析，定位五官，测量三挺动画，7=动画全部结束（出现输入框按钮）*/
         detection: false, /*检测结果是否人脸，是否可以进入type3（动画）*/
         gif: 1, /*type=6时，（.upload-loade__waiat）的动画*/
         load: [0, 0, 0, 0], /*(upload-loade_center-item--bot_ok1)图片是load还是ok*/
@@ -532,7 +532,7 @@
         let zy = coorArr[1]
         let w = coorArr[2]
         let h = coorArr[3]
-        let picBox = 175
+        let picBox = parseFloat(window.getComputedStyle(this.$refs.imgHeight).height||0)//获取ref为imgHeight的样式高度
         for (let i in data.position) {
           let x = data.position[i].x
           let y = data.position[i].y
