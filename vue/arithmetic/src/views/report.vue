@@ -255,10 +255,10 @@
       }
     },
     created() {
-      this.reportBit()
       this.picPosition()
     },
     mounted() {
+      this.reportBit()
       //this.arrangeCoordinate(this.bit)
     },
     methods: {
