@@ -18,7 +18,7 @@
           <p class="textPs2">报告</p>
           <img src="../assets/images/page1.png" mode="widthFix" class="home-page__tab-item--img">
         </router-link>
-        <div class="s-box" style="background: rgb(255, 204, 0);">
+        <div class="s-box" style="background: rgb(255, 204, 0);" @click="diaMaster">
           <p class="textPs1">大师</p>
           <p class="textPs2">看相</p>
           <img src="../assets/images/page3.png" mode="widthFix" class="home-page__tab-item--img">
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-  import {Swiper, SwiperItem} from 'vux'
+  import {Swiper, SwiperItem, AlertModule} from 'vux'
   import diaps from '../components/diaPs'
   export default {
     name: 'home',
@@ -66,6 +66,12 @@
     methods: {
       showDiaContent() {
         this.showdia = !this.showdia;
+      },
+      diaMaster(){
+        AlertModule.show({
+          title: '提示',
+          content: '当前模块准备中.....'
+        })
       }
     },
     components: {

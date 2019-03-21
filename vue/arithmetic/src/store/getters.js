@@ -1,4 +1,4 @@
 const getters = {
-  reportBit: state => state.reportBit,//报告基础数据
+  reportBit: state => state.bit.reportBit,//报告基础数据
 }
 export default getters

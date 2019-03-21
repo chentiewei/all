@@ -18,21 +18,21 @@
       <router-link :to="{name:'reportlist'}" tag="div" class="m-list">
         <div>
           <div class="s-name">我添加的报告</div>
-          <div class="s-nub"><span>1</span>份</div>
+          <div class="s-nub"><span>{{dictionariesBit.face_count}}</span>份</div>
           <img src="../assets/images/1.svg" class="s-icon">
         </div>
       </router-link>
       <router-link :to="{name:'single',query:{id:bit.id}}" tag="div" class="m-list">
         <div>
           <div class="s-name">事业运详解</div>
-          <div class="s-nub">5469人已获取<div class="nub-hot"></div></div>
+          <div class="s-nub">{{dictionariesBit.career_num}}人已获取<div class="nub-hot"></div></div>
           <img src="../assets/images/1.svg" class="s-icon">
         </div>
       </router-link>
       <router-link :to="{name:'emotion',query:{id:bit.id}}" tag="div" class="m-list">
         <div>
           <div class="s-name">情感详解</div>
-          <div class="s-nub">5469人已获取<div class="nub-hot"></div></div>
+          <div class="s-nub">{{dictionariesBit.love_num}}人已获取<div class="nub-hot"></div></div>
           <img src="../assets/images/1.svg" class="s-icon">
         </div>
       </router-link>
@@ -43,13 +43,15 @@
 
 <script>
   import { firstInfo } from '@/assets/js/api'
+  import { mapState } from 'vuex'
   import diaps from '../components/diaPs'
   export default {
     name: "dictionaries",
     data(){
       return {
         showdia: false,//提交图片弹出框
-        bit:{}
+        bit:{},//基础数据（id）
+        bitNumber:{}//基础数据（数量）
       }
     },
     created(){
@@ -66,6 +68,11 @@
           }
         })
       }
+    },
+    computed: {
+      ...mapState({
+        dictionariesBit: state => state.bit.dictionariesBit
+      })
     },
     components: {
       diaps

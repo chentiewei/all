@@ -42,12 +42,12 @@
           </div>
           <div>问题反馈</div>
         </li>
-        <li>
+        <router-link :to="{name:'agentwact3'}" tag="li">
           <div class="icon">
             <img src="../assets/images/lxwm.png" alt="">
           </div>
           <div>联系我们</div>
-        </li>
+        </router-link>
       </ul>
     </div>
     <div class="listDiv logoDiv">
@@ -64,7 +64,6 @@
     <div v-transfer-dom>
       <confirm v-model="show"
                title="注销账号"
-               @on-cancel="onCancel"
                @on-confirm="onConfirm">
         <p style="text-align:center;">注销账号后，您的所有报告（含付费购买报告）及已上传的照片数据将全部清除，不可恢复！</p>
       </confirm>
@@ -86,7 +85,8 @@
 </template>
 
 <script>
-  import { Confirm,TransferDomDirective as TransferDom } from 'vux'
+  import { Confirm,TransferDomDirective as TransferDom, AlertModule } from 'vux'
+  import { delUser } from '@/assets/js/api'
   export default {
     name: "userCenter",
     data(){
@@ -99,11 +99,15 @@
       showDiaContent(){
         this.showdia=!this.showdia;
       },
-      onCancel(){
-        console.log('取消')
-      },
       onConfirm(){
-        console.log('确认')
+        delUser().then((data)=>{
+          if(data.status_code==200){
+            AlertModule.show({
+              title: '提示',
+              content: '注销成功'
+            })
+          }
+        })
       },
       outing(){
         this.show=!this.show

@@ -3,7 +3,7 @@
   <div class="g-title">我添加的报告</div>
   <div v-if="bit.length!=0">
     <div class="g-face-list">
-      <div :to="{name:'report'}" class="m-list" @click="outing(v.id)" v-for="(v,i) in bit" :key="i">
+      <div :to="{name:'report'}" class="m-list" @click="outing(v.id,i)" v-for="(v,i) in bit" :key="i">
         <div>
           <img v-if="v.img" class="s-img" :src="v.img" >
           <img v-else class="s-img" src="https://faceplus.qqwechat.com/2019-02-27_cbff441075c43a15348d0362252da1fd.png?x-oss-process=image/crop,x_87,y_156,w_534,h_534" >
@@ -57,7 +57,8 @@
         show: false,//删除报告确认框
         showdia: false,//添加报告弹窗框
         bit:[],//基础数据
-        deletId:0//删除id
+        deletId:0,//删除id
+        deletIndex:0
       }
     },
     created(){
@@ -71,13 +72,15 @@
         deleteReport({id:this.deletId}).then((data)=>{
           if(data.status_code==200){
             this.$store.commit('updateToastStatus', {state: true,text:'删除成功'})
+            this.bit.splice(i,1)
           }
         })
       },
-      outing(id){
+      outing(id,i){
         if(this.deleting){
           this.show=!this.show
           this.deletId=id
+          this.deletIndex=i
         }else{
           this.$router.push({ path: 'report',query:{id:id}})
         }

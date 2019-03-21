@@ -54,10 +54,27 @@ export function firstInfo() {
   return post(fcae+'/restfulApi/face/firstInfo')
 }
 /**
+ * @author 报告数量
+ * @date
+ * @Description: 用途（dictionaries页面的数量）
+ */
+export function numInfo() {
+  return post(fcae+'/restfulApi/face/numInfo')
+}
+
+/**
  * @author 用户第一份报告恢复
  * @date
  * @Description: 用途（第一份报告删除后恢复报告）
  */
 export function recoverFirstInfo() {
   return post(fcae+'/restfulApi/face/recoverFirstInfo')
+}
+/**
+ * @author 用户第一份报告恢复
+ * @date
+ * @Description: 用途（第一份报告删除后恢复报告）
+ */
+export function delUser() {
+  return post(fcae+'/restfulApi/user/delUser')
 }

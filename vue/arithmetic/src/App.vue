@@ -21,6 +21,7 @@
 <script>
   import { Loading,Toast,TransferDomDirective as TransferDom } from 'vux'
   import { mapState } from 'vuex'
+  import { numInfo } from '@/assets/js/api'
   export default {
     name: "app",
     data(){
@@ -28,6 +29,7 @@
       }
     },
     created(){
+      this.numInfoFun()
     },
     computed: {
       ...mapState({
@@ -36,6 +38,13 @@
       })
     },
     methods:{
+      numInfoFun(){
+        numInfo().then((data)=>{
+          if(data.status_code==200){
+            this.$store.dispatch('dictionaries', data.data)
+          }
+        })
+      }
     },
     directives: {
       TransferDom

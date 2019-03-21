@@ -56,8 +56,8 @@
     <div class="g-ps" v-show="showdia" @click.self="showDiaContent">
       <transition name="slide-fade">
         <div class="m-content" v-if="showdia">
-          <a href="#">
-            <img src="../assets/images/cs.png">
+          <a :href="picBase64" download="8679.png">
+            <img :src="picBase64">
             <p>长按或点击图片保存</p>
           </a>
         </div>
@@ -86,16 +86,22 @@
       <confirm v-model="showMoneyDia"
                title="提示"
                confirm-text="了解详情"
-               @on-cancel="onCancel"
                @on-confirm="onConfirm">
         佣金满200可开启该权限
       </confirm>
+    </div>
+    <div id="g-shareQcode">
+      <div id="pending">
+        <img src="../assets/images/cs.png" class="back">
+        <img src="../assets/images/csQcode.jpg" class="qcode">
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import { XDialog,Confirm, TransferDomDirective as TransferDom } from 'vux'
+  import html2canvas from 'html2canvas'
   export default {
     name: "agentdetails",
     directives: {
@@ -107,12 +113,19 @@
     },
     data(){
       return {
+        picBase64:'',//canvas合成图片转化base64格式
         showdia:false,//朋友圈推广图片
         show: false,
         loginState:true,//是否登录代理账号
         money200:true,//合伙人是否超过200元
         showMoneyDia:false//推荐合伙人弹框
       }
+    },
+    mounted(){
+      html2canvas(document.querySelector('#pending')).then(canvas => {
+        canvas.setAttribute("id","canvasQcode")
+        this.picBase64=canvas.toDataURL()
+      })
     },
     methods:{
       agentPs(){
@@ -355,6 +368,22 @@
     color: #4a4a4a;
     padding: 0 0.66666667rem;
     text-align: left;
+#g-shareQcode
+  opacity: 0;
+  position: absolute;
+  left:-19000000px
+  #pending
+    position: relative;
+    width:200px;
+    height:265px;
+    .back
+      width:100%;
+    .qcode
+      position: absolute;
+      right:15px;
+      bottom:15px;
+      width:35px;
+      height:35px;
 </style>
 <style lang="stylus">
   .vux-alert

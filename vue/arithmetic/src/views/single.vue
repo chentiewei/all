@@ -1,7 +1,7 @@
 <template>
   <div class="Single">
     <div class="g-matter" v-if="bit.career_lock==1">
-      <div class="link">事业运程报告<span>5535人已购买</span></div>
+      <div class="link">事业运程报告<span>{{dictionariesBit.career_num}}人已购买</span></div>
       <div class="demo">
         事业是好是坏全部隐藏在额头里，能否永远屹立不倒财运亨通则看鼻子，对工作的持续性和精力还看嘴唇<br>
         …<br>
@@ -62,6 +62,7 @@
 
 <script>
   import { reportDetails } from '@/assets/js/api'
+  import { mapState } from 'vuex'
   export default {
     name: "Single",
     data(){
@@ -85,6 +86,9 @@
       }
     },
     computed: {
+      ...mapState({
+        dictionariesBit: state => state.bit.dictionariesBit
+      })
     },
   }
 </script>

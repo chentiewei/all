@@ -1,7 +1,7 @@
 <template>
   <div class="Single">
     <div class="g-matter" v-if="bit.love_lock==1">
-      <div class="link">情感运程报告<span>9239人已购买</span></div>
+      <div class="link">情感运程报告<span>{{dictionariesBit.love_num}}人已购买</span></div>
       <div class="demo">
         眉眼、嘴巴都隐藏着一个人的爱情密码。什么时候能遇上正缘？与伴侣能不能相伴永久？面相可以告诉你…
       </div>
@@ -58,6 +58,7 @@
 
 <script>
   import { reportDetails } from '@/assets/js/api'
+  import { mapState } from 'vuex'
   export default {
     name: "emotion",
     data(){
@@ -77,9 +78,13 @@
           if(this.bit.love_lock!=1){
             this.bit.love_info=this.bit.love_info.split('。')
           }
-          console.log(this.bit)
         })
       }
+    },
+    computed: {
+      ...mapState({
+        dictionariesBit: state => state.bit.dictionariesBit
+      })
     },
   }
 </script>

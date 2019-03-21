@@ -1,12 +1,11 @@
 <template>
   <div class="paylist">
-
-    <div class="paylist-friendlist">
+    <div class="paylist-friendlist" v-if="bit.length>0">
       <div class="paylist-friendlist__list paylist-friendlist__lists">
-        <div class="paylist-friendlist__list-name">我的报告</div>
+        <div class="paylist-friendlist__list-name" v-for="(v,i) in bit" @click="clickIndex=i" :key="'title'+i">{{v.name}}</div>
       </div>
     </div>
-    <div v-if="bit.length>0" class="g-paylist-friendlist">
+    <div v-if="bit.length>0&&i==clickIndex" class="g-paylist-friendlist" v-for="(v,i) in bit" :key="i">
       <div class="m-box">
         <div class="s-top">
           <div class="pic">
@@ -17,27 +16,27 @@
             <span>鼻子相学解释</span>
           </div>
         </div>
-        <div class="s-bottom">
-          2元解锁
-        </div>
+        <div  v-if="v.nose_lock==1" class="s-bottom">2元解锁</div>
+        <router-link v-else :to="{name:'report',query:{id:v.id}}" tag="div" class="s-bottom">立即查看</router-link>
       </div>
       <div class="m-paylist-box">
         <div class="paylist-box-cause">
           <div class="result-detail">
             <div class="result-detail__title">面相事业运程报告</div>
             <div class="result-detail__text">面相上看事业运和财运怎么样？是否适合创业？应该选择哪一类工作？</div>
-            <div class="result-detail__submit caree">解锁报告</div> <!----></div>
+            <router-link :to="{name:'single',query:{id:v.id}}" tag="div" class="result-detail__submit caree">{{v.career_lock==1?'解锁报告':'查看报告'}}</router-link>
+          </div>
         </div>
         <div class="paylist-box-love">
           <div class="result-detail">
             <div class="result-detail__title">面相情感运程报告</div>
             <div class="result-detail__text">眉眼、嘴巴都隐藏着一个人的爱情密码。什么时候能遇上正缘？与伴侣能不能相伴永久？面相可以告诉你 …</div>
-            <div class="result-detail__submit love">解锁报告</div>
+            <router-link :to="{name:'emotion',query:{id:v.id}}" tag="div" class="result-detail__submit caree">{{v.love_lock==1?'解锁报告':'查看报告'}}</router-link>
           </div>
         </div>
       </div>
     </div>
-    <div v-else class="g-paylist-noresult">
+    <div v-else-if="bit.length==0" class="g-paylist-noresult">
       <img src="../assets/images/noresult.png" class="m-noresult-img">
       <p class="m-title">报告空缺</p>
       <p class="m-content">系统检测到您删除了您的面相报告，快去重新生成吧！</p>
@@ -48,18 +47,30 @@
 </template>
 
 <script>
+  import {reportList} from '@/assets/js/api'
   import diaps from '../components/diaPs'
   export default {
     name: "paylist",
     data(){
       return {
         showdia: false,
-        bit:[]
+        bit:[],
+        clickIndex:0
       }
+    },
+    created(){
+      this.bitFun()
     },
     methods: {
       showDiaContent() {
         this.showdia = !this.showdia;
+      },
+      bitFun(){
+        reportList().then((data)=>{
+          if(data.status_code==200){
+            this.bit=data.data.reverse()
+          }
+        })
       }
     },
     components: {
@@ -89,10 +100,8 @@
       color: #4a4a4a;
       line-height: 1.33333333rem
     .paylist-friendlist__lists
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center
+      display flex
+      padding-top 11.5px
       .paylist-friendlist__list-name
         font-size: 0.37333333rem;
         font-weight: 600;
@@ -103,6 +112,7 @@
         line-height: 0.72rem;
         text-align: center;
         padding: 0 0.26666667rem
+        margin-right 10px
   .paylist
     background: #f6f6f6;
     height: 100vh;
@@ -124,7 +134,6 @@
         justify-content: space-between;
         padding: 0.58666667rem 0.53333333rem 0 0.48rem;
       .s-bottom
-        width: 1.97333333rem;
         height: 0.8rem;
         background: #c52b2b;
         border-radius: 2.66666667rem;
@@ -136,6 +145,7 @@
         font-weight: 400;
         color: #ffffff;
         line-height: 0.8rem;
+        padding 0 15px
       .pic
         width: 0.4rem;
         margin: 0.18666667rem 0 0 0.13333333rem;

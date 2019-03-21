@@ -5,27 +5,14 @@
       <div class="m-face-img">
         <div class="s-face-content" ref="imgHeight">
           <img v-if="bit.beautifyImg" class="m-upload-image-true" :src="bit.beautifyImg">
-          <img v-else class="m-upload-image-true" src="@/assets/images/shilizhaopian.png">
         </div>
-        <div class="face-result-line1" style="top: 1.08rem; left: 4.9706rem;"></div>
-        <div class="face-result-splot" style="top: 0.933333rem; left: 4.82393rem;">
-          <div class="face-result-item"></div>
-        </div>
-        <div class="face-result-text" style="top: 0.45rem; left: 8rem;">上庭较长</div>
-
-        <div class="face-result-box" v-for="(v,i) in positionArr" :key="i">
-          <div :class="v.lineState==1?'face-result-line1':'face-result-line2'"
-               :style="{top:v.x+7.5+'px',left:v.y+5.5+'px'}"></div>
-          <div v-if="v.lineState==1" class="face-result-splot" :style="{top:v.x+'px',left:v.y+'px'}">
+        <div class="face-result-box" v-for="(v,i) in positionArr" :key="'position'+i">
+          <div :class="v.lineState==1?'face-result-line1':'face-result-line2'" :style="{top:v.y+7.5+'px',left:v.x+5.5+'px'}"></div>
+          <div class="face-result-splot" :style="{top:v.y+'px',left:v.x+'px'}">
             <div class="face-result-item"></div>
           </div>
-          <div v-else="v.lineState==1" class="face-result-splot" :style="{top:v.x+'px',left:v.y+'px'}">
-            <div class="face-result-item"></div>
-          </div>
-          <div v-if="v.lineState==1" class="face-result-text" :style="{top:v.x-18.125+'px',left:v.y+120+'px'}">
-            {{v.text}}
-          </div>
-          <div v-else class="face-result-text" :style="{top:v.x-20+'px',left:v.y-118+'px'}">{{v.text}}
+          <div v-if="v.lineState==1" class="face-result-text" :style="{top:v.y-18.125+'px',left:v.x+105+'px'}">{{v.text}}</div>
+          <div v-else class="face-result-text" :style="{top:v.y-20+'px',left:(i+1)==positionArr.length?v.x-155+'px':v.x-130+'px'}">{{v.text}}
           </div>
         </div>
       </div>
@@ -191,7 +178,7 @@
           </div>
           <div class="result-features-type">
             <div class="result-features-type-title">
-              <div class="result-features-type-title-type">/{{bit.face_rate[0].five+bit.face_rate[1].five}}型面相</div>
+              <div class="result-features-type-title-type" v-if="bit.id">/{{bit.face_rate[0].five+bit.face_rate[1].five}}型面相</div>
             </div>
             <div class="index-order">
               <div class="users-info" v-for="(v,i) in bit.face_rate" :key="i">
@@ -254,12 +241,12 @@
         positionArr: [],//位置数组
       }
     },
-    created() {
-      this.picPosition()
+    created(){
     },
     mounted() {
       this.reportBit()
-      //this.arrangeCoordinate(this.bit)
+    },
+    updated(){
     },
     methods: {
       arrangeCoordinate(data) {/*整理坐标（坐标是原图，需要转化为现图坐标）*/
@@ -275,11 +262,10 @@
         let zy = coorArr[1]
         let w = coorArr[2]
         let h = coorArr[3]
-        let picBox = parseFloat(window.getComputedStyle(this.$refs.imgHeight).height || 0)//获取ref为imgHeight的样式高度
+        let picBox = parseFloat(window.getComputedStyle(this.$refs.imgHeight).width)-parseFloat(window.getComputedStyle(this.$refs.imgHeight).borderWidth)*5//获取ref为imgHeight的样式高度
         for (let i in data.position) {
           let x = data.position[i].x
           let y = data.position[i].y
-          console.log(data.position[i].x)
           data.position[i].x = (x - zx) * (picBox / w)
           data.position[i].y = (y - zy) * (picBox / h)
         }
@@ -287,7 +273,7 @@
       showDiaContent() {
         this.showdia = !this.showdia;
       },
-      picPosition() {
+      picPosition() {/*面相报告坐标点整理*/
         const data = this.bit.position
         let arrangePosition = (str, text, lineState) => {
           for (let i in data) {
@@ -296,9 +282,11 @@
             }
           }
         }
+        let picBox = parseFloat(window.getComputedStyle(this.$refs.imgHeight).width)-parseFloat(window.getComputedStyle(this.$refs.imgHeight).borderWidth)*2//获取ref为imgHeight的样式高度
+        this.positionArr.push({lineState: 1,text: this.bit.court_up_title,x: (picBox/2)-10,y:-1 })//为顶部上庭
         arrangePosition('nose_tip', 'nose_title', 1)
         arrangePosition('right_eyebrow_upper_middle', 'eyebrow_title', 1)
-        arrangePosition('left_eye_left_corner', 'eye_title', 2)
+        arrangePosition('left_eye_center', 'eye_title', 2)
         arrangePosition('mouth_lower_lip_top', 'mouth_title', 2)
       },
       reportBit() {
@@ -307,6 +295,7 @@
           this.bit = data.data
           this.$store.dispatch('report', data.data)
           this.arrangeCoordinate(this.bit)
+          this.picPosition()
         })
       }
     }
@@ -341,8 +330,8 @@
       overflow: hidden;
       position: relative;
       .s-face-content
-        width: 197.5px
-        height: 197.5px
+        width: 187.5px
+        height: 187.5px
         border: 5px solid #666;
         box-sizing border-box
         overflow: hidden;
@@ -356,15 +345,15 @@
           width: 100%;
           filter: blur(5px);
       .face-result-line1
-        width: 4rem;
+        width: 135px
         height: 1px;
-        border-bottom: 1px solid #B0B0B0;
+        border-bottom: 1px solid #fff;
         position: absolute;
         animation: widthshow1 2s;
       .face-result-line2
-        width: 3.33333333rem;
+        width: 135px
         height: 1px;
-        border-bottom: 1px solid #B0B0B0;
+        border-bottom: 1px solid #fff;
         position: absolute;
         transform-origin: left;
         transform: rotate(180deg);
@@ -390,9 +379,10 @@
         color: #fff;
         font-weight: 200;
         animation: fadein 2s;
+        width 60px
     .face-result-box
-      width: 197.5px
-      height: 197.5px
+      width: 187.5px
+      height: 187.5px
       border: 5px solid transparent;
       box-sizing border-box
       position absolute
@@ -400,7 +390,7 @@
       left calc(50% - 187.5px / 2)
 
   .g-result-carde, .g-result-garde
-    margin: 0 0.4rem 0.74666667rem;
+    margin: 0 0.4rem 0.37333333rem
     border-radius: 0.08rem;
     padding: 0.4rem;
     box-shadow: 0.01333333rem 0.05333333rem 0.26666667rem 0 rgba(0, 0, 0, 0.12);
@@ -472,10 +462,7 @@
           animation: myfirs 3s;
 
   .g-result-carde
-    top: -0.66666667rem;
-
-  .g-result-garde
-    top: -1.06666667rem;
+    margin-top: -0.66666667rem;
 
   .g-result-features--box
     position: relative;

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import dialog from './modules/dialog'
-import reportBit from "./modules/reportBit"
+import bit from "./modules/bit"
 import getters from './getters'
 
 Vue.use(Vuex)
@@ -9,7 +9,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules: {
     dialog,
-    reportBit
+    bit
   },
   getters
 })
