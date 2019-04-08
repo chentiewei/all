@@ -15,13 +15,14 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-    path: '/login',
-    name: 'login',
-    component: login
-  },
+      path: '/login',
+      name: 'login',
+      component: login
+    },
     {path: '/404', name: '404', component: F404}
   ]
 })
+
 export function powerRouterLazy(name) {
   switch (name) {
     case 'home':
@@ -37,7 +38,7 @@ export function powerRouterLazy(name) {
       return {path: '/blue', name: 'blue', component: blue}
       break;
     case 'all':
-      return {path: '/all', name: 'all', component: all,children: []}
+      return {path: '/all', name: 'all', component: all,children: [], redirect:'all1'}
       break;
     case 'all1':
       return {path: '/all1', name: 'all1', component: all1}
@@ -49,4 +50,3 @@ export function powerRouterLazy(name) {
       return {path: '/404', name: '404', component: F404}
   }
 }
-
