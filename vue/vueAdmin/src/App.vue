@@ -1,10 +1,10 @@
 <template>
   <div id="app" v-cloak>
-    <div class="adise">
+    <div class="adise" v-if="$route.name!='login'">
       <adise/>
     </div>
-    <div class="main-container">
-      <navbar/>
+    <div class="main-container" :class="{'main-container-login':$route.name=='login'}">
+      <navbar v-if="$route.name!='login'"/>
       <router-view></router-view>
     </div>
   </div>
@@ -41,4 +41,6 @@
     transition: margin-left .28s;
     margin-left: 180px;
     position: relative;
+    &.main-container-login
+      margin-left 0
 </style>
