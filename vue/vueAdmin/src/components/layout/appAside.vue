@@ -1,5 +1,5 @@
 <template>
-  <div class="adise">
+  <div class="appAside">
     <el-menu class="el-menu-vertical-demo" :collapse="isCollapse" :router="router" background-color="#304156"
              text-color="#bfcbd9" active-text-color="#409eff">
       <template v-for="(v,i) in newrouter">
@@ -23,16 +23,16 @@
   import {mapGetters} from 'vuex';
 
   export default {
-    name: 'adise',
+    name: 'appAside',
     data() {
       return {
-        isCollapse: false,
         router: true
       }
     },
     computed: {
       ...mapGetters([
-        'newrouter'
+        'newrouter',
+        'isCollapse'
       ])
     },
   }
@@ -40,9 +40,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-  .adise
-    transition: width .28s;
-    width: 180px
+  .appAside
     height: 100%;
     position: fixed;
     font-size: 0;
