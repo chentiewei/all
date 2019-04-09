@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
     <div class="navbarSvg" @click="collapse">
-      <img src="../assets/images/gengduo.svg" :class="{'rt':isCollapse}">
+      <img src="../../assets/images/gengduo.svg" :class="{'rt':isCollapse}">
     </div>
     <el-breadcrumb separator="/" class="navList">
         <el-breadcrumb-item v-for="item in realList" :to="item.path">{{item.name}}</el-breadcrumb-item>

@@ -1,17 +1,9 @@
 <template>
   <div id="app" v-cloak>
-    <div class="adise" v-if="$route.name!='login'">
-      <adise/>
-    </div>
-    <div class="main-container" :class="{'main-container-login':$route.name=='login'}">
-      <navbar v-if="$route.name!='login'"/>
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
-  import adise from './components/adise'
-  import navbar from './components/navbar'
   export default {
     name: "app",
     data(){
@@ -22,25 +14,13 @@
 
     },
     computed: {
-
     },
     methods:{
 
     },
     components: {
-      adise,
-      navbar
     }
   };
 </script>
 <style lang="stylus">
-  body
-    margin 0
-  .main-container
-    min-height: 100%;
-    transition: margin-left .28s;
-    margin-left: 180px;
-    position: relative;
-    &.main-container-login
-      margin-left 0
 </style>

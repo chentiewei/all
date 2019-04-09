@@ -2,17 +2,18 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import { loginByUserInfo }from '@/api/login'
 Vue.use(Vuex)
-
 export default new Vuex.Store({
   state: {
     username: sessionStorage.getItem('USERNAME'),
     role: JSON.parse(sessionStorage.getItem('ROLE')),
     newrouter: [],
+    isCollapse:false//导航栏收起&展开
   },
   getters: {
     username: state => state.username,
     role: state => state.role,
-    newrouter: state => state.newrouter
+    newrouter: state => state.newrouter,
+    isCollapse: state => state.isCollapse,
   },
   mutations: {
     SET_USERNAME:(state, username) => {
@@ -24,6 +25,9 @@ export default new Vuex.Store({
     SET_NEWROUER:(state, newrouter) =>{
       state.newrouter = newrouter;
     },
+    SET_COLLAPSE:(state, isCollapse)=>{
+      state.isCollapse = isCollapse;
+    }
   },
   actions: {
     Logins({ commit }, info){

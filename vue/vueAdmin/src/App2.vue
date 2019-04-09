@@ -24,8 +24,8 @@
 </template>
 <script>
   import {mapGetters} from 'vuex'
-  import appAside from './components/appAside'
-  import navbar from './components/navbar'
+  import appAside from './components/layout/appAside'
+  import navbar from './components/layout/navbar'
   export default {
     name: "app",
     data(){

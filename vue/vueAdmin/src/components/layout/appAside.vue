@@ -2,17 +2,17 @@
   <div class="appAside">
     <el-menu class="el-menu-vertical-demo" :collapse="isCollapse" :router="router" background-color="#304156"
              text-color="#bfcbd9" active-text-color="#409eff">
-      <template v-for="(v,i) in newrouter">
-        <el-menu-item v-if="!v.children" :index="v.path" :key="i">
+      <template v-for="(v,i) in newrouter[0].children" v-if="!v.hidden">
+        <el-menu-item v-if="v.hiddenOption" :index="v.path" :key="i">
           <i class="el-icon-setting"></i>
           <span slot="title">{{v.name}}</span>
         </el-menu-item>
-        <el-submenu v-else-if="v.children" :index="v.name" :key="i">
+        <el-submenu v-else :index="v.name" :key="i">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span slot="title">{{v.name}}</span>
+            <span slot="title">{{v.name}} {{v.hiddenOption}}</span>
           </template>
-          <el-menu-item :index="k.path" v-for="(k,j) in v.children" :key="i+'-'+j">{{k.name}}</el-menu-item>
+          <el-menu-item :index="k.path" v-for="(k,j) in v.children" :key="i+'-'+j" v-if="!k.hidden">{{k.name}}</el-menu-item>
         </el-submenu>
       </template>
     </el-menu>
@@ -28,6 +28,24 @@
       return {
         router: true
       }
+    },
+    created(){
+      this.newrouter[0].children.forEach((v,i)=>{//处理router数据
+        let state=false;
+        if(v.children){
+          v.children.forEach((k,j)=>{
+            if(!k.hidden){
+              state=true;
+            }
+          })
+          if(!v.children.length){
+            state=true;
+          }
+        }
+        if(!state){
+          v.hiddenOption=true
+        }
+      })
     },
     computed: {
       ...mapGetters([

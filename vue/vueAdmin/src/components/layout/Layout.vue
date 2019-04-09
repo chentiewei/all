@@ -1,69 +1,68 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>
-    <sidebar class="sidebar-container"/>
-    <div class="main-container">
-      <navbar/>
-      <app-main/>
-    </div>
+  <div class="app-wrapper">
+    <el-container>
+      <el-aside :width="isCollapse?'64px':'180px'">
+        <appAside/>
+      </el-aside>
+      <div class="main-container" :class="{'pl':isCollapse}">
+        <el-header height="50px" style="padding:0;">
+          <navbar/>
+        </el-header>
+        <el-main style="padding: 0">
+          <div class="app-main">
+            <router-view></router-view>
+          </div>
+        </el-main>
+      </div>
+    </el-container>
   </div>
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from './components'
-import ResizeMixin from './mixin/ResizeHandler'
+import {mapGetters} from 'vuex'
+import appAside from './appAside'
+import navbar from './navbar'
 
 export default {
-  name: 'Layout',
-  components: {
-    Navbar,
-    Sidebar,
-    AppMain
+  name: "app",
+  data(){
+    return{
+    }
   },
-  mixins: [ResizeMixin],
+  created(){
+
+  },
   computed: {
-    sidebar() {
-      return this.$store.state.app.sidebar
-    },
-    device() {
-      return this.$store.state.app.device
-    },
-    classObj() {
-      return {
-        hideSidebar: !this.sidebar.opened,
-        openSidebar: this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation,
-        mobile: this.device === 'mobile'
-      }
-    }
+    ...mapGetters([
+      'isCollapse'
+    ])
   },
-  methods: {
-    handleClickOutside() {
-      this.$store.dispatch('CloseSideBar', { withoutAnimation: false })
-    }
+  methods:{
+
+  },
+  components: {
+    appAside,
+    navbar
   }
-}
+};
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
-  @import "src/styles/mixin.scss";
-  .app-wrapper {
-    @include clearfix;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    &.mobile.openSidebar{
-      position: fixed;
-      top: 0;
-    }
-  }
-  .drawer-bg {
-    background: #000;
-    opacity: 0.3;
-    width: 100%;
-    top: 0;
-    height: 100%;
+<style lang="stylus">
+  body
+    margin 0
+  .el-header
+    padding: 0
+  .main-container
+    width 100%
+    min-height: 100%;
+    transition: padding-left .28s;
+    padding-left: 180px;
     position: absolute;
-    z-index: 999;
-  }
+    box-sizing border-box
+    &.pl
+      padding-left 65px
+  .app-main
+    min-height: calc(100vh - 50px);
+    position: relative;
+    overflow: hidden;
 </style>

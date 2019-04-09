@@ -3,7 +3,7 @@ export const loginByUserInfo = [
     "id": 1,
     "username": "admin",
     "pew": 123456,
-    "role": [{"name": "home"}, {"name": "red"}, {"name": "yellow"}, {"name": "blue"}, {"name": "all",children:[{"name": "all1"}]}],
+    "role": [{"name": "home"}, {"name": "red"}, {"name": "yellow"}, {"name": "blue"}, {"name": "all",children:[{"name": "all1"},{"name": "all2"}]}],
     "introduce": "我可以看见全部页面"
   },
   {
