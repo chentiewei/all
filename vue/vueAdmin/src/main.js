@@ -8,12 +8,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import "@/assets/css/common.styl"
 
 let generaMenu = (obj,data) =>{
+  let bitLength=topRouter().children.length//初始children元素长度:原始长度如2，则i+2
   data.forEach((v,i)=>{
-    let bit=powerRouterLazy(v.name);
+    let bit=powerRouterLazy(v.name)
     obj.push(bit)
     if(v.children){
-      if(!obj[i+1].children){obj[i+1].children=[]}//没有children则赋值
-      generaMenu(obj[i+1].children,v.children)//递归children
+      if(!obj[i+bitLength].children){obj[i+bitLength].children=[]}//没有children则赋值
+      generaMenu(obj[i+bitLength].children,v.children)//递归children
     }
   })
 }
