@@ -7,7 +7,7 @@
         <el-breadcrumb-item v-for="item in realList" :to="item.path">{{item.name}}</el-breadcrumb-item>
     </el-breadcrumb>
     <div class="userImg">
-      <el-dropdown>
+      <el-dropdown trigger="click">
         <div class="el-dropdown-link avatar-wrapper">
           <img src="https://avatars0.githubusercontent.com/u/22538215?s=400&u=84e3500b9a133ea13b75c4396dd9535eba9213b0&v=4" alt="">
           <i class="el-icon-caret-bottom"></i>

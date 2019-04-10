@@ -10,7 +10,9 @@
         </el-header>
         <el-main style="padding: 0">
           <div class="app-main">
-            <router-view></router-view>
+            <transition name="fade-transform" mode="out-in">
+              <router-view/>
+            </transition>
           </div>
         </el-main>
       </div>

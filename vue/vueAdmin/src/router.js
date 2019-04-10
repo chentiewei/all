@@ -36,31 +36,18 @@ export function topRouter(name) {
 
 /*
 *hidden:是否显示在左侧导航栏（因为不是路由级，而是页面级，不控制方法页面）
+* 规则：在导航栏里面显示的一定要在rData中注册
 */
 export function powerRouterLazy(name) {
-  switch (name) {
-    case 'home':
-      return {path: '/home', name: 'home',children:[{path: '/all2', name: 'all2', component: all2, hidden: true}], component: () => import('@/views/home')}
-      break;
-    case 'red':
-      return {path: '/red', name: 'red', component: red}
-      break;
-    case 'yellow':
-      return {path: '/yellow', name: 'yellow', component: yellow}
-      break;
-    case 'blue':
-      return {path: '/blue', name: 'blue', component: blue}
-      break;
-    case 'all':
-      return {path: '/all', name: 'all', component: all,  redirect: 'all1'}
-      break;
-    case 'all1':
-      return {path: '/all1', name: 'all1', component: all1}
-      break;
-    case 'all2':
-      return {path: '/all2', name: 'all2', component: all2, hidden: true}
-      break;
-    default:
-      return {path: '/404', name: '404', component: F404}
+  const rData={
+    home:{path: '/home', name: 'home', component: () => import('@/views/home')},
+    red:{path: '/red', name: 'red', component: red},
+    yellow:{path: '/yellow', name: 'yellow', component: yellow},
+    blue:{path: '/blue', name: 'blue', component: blue},
+    all:{path: '/all', name: 'all', component: all,  redirect: 'all1'},
+    all1:{path: '/all1', name: 'all1', component: all1},
+    all2:{path: '/all2', name: 'all2', component: all2, hidden: true},
+    default:{path: '/404', name: '404', component: F404, hidden: true}
   }
+  return rData[name]?rData[name]:rData['default']
 }

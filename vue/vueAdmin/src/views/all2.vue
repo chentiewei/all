@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-container">
     all2
   </div>
 </template>
