@@ -15,7 +15,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.2",
     "@vue/cli-service": "^3.2.3",
-    "node-sass": "^4.9.2",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.0.3",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
