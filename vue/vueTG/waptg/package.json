@@ -14,7 +14,7 @@
     "better-scroll": "^1.12.6",
     "fastclick": "^1.0.6",
     "lib-flexible": "^0.3.2",
-    "moment": "^2.4.0",
+    "moment": "^2.29.4",
     "qs": "^6.5.2",
     "vant": "^1.2.0",
     "vue": "^2.5.2",
