@@ -11,7 +11,7 @@
     "axios": "^0.18.0",
     "html2canvas": "^1.0.0-alpha.12",
     "js-md5": "^0.7.3",
-    "qs": "^6.6.0",
+    "qs": "^6.6.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vue-wechat-title": "^2.0.5",
