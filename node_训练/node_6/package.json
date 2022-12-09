@@ -16,7 +16,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "superagent": "^3.8.2"
   },
   "engines": {
